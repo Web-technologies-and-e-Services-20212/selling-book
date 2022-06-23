@@ -1,0 +1,46 @@
+/* Flex section */
+.flex {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.f-align_center{
+    align-items: center;
+}
+
+.f-row{
+    flex-direction: row;
+}
+
+.f-space_between{
+    justify-content: space-between;
+}
+
+/* Padding and Margin section */
+
+.margin-auto_h{
+    margin: 0 auto;
+}
+
+/* Position section  */
+.relative{
+    position: relative;
+}
+
+.absolute{
+    position: absolute;
+}
+
+/* Format tag style  */
+a {
+    text-decoration: none;
+    color: #fff;
+}
+
+ul {
+  list-style-type: none;
+}
+
+img {
+    width: 100%;
+}
