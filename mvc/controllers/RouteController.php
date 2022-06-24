@@ -67,6 +67,6 @@ class RouteController {
     */
     function show() {
         $this->_dispath->__render();
-        if($this->_is_footer == 1) $this->_dispath->__footer();
+        // if($this->_is_footer == 1) $this->_dispath->__footer();
     }
 }

@@ -22,8 +22,10 @@
 .main-img .prev {
   left: 10px;
 }
-.main-content #policy {
+
+#policy {
   padding: 15px 0;
+  background-color: #f7f7f9;
 }
 
 .policy-img {
@@ -52,8 +54,10 @@
   width: calc(100% - 70px);
   text-align: center;
 }
-.main-content #products {
+
+#products {
   padding-top: 40px;
+  background-color:#f7f7f9;
 }
 
 .pro-nav {
@@ -91,4 +95,149 @@
   }
 }
 
-/*# sourceMappingURL=homePage.css.map */
+.pro-list{
+  background-color: #f7f7f9;
+  width: 100%;
+  padding: 20px 0 40px 0;
+}
+
+.product-container{
+  margin-bottom: 20px;
+}
+
+.product-container:hover{
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  transform: translate3d(0, -2px, 0);
+}
+
+.product-card {
+  padding: 0 15px;
+  width: 20%;
+}
+
+
+.product-sale{
+  right: -20px;
+  top: -18px;
+  z-index: 20;
+}
+
+.sale-icon{
+  font-size: 14px;
+  color: #fff;
+  display: block;
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
+  background: url("../../images/logo/discount.webp") no-repeat center;
+  background-size: contain;
+}
+
+.img{
+  display: block;
+  overflow: hidden;
+}
+
+/* .product-img .img img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+} */
+
+.product-detail {
+  padding: 5px 15px;
+  text-align: center;
+}
+
+.product-name{
+  font-weight: 400;
+  color: #000000;
+  font-size: 24px;
+  line-height: 24px;
+}
+
+.product-name a {
+  color: #212121;
+  font-size: 16px;
+  text-overflow: ellipsis;
+  width: 100%;
+  float: left;
+  text-align: center;
+  font-weight: 300;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.product-name a:hover {
+  color: #01a14b;
+}
+
+.product-prices .price{
+  display: inline-block;
+}
+
+.price-new {
+  font-weight: 600;
+  color: #01a14b;
+}
+
+.price-old{
+  text-decoration: line-through;
+  font-size: 14px;
+  color: #b0b0b0;
+  font-weight: 300;
+}
+
+.see-more .btn{
+  display: inline-block;
+  padding: 6px 12px;
+  margin-bottom: 0;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.42857143;
+  text-align: center;
+  white-space: nowrap;
+  cursor: pointer;
+  border: 1px solid transparent;
+  border-radius: 4px;
+}
+
+
+.see-more .btn-more {
+  border-radius: 4px;
+  background: #01a14b;
+  padding: 6px 20px;
+  color: #fff;
+  font-size: 13px;
+  text-transform: uppercase;
+}
+
+.see-more .btn-more:hover{
+  background-color:#009234;
+}
+
+#post{
+  width: 100%;
+  height: 110vh;
+  padding: 20px 0;
+}
+
+.posts-header{
+  text-align: center;
+  padding: 50px 0 30px 0;
+}
+
+.posts-header h2{
+  font-size: 24px;
+  color: #000000;
+  text-transform: uppercase;
+}
+
+.post-container {
+  width: 30%;
+  height: 600px;
+}
+

@@ -19,6 +19,11 @@
         <?php require_once ROOT . DS . 'mvc' . DS . 'views' . DS . 'main_content.php'; ?>
         <!-- Kết thúc nội dung phần Body -->
 
+        <!-- Nội dung phần Footer --> 
+        <?php require_once ROOT . DS . 'mvc' . DS . 'views' . DS . 'footer.php'; ?>
     </body>
 </html>
+
+        
+
     

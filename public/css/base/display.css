@@ -4,6 +4,10 @@
     flex-wrap: wrap;
 }
 
+.f-center{
+    justify-content: center;
+}
+
 .f-align_center{
     align-items: center;
 }
@@ -12,8 +16,16 @@
     flex-direction: row;
 }
 
+.f-column{
+    flex-direction: column;
+}
+
 .f-space_between{
     justify-content: space-between;
+}
+
+.f-space_evenly{
+    justify-content: space-evenly;
 }
 
 /* Padding and Margin section */
@@ -43,4 +55,9 @@ ul {
 
 img {
     width: 100%;
+}
+
+
+.borderblack{
+    border: 1px solid #000;
 }

@@ -5,8 +5,8 @@ class DefaultController {
 
   }
 
-  /*include footer*/
-	public function __footer(){
-        include ROOT . DS . 'mvc' . DS . 'views' . DS . 'footer.php';
-    }
+  // /*include footer*/
+	// public function __footer(){
+  //       include ROOT . DS . 'mvc' . DS . 'views' . DS . 'footer.php';
+  //   }
 }

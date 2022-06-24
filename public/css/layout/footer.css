@@ -1,0 +1,119 @@
+.footer{
+    width: 100%;
+    background-color: #313131;
+    color: #fff;
+}
+
+.footer .container{
+    padding: 30px 0;
+}
+
+.footer-contact{
+    width: 400px;
+    padding: 0 10px;
+}
+
+.fo-logo{
+    margin-bottom: 30px;
+}
+
+.fo-logo img{
+    width: unset;
+}
+
+.fo{
+    margin: 15px 0 25px 0;
+}
+
+.fo .icon{
+    width: 44px;
+    height: 44px;
+    border: 1px solid #fff;
+    border-radius: 50%;
+    margin-right: 10px;
+    text-align: center;
+}
+
+.fo .icon i{
+    font-size: 24px;
+    line-height: 44px;
+}
+
+.fo .content{
+    width: calc(100% - 44px - 10px);
+}
+
+.fo-hotline .content, .fo-email .content{
+    line-height: 44px;
+}
+
+.footer-support{
+
+    width: 500px;
+    padding: 0 10px;
+}
+
+.support-header, .policy-header{
+    margin-bottom: 20px;
+}
+
+.support-detail a, .policy-detail a{
+    display: block;
+    margin-top: 8px;
+}
+
+.support-detail a:hover, .policy-detail a:hover{
+    color: #01a14b;
+}
+
+.register-email{
+    margin-top: 10px;
+}
+
+.footer-social{
+    width: 300px;
+    padding: 0 10px;
+}
+
+.social-header{
+    font-size: 16px;
+    font-weight: 600;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+}
+
+.social-facebook{
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.social-title {
+    font-size: 16px;
+}
+
+.social-group {
+    padding: 10px 0;
+}
+
+.social-group .social-icon{
+    display: inline-block;
+    margin: 0 4px;
+}
+
+.social-icon i::before {
+    width: 40px;
+    height: 40px;
+    text-align: center;
+    background: #fff;
+    color: #222;
+    line-height: 40px;
+    display: block;
+    font-size: 24px;
+    border-radius: 4px;
+    transition: 0.25s;
+}
+
+.social-icon i:hover:before{
+    background-color: #01a14b;
+    color: #fff;
+}

@@ -9,6 +9,7 @@ global $path_project;
             <div>CÔNG TY CỔ PHẦN XUẤT BẢN VÀ TRUYỀN THÔNG IPM</div>
             <div class="account">
                 <a href="/account" >Xin chào: Trần Lâm</a>
+                <p class="divider">|</p>
                 <a href="#">Đăng xuất</a> 
             </div>
         </div>
