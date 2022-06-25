@@ -9,7 +9,7 @@
         <script src="https://kit.fontawesome.com/d433183ff3.js" crossorigin="anonymous"></script>
         <link rel="shortcut icon" href="public/images/logo/logo_icon.png" type="image/x-icon">
         <link rel="stylesheet" href="public/css/style.css" type="text/css">
-        <title>IPM | Về chúng tôi</title>
+        <title>IPM | Liên hệ</title>
     </head>
     <body>
         <!-- Nội dung phần Header -->
@@ -17,7 +17,7 @@
         <!-- Kết thúc nội dung phần Header -->
 
         <!-- Nội dung phần About -->
-        <h1>About</h1>
+        <h1>Contact</h1>
         <!-- Kết thúc nội dung phần About -->
 
         <!-- Nội dung phần Footer --> 

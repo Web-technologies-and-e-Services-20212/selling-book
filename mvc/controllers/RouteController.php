@@ -3,11 +3,9 @@
 class RouteController {
     private $_url;
     private $_dispath;
-    private $_is_footer;
 
     function __construct($url) {
         $this->_url = $url;
-        $this->_is_footer = 1;
 
         self::parsingURL();
     }
@@ -38,12 +36,12 @@ class RouteController {
 
         // check if admin -> no footer ??????/
         // Cần kiểm tra lại
-        if(strcmp($controller, "admin") == 0
-            || strcmp($controller, "product-management") == 0
-            || strcmp($controller, "account-management") == 0
-            || strcmp($controller, "login-admin") === 0){
-            $this->_is_footer = 0;
-        }
+        // if(strcmp($controller, "admin") == 0
+        //     || strcmp($controller, "product-management") == 0
+        //     || strcmp($controller, "account-management") == 0
+        //     || strcmp($controller, "login-admin") === 0){
+        //     $this->_is_footer = 0;
+        // }
 
         // if link is account-management => controller of link is AccountManagementController
         $controller = str_replace('-', ' ', $controller);
@@ -67,6 +65,5 @@ class RouteController {
     */
     function show() {
         $this->_dispath->__render();
-        // if($this->_is_footer == 1) $this->_dispath->__footer();
     }
 }

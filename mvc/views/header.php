@@ -1,5 +1,7 @@
 <?php
 global $path_project;
+$url = isset($_GET["url"]) ? $_GET["url"] : "/";
+echo $url;
 ?>
 <!-- HTML Here -->
 <header class="header">
@@ -8,9 +10,9 @@ global $path_project;
         <div class="container flex f-space_between f-align_center h100p">
             <div>CÔNG TY CỔ PHẦN XUẤT BẢN VÀ TRUYỀN THÔNG IPM</div>
             <div class="account">
-                <a href="/account" >Xin chào: Trần Lâm</a>
+                <a href="/account">Xin chào: Trần Lâm</a>
                 <p class="divider">|</p>
-                <a href="#">Đăng xuất</a> 
+                <a href="#">Đăng xuất</a>
             </div>
         </div>
     </div>
@@ -19,15 +21,15 @@ global $path_project;
     <div class="site-header w100p">
         <div class="container flex f-space_between f-align_center">
             <div class="header-logo">
-                <a href=<?php echo "/" . $path_project . "/"?>>
-                    <img src="public/images/logo/logo.jpg" alt="logo" />
+                <a href=<?php echo "/" . $path_project . "/" ?>>
+                    <img src="public/images/logo/logo.webp" alt="logo" />
                 </a>
             </div>
 
             <div class="header-search w50p">
                 <form class="relative w100p">
-                    <label htmlFor="search" class="hidden" ></label>
-                    <input class="search-text" name="search" id="search" type="search" placeholder="Tìm kiếm ..." ></input>
+                    <label htmlFor="search" class="hidden"></label>
+                    <input class="search-text" name="search" id="search" type="search" placeholder="Tìm kiếm ..."></input>
                     <button type="submit" class="search-btn absolute">
                         <i class="fa-solid fa-magnifying-glass"></i>
                     </button>
@@ -37,7 +39,7 @@ global $path_project;
             <div class="header-cart">
                 <div class="topbar-cart">
                     <div class="shopping-cart">
-                        <a class="flex f-space_between f-align_center" href=<?php echo "/" . $path_project . "/cart"?>>
+                        <a class="flex f-space_between f-align_center" href=<?php echo "/" . $path_project . "/cart" ?>>
                             <div class="cart-icon relative">
                                 <i class="fa-solid fa-cart-shopping"></i>
                                 <span class="quantity absolute">3</span>
@@ -50,7 +52,7 @@ global $path_project;
                         </a>
                     </div>
                 </div>
-                
+
             </div>
         </div>
     </div>
@@ -61,36 +63,46 @@ global $path_project;
             <nav class="flex f-space_between f-align_center">
                 <ul>
                     <li>
-                        <a href=<?php echo "/" . $path_project . "/"?>>Trang chủ</a>
+                        <a 
+                        class=<?php echo $url == "/" ? "active" : "non-active" ?> 
+                        href=<?php echo "/" . $path_project . "/" ?>>Trang chủ</a>
                     </li>
                 </ul>
 
                 <ul>
                     <li>
-                        <a href=<?php echo "/" . $path_project . "/list_products"?>>Sản phẩm</a>
+                        <a 
+                        class=<?php echo $url == "list_products" ? "active" : "non-active" ?>
+                        href=<?php echo "/" . $path_project . "/list-products" ?>>Sản phẩm</a>
                     </li>
                 </ul>
 
                 <ul>
                     <li>
-                        <a href=<?php echo "/" . $path_project . "/blogs"?>>Tin tức</a>
+                        <a 
+                        class=<?php echo $url == "blogs" ? "active" : "non-active" ?>
+                        href=<?php echo "/" . $path_project . "/blogs" ?>>Tin tức</a>
                     </li>
                 </ul>
 
                 <ul>
                     <li>
-                        <a href=<?php echo "/" . $path_project . "/about"?>>Về IPM</a>
+                        <a
+                        class=<?php echo $url == "about" ? "active" : "non-active" ?> 
+                        href=<?php echo "/" . $path_project . "/about" ?>>Về IPM</a>
                     </li>
                 </ul>
 
                 <ul>
                     <li>
-                    <a href=<?php echo "/" . $path_project . "/contact"?>>Liên hệ</a>
+                        <a 
+                        class=<?php echo $url == "contact" ? "active" : "non-active" ?>
+                        href=<?php echo "/" . $path_project . "/contact" ?>>Liên hệ</a>
                     </li>
                 </ul>
 
-            
-                
+
+
             </nav>
         </div>
     </div>
