@@ -2,7 +2,7 @@
 
 <div class="main-content w100p">
     <!-- Section slide start -->
-    <section id="home-hero w100p">
+    <section id="home-hero">
         <div class="main-img relative">
             <img src="public/images/slide/slideshow_1.jpg"></img>
             <span class="next absolute">

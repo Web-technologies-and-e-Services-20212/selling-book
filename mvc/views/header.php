@@ -63,41 +63,41 @@ echo $url;
             <nav class="flex f-space_between f-align_center">
                 <ul>
                     <li>
-                        <a 
-                        class=<?php echo $url == "/" ? "active" : "non-active" ?> 
-                        href=<?php echo "/" . $path_project . "/" ?>>Trang chủ</a>
+                        <a class=<?php echo $url == "/" ? "active" : "non-active" ?> href=<?php echo "/" . $path_project . "/" ?>>Trang chủ</a>
+                    </li>
+                </ul>
+
+                <ul id="dropdown">
+                    <li>
+                        <a class=<?php echo $url == "list_products" ? "active" : "non-active" ?> href=<?php echo "/" . $path_project . "/list-products" ?>>Sản phẩm</a>
+
+                    </li>
+                    <ul class="menu-dropdown">
+                            <li><a href="#">Trinh Thám , Kinh dị</a></li>
+                            <li><a href="#">Văn học hiện đại</a></li>
+                            <li><a href="#">Văn học kinh điển</a></li>
+                            <li><a href="#">Fantasy</a></li>
+                            <li><a href="#">Light Novel</a></li>
+                            <li><a href="#">Manga - Comic</a></li>
+                            <li><a href="#">Sách học ngữ</a></li>
+                        </ul>
+                </ul>
+
+                <ul>
+                    <li>
+                        <a class=<?php echo $url == "blogs" ? "active" : "non-active" ?> href=<?php echo "/" . $path_project . "/blogs" ?>>Tin tức</a>
                     </li>
                 </ul>
 
                 <ul>
                     <li>
-                        <a 
-                        class=<?php echo $url == "list_products" ? "active" : "non-active" ?>
-                        href=<?php echo "/" . $path_project . "/list-products" ?>>Sản phẩm</a>
+                        <a class=<?php echo $url == "about" ? "active" : "non-active" ?> href=<?php echo "/" . $path_project . "/about" ?>>Về IPM</a>
                     </li>
                 </ul>
 
                 <ul>
                     <li>
-                        <a 
-                        class=<?php echo $url == "blogs" ? "active" : "non-active" ?>
-                        href=<?php echo "/" . $path_project . "/blogs" ?>>Tin tức</a>
-                    </li>
-                </ul>
-
-                <ul>
-                    <li>
-                        <a
-                        class=<?php echo $url == "about" ? "active" : "non-active" ?> 
-                        href=<?php echo "/" . $path_project . "/about" ?>>Về IPM</a>
-                    </li>
-                </ul>
-
-                <ul>
-                    <li>
-                        <a 
-                        class=<?php echo $url == "contact" ? "active" : "non-active" ?>
-                        href=<?php echo "/" . $path_project . "/contact" ?>>Liên hệ</a>
+                        <a class=<?php echo $url == "contact" ? "active" : "non-active" ?> href=<?php echo "/" . $path_project . "/contact" ?>>Liên hệ</a>
                     </li>
                 </ul>
 

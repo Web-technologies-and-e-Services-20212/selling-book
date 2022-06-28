@@ -3,10 +3,12 @@
 @import url("./base/color.css");
 @import url("./base/dimension.css");
 @import url("./base/display.css");
+@import url("./base/responsive.css");
 
 @import url("./layout/header.css");
-@import url("./layout/main_content.css");
 @import url("./layout/footer.css");
+@import url("./layout/main_content.css");
+@import url("./layout/list_products.css");
 
 * {
   margin: 0;
