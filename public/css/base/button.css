@@ -1,6 +1,72 @@
 button {
-    outline: none;
-    border: none;
-    cursor: pointer;
+  outline: none;
+  border: none;
+  cursor: pointer;
 }
 
+.btn {
+  display: inline-block;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  border-radius: 4px;
+  text-align: center;
+  font-size: 14px;
+  line-height: 1.42857143;
+  border: 1px solid transparent;
+  padding: 6px 12px;
+  white-space: nowrap;
+  font-weight: 400;
+}
+
+.btn-primary {
+  background: #01a14b;
+  border-color: #01a14b;
+  color: #fff;
+}
+
+.btn-primary:hover {
+  background: #ff936a;
+  border-color: #ff936a;
+}
+
+.btn-default{
+  background: #01a14b;
+  color: #fff;
+}
+
+.btn-lg {
+  padding: 10px 32px;
+  font-size: 16px;
+  border-radius: 6px;
+  margin-bottom: 36px;
+}
+
+.btn-md{
+  font-size: 16px;
+  padding: 0 20px;
+  border-radius: 3px;
+  float: right;
+  position: relative;
+  margin: 7px;
+  font-weight: 400;
+  height: 45px;
+  line-height: 45px;
+}
+
+.btn-more {
+  border-radius: 4px;
+  background: #01a14b;
+  padding: 6px 20px;
+  color: #fff;
+  font-size: 13px;
+  text-transform: uppercase;
+}
+
+.btn-more:hover {
+  background-color: #009234;
+}
+
+.btn i{
+  padding-left: 8px;
+}

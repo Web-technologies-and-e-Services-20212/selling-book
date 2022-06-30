@@ -4,7 +4,7 @@ $url = isset($_GET["url"]) ? $_GET["url"] : "/";
 echo $url;
 ?>
 <!-- HTML Here -->
-<header class="header">
+<header id="header">
     <!-- Topbar start -->
     <div class="site-topbar w100p">
         <div class="container flex f-space_between f-align_center h100p">
@@ -47,7 +47,7 @@ echo $url;
 
                             <div class="cart-info">
                                 <h2>Giỏ hàng</h2>
-                                <p>3 sản phẩm</p>
+                                <span>3 sản phẩm</span>
                             </div>
                         </a>
                     </div>

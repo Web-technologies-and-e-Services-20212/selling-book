@@ -32,7 +32,7 @@
             <div class="footer-support flex f-column">
                 <div class="flex f-space_between">
                     <div class="flex f-column">
-                        <div class="support-header">
+                        <div class="support-header m-b20">
                             <h3>Hỗ trợ khách hàng</h3>
                         </div>
                         <div class="support-detail">
@@ -41,7 +41,7 @@
                         </div>
                     </div>
                     <div class="flex f-column">
-                        <div class="policy-header">
+                        <div class="policy-header m-b20">
                             <h3>Chính sách</h3>
                         </div>
                         <div class="policy-detail">
@@ -53,7 +53,7 @@
                     </div>
                 </div>
                 <div class="register-email flex">
-                    <h3>Đăng ký nhận tin</h3>
+                    <h3 class="m-b20">Đăng ký nhận tin</h3>
                     <div class="">Hãy nhập email của bạn vào ô dưới 
                         đây để có thể nhận được tất cả tin tức mới nhất của IPM</div>
                     <div class="">

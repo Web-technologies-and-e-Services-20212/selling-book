@@ -1,3 +1,7 @@
+#header{
+  padding-bottom: 30px;
+}
+
 .site-topbar {
   background-color: #01a14b;
   height: 50px;
@@ -87,8 +91,12 @@
 .cart-info h2 {
   font-size: 20px;
   font-weight: 700;
+  margin: unset;
+}  
+.cart-info h2:hover{
+  color: #01a14b;
 }
-.cart-info p {
+.cart-info span {
   font-size: 14px;
 }
 
