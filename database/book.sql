@@ -13,11 +13,11 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 
--- Dumping database structure for mydatabase
-CREATE DATABASE IF NOT EXISTS `mydatabase` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci */;
-USE `mydatabase`;
+-- Dumping database structure for selling_book
+CREATE DATABASE IF NOT EXISTS `selling_book` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci */;
+USE `selling_book`;
 
--- Dumping structure for table mydatabase.admin
+-- Dumping structure for table selling_book.admin
 CREATE TABLE IF NOT EXISTS `admin` (
   `ID` int(11) NOT NULL AUTO_INCREMENT,
   `username` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -27,14 +27,14 @@ CREATE TABLE IF NOT EXISTS `admin` (
   UNIQUE KEY `username` (`username`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Dumping data for table mydatabase.admin: ~2 rows (approximately)
+-- Dumping data for table selling_book.admin: ~2 rows (approximately)
 /*!40000 ALTER TABLE `admin` DISABLE KEYS */;
 INSERT INTO `admin` (`ID`, `username`, `password`, `name`) VALUES
 	(1, 'admin001', 'admin001', 'admin khong mot'),
 	(2, 'admin002', 'admin002', 'admin khong hai');
 /*!40000 ALTER TABLE `admin` ENABLE KEYS */;
 
--- Dumping structure for table mydatabase.bill
+-- Dumping structure for table selling_book.bill
 CREATE TABLE IF NOT EXISTS `bill` (
   `ID` int(11) NOT NULL AUTO_INCREMENT,
   `username` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -46,11 +46,11 @@ CREATE TABLE IF NOT EXISTS `bill` (
   CONSTRAINT `FK_bill_guest` FOREIGN KEY (`username`) REFERENCES `guest` (`username`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Dumping data for table mydatabase.bill: ~0 rows (approximately)
+-- Dumping data for table selling_book.bill: ~0 rows (approximately)
 /*!40000 ALTER TABLE `bill` DISABLE KEYS */;
 /*!40000 ALTER TABLE `bill` ENABLE KEYS */;
 
--- Dumping structure for table mydatabase.bill_book
+-- Dumping structure for table selling_book.bill_book
 CREATE TABLE IF NOT EXISTS `bill_book` (
   `billId` int(11) NOT NULL,
   `quantity` int(10) unsigned NOT NULL DEFAULT '1',
@@ -62,11 +62,11 @@ CREATE TABLE IF NOT EXISTS `bill_book` (
   CONSTRAINT `FK_billbook_book` FOREIGN KEY (`bookId`) REFERENCES `book` (`ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Dumping data for table mydatabase.bill_book: ~0 rows (approximately)
+-- Dumping data for table selling_book.bill_book: ~0 rows (approximately)
 /*!40000 ALTER TABLE `bill_book` DISABLE KEYS */;
 /*!40000 ALTER TABLE `bill_book` ENABLE KEYS */;
 
--- Dumping structure for table mydatabase.book
+-- Dumping structure for table selling_book.book
 CREATE TABLE IF NOT EXISTS `book` (
   `ID` int(11) NOT NULL AUTO_INCREMENT,
   `username` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '0',
@@ -85,7 +85,7 @@ CREATE TABLE IF NOT EXISTS `book` (
   CONSTRAINT `FK_book_guest` FOREIGN KEY (`username`) REFERENCES `admin` (`username`)
 ) ENGINE=InnoDB AUTO_INCREMENT=49 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Dumping data for table mydatabase.book: ~0 rows (approximately)
+-- Dumping data for table selling_book.book: ~0 rows (approximately)
 /*!40000 ALTER TABLE `book` DISABLE KEYS */;
 INSERT INTO `book` (`ID`, `username`, `available`, `author`, `price`, `publishYear`, `image`, `publisher`, `size`, `content`, `discount`, `title`) VALUES
 	(22, 'admin001', 1, 'Naoya Matsumoto', 49300, 2022, 'https://product.hstatic.net/200000287623/product/monster_8_2_ban_dac_biet_bright_ban_thuong_-_bia1_917a8f9fbff1400f9fb0d5c4b25ac044_master.jpg', 'Hồng Đức', '12 x 18 cm', 'Nội dung: \nPhần thi cuối cùng của kì thi tuyển Lực lượng Phòng vệ đã kết thúc. Song, quái chính (rõ ràng đã bị tiêu diệt) lại được một quái vật bí ẩn dạng người giúp hồi sinh, từ đó tấn công Shinomiya Kikoru và các thí sinh khác. Ngay lúc Kikoru rơi vào đường cùng, Hibino Kafka đột nhiên xuất hiện trong hình dạng quái vật…! Rốt cuộc con quái vật dạng người kia là ai? Mục đích của nó là gì?Mời các bạn thưởng thức tập 2 ngập tràn bí ẩn!', 15, 'Monster #8 - 2'),
@@ -117,7 +117,7 @@ INSERT INTO `book` (`ID`, `username`, `available`, `author`, `price`, `publishYe
 	(48, 'admin001', 1, 'Asato Asato', 96000, 2022, 'https://product.hstatic.net/200000287623/product/86_ep.4_bia_1_66f1c9ee51614364bb95b654cab2e619_master.jpg', 'Hồng Đức', '13 x 18 cm', 'Nội dung: \nSau cuộc hội ngộ định mệnh, Shin và Lena nhanh chóng xích lại gần nhau, làm Frederica và Crena ngay ngáy lo sợ, còn Raiden và những người khác phải giữ ý đến phát mệt. Tuy nhiên, quãng thời gian nghỉ ngơi ngắn ngủi nhanh chóng kết thúc. Đơn vị mới do Lena chỉ huy tác chiến nhận được nhiệm vụ đầu tiên. Dưới ga tàu điện ngầm tại thành phố phía Bắc Cộng hòa, căn cứ khổng lồ của Legion đang đón đợi họ. Thứ ẩn sâu dưới đó là “mặt tối”. Của Legion. Của Cộng hòa. Và của cả những con người từng bị tổ quốc bức hại. “Tiếng gọi vọng lên từ lòng đất, báo hiệu thử thách mới cho nhóm thiếu niên.”', 20, '86 - Eightysix - 4');
 /*!40000 ALTER TABLE `book` ENABLE KEYS */;
 
--- Dumping structure for table mydatabase.cart
+-- Dumping structure for table selling_book.cart
 CREATE TABLE IF NOT EXISTS `cart` (
   `ID` int(11) NOT NULL AUTO_INCREMENT,
   `username` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -127,11 +127,11 @@ CREATE TABLE IF NOT EXISTS `cart` (
   CONSTRAINT `FK_cart_admin` FOREIGN KEY (`username`) REFERENCES `admin` (`username`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Dumping data for table mydatabase.cart: ~0 rows (approximately)
+-- Dumping data for table selling_book.cart: ~0 rows (approximately)
 /*!40000 ALTER TABLE `cart` DISABLE KEYS */;
 /*!40000 ALTER TABLE `cart` ENABLE KEYS */;
 
--- Dumping structure for table mydatabase.cart_book
+-- Dumping structure for table selling_book.cart_book
 CREATE TABLE IF NOT EXISTS `cart_book` (
   `cartId` int(11) NOT NULL,
   `quantity` int(10) unsigned NOT NULL DEFAULT '1',
@@ -142,11 +142,11 @@ CREATE TABLE IF NOT EXISTS `cart_book` (
   CONSTRAINT `FK_cartbook_cart` FOREIGN KEY (`cartId`) REFERENCES `cart` (`ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Dumping data for table mydatabase.cart_book: ~0 rows (approximately)
+-- Dumping data for table selling_book.cart_book: ~0 rows (approximately)
 /*!40000 ALTER TABLE `cart_book` DISABLE KEYS */;
 /*!40000 ALTER TABLE `cart_book` ENABLE KEYS */;
 
--- Dumping structure for table mydatabase.guest
+-- Dumping structure for table selling_book.guest
 CREATE TABLE IF NOT EXISTS `guest` (
   `ID` int(11) NOT NULL AUTO_INCREMENT,
   `username` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -159,7 +159,7 @@ CREATE TABLE IF NOT EXISTS `guest` (
   UNIQUE KEY `phoneNumber` (`phoneNumber`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Dumping data for table mydatabase.guest: ~2 rows (approximately)
+-- Dumping data for table selling_book.guest: ~2 rows (approximately)
 /*!40000 ALTER TABLE `guest` DISABLE KEYS */;
 INSERT INTO `guest` (`ID`, `username`, `password`, `address`, `phoneNumber`, `name`) VALUES
 	(1, 'user001', 'user001', 'ngõ 151, định công', '0123456789', 'user khong mot'),
