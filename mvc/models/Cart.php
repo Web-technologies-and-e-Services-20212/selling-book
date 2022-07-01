@@ -3,13 +3,13 @@
 class Cart {
     private $username;      // String
     private $listBooks;  // array
-    private $date;          // date
+    private $totalPrice;          // totalPrice
     
     public function __construct($username, $listBooks) {
         self::setUsername($username);
         self::setListBooks($listBooks);
         
-        self::setDate(date("Y-m-d"));
+        self::setTotalPrice(0);
     }
     
     /**
@@ -31,9 +31,9 @@ class Cart {
     /**
      * @return mixed
      */
-    public function getDate()
+    public function getTotalPrice()
     {
-        return $this->date;
+        return $this->totalPrice;
     }
 
     /**
@@ -53,11 +53,11 @@ class Cart {
     }
 
     /**
-     * @param mixed $date
+     * @param mixed $totalPrice
      */
-    public function setDate($date)
+    public function setTotalPrice($totalPrice)
     {
-        $this->date = $date;
+        $this->totalPrice = $totalPrice;
     }
     
 }
