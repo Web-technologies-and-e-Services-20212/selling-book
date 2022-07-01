@@ -2,12 +2,12 @@
 
 class Cart {
     private $username;      // String
-    private $listProducts;  // array
+    private $listBooks;  // array
     private $date;          // date
     
-    public function __construct($username, $listProducts) {
+    public function __construct($username, $listBooks) {
         self::setUsername($username);
-        self::setListProducts($listProducts);
+        self::setListBooks($listBooks);
         
         self::setDate(date("Y-m-d"));
     }
@@ -23,9 +23,9 @@ class Cart {
     /**
      * @return mixed
      */
-    public function getListProduct()
+    public function getListBooks()
     {
-        return $this->listProducts;
+        return $this->listBooks;
     }
 
     /**
@@ -45,11 +45,11 @@ class Cart {
     }
 
     /**
-     * @param mixed $listProduct
+     * @param mixed $listBooks
      */
-    public function setListProducts($listProduct)
+    public function setListBooks($listBooks)
     {
-        $this->listProducts = $listProduct;
+        $this->listBooks = $listBooks;
     }
 
     /**
