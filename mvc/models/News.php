@@ -7,8 +7,7 @@ class News {
     private $image;
     private $adminId;
 
-    public function __construct($newsId, $title, $content, $image, $adminId) {
-        self::setNewsId($newsId);
+    public function __construct( $title, $content, $image, $adminId) {
         self::setTitle($title);
         self::setContent($content);
         self::setImage($image);
