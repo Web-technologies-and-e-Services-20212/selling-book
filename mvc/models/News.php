@@ -6,12 +6,14 @@ class News {
     private $content;
     private $image;
     private $adminId;
+    private $createdAt;
 
     public function __construct( $title, $content, $image, $adminId) {
         self::setTitle($title);
         self::setContent($content);
         self::setImage($image);
         self::setAdminId($adminId);
+        self::setCreatedAt(date("Y-m-d"));
     }
 
     /**
@@ -55,6 +57,14 @@ class News {
     }
 
     /**
+     * @return mixed
+     */
+    public function getCreatedAt()
+    {
+        return $this->createdAt;
+    }
+
+    /**
      * @param mixed $newsId
      */
     public function setNewsId($newsId)
@@ -92,5 +102,13 @@ class News {
     public function setAdminId($adminId)
     {
         $this->adminId = $adminId;
+    }
+
+    /**
+     * @param mixed $createdAt
+     */
+    public function setCreatedAt($createdAt)
+    {
+        $this->createdAt = $createdAt;
     }
 }
