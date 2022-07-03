@@ -34,6 +34,19 @@ INSERT INTO `admin` (`ID`, `username`, `password`, `name`) VALUES
 	(2, 'admin002', 'admin002', 'admin khong hai');
 /*!40000 ALTER TABLE `admin` ENABLE KEYS */;
 
+CREATE TABLE IF NOT EXISTS `guest` (
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
+  `username` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `address` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `phoneNumber` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `name` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '0',
+  PRIMARY KEY (`ID`),
+  UNIQUE KEY `username` (`username`),
+  UNIQUE KEY `phoneNumber` (`phoneNumber`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+
 -- Dumping structure for table selling_book.bill
 CREATE TABLE IF NOT EXISTS `bill` (
   `ID` int(11) NOT NULL AUTO_INCREMENT,
@@ -49,22 +62,6 @@ CREATE TABLE IF NOT EXISTS `bill` (
 -- Dumping data for table selling_book.bill: ~0 rows (approximately)
 /*!40000 ALTER TABLE `bill` DISABLE KEYS */;
 /*!40000 ALTER TABLE `bill` ENABLE KEYS */;
-
--- Dumping structure for table selling_book.bill_book
-CREATE TABLE IF NOT EXISTS `bill_book` (
-  `billId` int(11) NOT NULL,
-  `quantity` int(10) unsigned NOT NULL DEFAULT '1',
-  `totalPrice` int(10) unsigned NOT NULL DEFAULT '0',
-  `bookId` int(11) NOT NULL,
-  KEY `billId_bookId` (`billId`,`bookId`),
-  KEY `FK_billbook_book` (`bookId`),
-  CONSTRAINT `FK_billbook_bill` FOREIGN KEY (`billId`) REFERENCES `bill` (`ID`),
-  CONSTRAINT `FK_billbook_book` FOREIGN KEY (`bookId`) REFERENCES `book` (`ID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
--- Dumping data for table selling_book.bill_book: ~0 rows (approximately)
-/*!40000 ALTER TABLE `bill_book` DISABLE KEYS */;
-/*!40000 ALTER TABLE `bill_book` ENABLE KEYS */;
 
 -- Dumping structure for table selling_book.book
 CREATE TABLE IF NOT EXISTS `book` (
@@ -84,6 +81,24 @@ CREATE TABLE IF NOT EXISTS `book` (
   KEY `FK_book_guest` (`username`),
   CONSTRAINT `FK_book_guest` FOREIGN KEY (`username`) REFERENCES `admin` (`username`)
 ) ENGINE=InnoDB AUTO_INCREMENT=49 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+
+-- Dumping structure for table selling_book.bill_book
+CREATE TABLE IF NOT EXISTS `bill_book` (
+  `billId` int(11) NOT NULL,
+  `quantity` int(10) unsigned NOT NULL DEFAULT '1',
+  `totalPrice` int(10) unsigned NOT NULL DEFAULT '0',
+  `bookId` int(11) NOT NULL,
+  KEY `billId_bookId` (`billId`,`bookId`),
+  KEY `FK_billbook_book` (`bookId`),
+  CONSTRAINT `FK_billbook_bill` FOREIGN KEY (`billId`) REFERENCES `bill` (`ID`),
+  CONSTRAINT `FK_billbook_book` FOREIGN KEY (`bookId`) REFERENCES `book` (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- Dumping data for table selling_book.bill_book: ~0 rows (approximately)
+/*!40000 ALTER TABLE `bill_book` DISABLE KEYS */;
+/*!40000 ALTER TABLE `bill_book` ENABLE KEYS */;
+
 
 -- Dumping data for table selling_book.book: ~0 rows (approximately)
 /*!40000 ALTER TABLE `book` DISABLE KEYS */;
@@ -124,7 +139,7 @@ CREATE TABLE IF NOT EXISTS `cart` (
   `totalPrice` int(10) unsigned NOT NULL DEFAULT '0',
   PRIMARY KEY (`ID`),
   UNIQUE KEY `username` (`username`),
-  CONSTRAINT `FK_cart_admin` FOREIGN KEY (`username`) REFERENCES `admin` (`username`)
+  CONSTRAINT `FK_cart_guest` FOREIGN KEY (`username`) REFERENCES `guest` (`username`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Dumping data for table selling_book.cart: ~0 rows (approximately)
@@ -147,17 +162,6 @@ CREATE TABLE IF NOT EXISTS `cart_book` (
 /*!40000 ALTER TABLE `cart_book` ENABLE KEYS */;
 
 -- Dumping structure for table selling_book.guest
-CREATE TABLE IF NOT EXISTS `guest` (
-  `ID` int(11) NOT NULL AUTO_INCREMENT,
-  `username` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `address` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `phoneNumber` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `name` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '0',
-  PRIMARY KEY (`ID`),
-  UNIQUE KEY `username` (`username`),
-  UNIQUE KEY `phoneNumber` (`phoneNumber`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Dumping data for table selling_book.guest: ~2 rows (approximately)
 /*!40000 ALTER TABLE `guest` DISABLE KEYS */;
