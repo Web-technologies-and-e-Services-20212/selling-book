@@ -5,6 +5,7 @@
 @import url("./base/display.css");
 @import url("./base/font.css");
 @import url("./base/combobox.css");
+@import url("./base/table.css");
 @import url("./base/responsive.css");
 
 @import url("./layout/header.css");
@@ -14,6 +15,8 @@
 @import url("./layout/blogs.css");
 @import url("./layout/cart.css");
 @import url("./layout/contact.css");
+@import url("./layout/account.css");
+@import url("./layout/404.css");
 
 * {
   margin: 0;

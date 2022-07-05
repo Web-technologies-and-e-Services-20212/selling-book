@@ -128,6 +128,10 @@ a {
     color: unset;
 }
 
+a:hover {
+    color: #01a14b;
+}
+
 ul {
   list-style-type: none;
 }

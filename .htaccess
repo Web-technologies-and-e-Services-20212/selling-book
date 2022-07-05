@@ -22,5 +22,5 @@
     RewriteRule (.*) public/$1 [L]
 
     # Chuyển hướng các lỗi trong trang web đến trang tương ứng
-    ErrorDocument 404 404.php 
+    ErrorDocument 404 http://localhost/selling-book/404.php 
 </IfModule>

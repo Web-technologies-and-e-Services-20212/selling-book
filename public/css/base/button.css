@@ -63,7 +63,7 @@ button {
   text-transform: uppercase;
 }
 
-.btn-more:hover {
+.btn-more:hover, .btn-default:hover {
   background-color: #009234;
 }
 
