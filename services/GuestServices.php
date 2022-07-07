@@ -200,7 +200,7 @@ class GuestServices extends MySqlConnect {
             // }
 
             $bookServices = new BookServices();
-            $book = $bookServices->get($book_id);
+            $book = $bookServices->getById($book_id);
             array_push($listCartProducts, $book);
 
         }
