@@ -1,4 +1,10 @@
 <?php
+require_once ROOT . DS . "services" . DS . "BookServices.php";
+
+$list_products = new BookServices();
+$list = $list_products->getById(22);
+print_r($list) ;
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
