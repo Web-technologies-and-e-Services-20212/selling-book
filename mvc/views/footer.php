@@ -5,24 +5,24 @@
             <!-- Footer contact start -->
             <div class="footer-contact flex f-column">
                 <div class="fo-logo">
-                    <img src="public/images/logo/footer_logo.webp" alt="IPM">
+                    <img src="/selling-book/public/images/logo/footer_logo.webp" alt="IPM">
                 </div>
                 <div class="fo fo-address flex">
                     <span class="icon icon-address"><i class="fa-solid fa-location-dot"></i></span>
                     <div class="content">
-                        <p>Số 110 Nguyễn Ngọc Nại, Khương Mai, Thanh Xuân, Hà Nội</p>
+                        <span>Số 110 Nguyễn Ngọc Nại, Khương Mai, Thanh Xuân, Hà Nội</span>
                     </div>
                 </div>
                 <div class="fo fo-hotline flex">
                     <span class="icon icon-phone"><i class="fa-solid fa-phone"></i></span>
                     <div class="content">
-                        <p>Hotline: 03 2838 3979</p>
+                        <span>Hotline: 03 2838 3979</span>
                     </div>
                 </div>
                 <div class="fo fo-email flex">
                     <span class="icon icon-email"><i class="fa-solid fa-envelope"></i></span>
                     <div class="content">
-                        <p>Email: online.ipmvn@gmail.com</p>
+                        <span>Email: online.ipmvn@gmail.com</span>
                     </div>
                 </div>
             </div>
@@ -31,7 +31,7 @@
             <!-- Footer support start -->
             <div class="footer-support flex f-column">
                 <div class="flex f-space_between">
-                    <div class="flex f-column">
+                    <div class="flex f-column p-lr15">
                         <div class="support-header m-b20">
                             <h3>Hỗ trợ khách hàng</h3>
                         </div>
@@ -40,7 +40,7 @@
                             <a href="#">Điều khoản dịch vụ</a>
                         </div>
                     </div>
-                    <div class="flex f-column">
+                    <div class="flex f-column p-lr15">
                         <div class="policy-header m-b20">
                             <h3>Chính sách</h3>
                         </div>
@@ -52,10 +52,10 @@
                         </div>
                     </div>
                 </div>
-                <div class="register-email flex">
+                <div class="register-email flex p-lr15">
                     <h3 class="m-b20">Đăng ký nhận tin</h3>
-                    <div class="">Hãy nhập email của bạn vào ô dưới 
-                        đây để có thể nhận được tất cả tin tức mới nhất của IPM</div>
+                    <p class="">Hãy nhập email của bạn vào ô dưới 
+                        đây để có thể nhận được tất cả tin tức mới nhất của IPM</p>
                     <div class="">
 
                     </div>

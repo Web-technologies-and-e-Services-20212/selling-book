@@ -1,0 +1,97 @@
+table{
+    width: 100%;
+    border-spacing: 0;
+    border-collapse: collapse;
+    background-color: #fff;
+    position: relative;
+}
+
+th {
+    padding-bottom: 20px;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+td{
+    border-top: 1px solid #dddddd;
+    padding: 5px;
+}
+
+/*Cart table */
+.cart-content .image{
+    text-align: center;
+}
+
+.cart-content .item{
+    max-width: 200px !important;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-align: left;
+    white-space: nowrap;
+}
+
+.cart-content .item strong{
+    color: #000000;
+}
+
+.cart-content .qty{
+    text-align: center;
+}
+
+.cart-content .price{
+    text-align: right;
+}
+
+.cart-content .delete{
+    text-align: right;
+    padding-right: 30px;
+}
+.cart-content .item a:hover strong, .cart-content .delete:hover{
+    color: #01a14b !important;
+}
+
+.image .product-image{
+    max-height: 100px;
+}
+
+.product-image img{
+    max-width: 50px;
+    height: 100%;
+    object-fit: cover;
+    vertical-align: middle;
+}
+
+.qty .input-quantity{
+    width: 64px;
+    text-align: center;
+    height: 30px;
+    border-radius: 3px;
+    font-size: 14px;
+    color: #808080;
+    border: 1px solid #ccc;
+    outline: none;
+    padding-left: 15px;
+}
+
+.summary .sum{
+    text-align: center;
+}
+
+label[for="noteCartMessage"]{
+    font-weight: 700;
+    color: #000000;
+}
+
+/* Order table */
+.customer-order .order-number, .customer-order .date-order, .customer-order .payment-status, 
+.customer-order .fulfill-status, .customer-order .total{
+    text-align: center ;
+}
+
+.customer-order th{
+    font-size: 16px;
+}
+
+.customer-order td{
+    padding: 10px;
+}

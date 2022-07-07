@@ -1,6 +1,6 @@
 <?php
 
-class Guest {
+class Book {
     private $bookId;
     private $available = true;
     private $username;
