@@ -113,8 +113,8 @@ class BookServices extends MySqlConnect
 
         if($row = mysqli_fetch_array($result)){
             $bookId = $row["ID"];
-            $username = $row["username"];
-            $available = $row["available"];
+            $username = $row["available"];
+            $available = $row["username"];
             $author = $row["author"];
             $price = $row["price"];
             $publishYear = $row["publishYear"];
