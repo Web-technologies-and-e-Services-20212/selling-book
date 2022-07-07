@@ -51,7 +51,7 @@
                                 
                                 <div class="form-group p-b15">
                                     <label for="contactFormMessage"></label>
-                                    <textarea required type="email" id="contactFormMessage" placeholder="Viết bình luận"
+                                    <textarea required type="text" id="contactFormMessage" placeholder="Viết bình luận"
                                     class="form-control" rows="6"></textarea>
                                 </div>
 

@@ -112,7 +112,7 @@
             <!-- Products nav end -->
 
             <!-- List product start -->
-            <div class="pro-list borderblack">
+            <div class="pro-list">
                 <div class="pro-list-new list-content flex w100p active">
                     <!-- Card product start -->
                     <div class="product-card grid-r5">
@@ -143,7 +143,7 @@
 
                     <!-- Card product start -->
                     <div class="product-card grid-r5">
-                        <div class="product-container">
+                        <div class="product-container m-b20">
                             <div class="product-img relative">
                                 <div class="product-sale absolute">
                                     <span class="sale-icon">- 15%</span>
@@ -170,7 +170,7 @@
 
                     <!-- Card product start -->
                     <div class="product-card grid-r5">
-                        <div class="product-container">
+                        <div class="product-container m-b20">
                             <div class="product-img relative">
                                 <div class="product-sale absolute">
                                     <span class="sale-icon">- 15%</span>
@@ -197,7 +197,7 @@
 
                     <!-- Card product start -->
                     <div class="product-card grid-r5">
-                        <div class="product-container">
+                        <div class="product-container m-b20">
                             <div class="product-img relative">
                                 <div class="product-sale absolute">
                                     <span class="sale-icon">- 15%</span>
@@ -224,7 +224,7 @@
 
                     <!-- Card product start -->
                     <div class="product-card grid-r5">
-                        <div class="product-container">
+                        <div class="product-container m-b20">
                             <div class="product-img relative">
                                 <div class="product-sale absolute">
                                     <span class="sale-icon">- 15%</span>
@@ -251,7 +251,7 @@
 
                     <!-- Card product start -->
                     <div class="product-card grid-r5">
-                        <div class="product-container">
+                        <div class="product-container m-b20">
                             <div class="product-img relative">
                                 <div class="product-sale absolute">
                                     <span class="sale-icon">- 15%</span>
@@ -278,7 +278,7 @@
 
                     <!-- Card product start -->
                     <div class="product-card grid-r5">
-                        <div class="product-container">
+                        <div class="product-container m-b20">
                             <div class="product-img relative">
                                 <div class="product-sale absolute">
                                     <span class="sale-icon">- 15%</span>
@@ -305,7 +305,7 @@
 
                     <!-- Card product start -->
                     <div class="product-card grid-r5">
-                        <div class="product-container">
+                        <div class="product-container m-b20">
                             <div class="product-img relative">
                                 <div class="product-sale absolute">
                                     <span class="sale-icon">- 15%</span>
@@ -332,7 +332,7 @@
 
                     <!-- Card product start -->
                     <div class="product-card grid-r5">
-                        <div class="product-container">
+                        <div class="product-container m-b20">
                             <div class="product-img relative">
                                 <div class="product-sale absolute">
                                     <span class="sale-icon">- 15%</span>
@@ -363,7 +363,7 @@
                 <div class="pro-list-top list-content flex w100p">
                     <!-- Card product start -->
                     <div class="product-card grid-r5">
-                        <div class="product-container">
+                        <div class="product-container m-b20">
                             <div class="product-img relative">
                                 <div class="product-sale absolute">
                                     <span class="sale-icon">- 15%</span>
@@ -390,7 +390,7 @@
 
                     <!-- Card product start -->
                     <div class="product-card grid-r5">
-                        <div class="product-container">
+                        <div class="product-container m-b20">
                             <div class="product-img relative">
                                 <div class="product-sale absolute">
                                     <span class="sale-icon">- 15%</span>
@@ -417,7 +417,7 @@
 
                     <!-- Card product start -->
                     <div class="product-card grid-r5">
-                        <div class="product-container">
+                        <div class="product-container m-b20">
                             <div class="product-img relative">
                                 <div class="product-sale absolute">
                                     <span class="sale-icon">- 15%</span>
@@ -444,7 +444,7 @@
 
                     <!-- Card product start -->
                     <div class="product-card grid-r5">
-                        <div class="product-container">
+                        <div class="product-container m-b20">
                             <div class="product-img relative">
                                 <div class="product-sale absolute">
                                     <span class="sale-icon">- 15%</span>
@@ -471,7 +471,7 @@
 
                     <!-- Card product start -->
                     <div class="product-card grid-r5 ">
-                        <div class="product-container">
+                        <div class="product-container m-b20">
                             <div class="product-img relative">
                                 <div class="product-sale absolute">
                                     <span class="sale-icon">- 15%</span>
@@ -498,7 +498,7 @@
 
                     <!-- Card product start -->
                     <div class="product-card grid-r5 ">
-                        <div class="product-container">
+                        <div class="product-container m-b20">
                             <div class="product-img relative">
                                 <div class="product-sale absolute">
                                     <span class="sale-icon">- 15%</span>
@@ -525,7 +525,7 @@
 
                     <!-- Card product start -->
                     <div class="product-card grid-r5 ">
-                        <div class="product-container">
+                        <div class="product-container m-b20">
                             <div class="product-img relative">
                                 <div class="product-sale absolute">
                                     <span class="sale-icon">- 15%</span>
@@ -552,7 +552,7 @@
 
                     <!-- Card product start -->
                     <div class="product-card grid-r5 ">
-                        <div class="product-container">
+                        <div class="product-container m-b20">
                             <div class="product-img relative">
                                 <div class="product-sale absolute">
                                     <span class="sale-icon">- 15%</span>
@@ -579,7 +579,7 @@
 
                     <!-- Card product start -->
                     <div class="product-card grid-r5 ">
-                        <div class="product-container">
+                        <div class="product-container m-b20">
                             <div class="product-img relative">
                                 <div class="product-sale absolute">
                                     <span class="sale-icon">- 15%</span>
@@ -610,7 +610,7 @@
                 <div class="pro-list-hot list-content flex w100p">
                     <!-- Card product start -->
                     <div class="product-card grid-r5 ">
-                        <div class="product-container">
+                        <div class="product-container m-b20">
                             <div class="product-img relative">
                                 <div class="product-sale absolute">
                                     <span class="sale-icon">- 15%</span>
@@ -637,7 +637,7 @@
 
                     <!-- Card product start -->
                     <div class="product-card grid-r5 ">
-                        <div class="product-container">
+                        <div class="product-container m-b20">
                             <div class="product-img relative">
                                 <div class="product-sale absolute">
                                     <span class="sale-icon">- 15%</span>
@@ -664,7 +664,7 @@
 
                     <!-- Card product start -->
                     <div class="product-card grid-r5 ">
-                        <div class="product-container">
+                        <div class="product-container m-b20">
                             <div class="product-img relative">
                                 <div class="product-sale absolute">
                                     <span class="sale-icon">- 15%</span>
@@ -691,7 +691,7 @@
 
                     <!-- Card product start -->
                     <div class="product-card grid-r5 ">
-                        <div class="product-container">
+                        <div class="product-container m-b20">
                             <div class="product-img relative">
                                 <div class="product-sale absolute">
                                     <span class="sale-icon">- 15%</span>
@@ -718,7 +718,7 @@
 
                     <!-- Card product start -->
                     <div class="product-card grid-r5 ">
-                        <div class="product-container">
+                        <div class="product-container m-b20">
                             <div class="product-img relative">
                                 <div class="product-sale absolute">
                                     <span class="sale-icon">- 15%</span>
@@ -745,7 +745,7 @@
 
                     <!-- Card product start -->
                     <div class="product-card grid-r5 ">
-                        <div class="product-container">
+                        <div class="product-container m-b20">
                             <div class="product-img relative">
                                 <div class="product-sale absolute">
                                     <span class="sale-icon">- 15%</span>
@@ -772,7 +772,7 @@
 
                     <!-- Card product start -->
                     <div class="product-card grid-r5 ">
-                        <div class="product-container">
+                        <div class="product-container m-b20">
                             <div class="product-img relative">
                                 <div class="product-sale absolute">
                                     <span class="sale-icon">- 15%</span>
@@ -799,7 +799,7 @@
 
                     <!-- Card product start -->
                     <div class="product-card grid-r5 ">
-                        <div class="product-container">
+                        <div class="product-container m-b20">
                             <div class="product-img relative">
                                 <div class="product-sale absolute">
                                     <span class="sale-icon">- 15%</span>
@@ -826,7 +826,7 @@
 
                     <!-- Card product start -->
                     <div class="product-card grid-r5 ">
-                        <div class="product-container">
+                        <div class="product-container m-b20">
                             <div class="product-img relative">
                                 <div class="product-sale absolute">
                                     <span class="sale-icon">- 15%</span>

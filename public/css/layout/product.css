@@ -1,0 +1,128 @@
+
+
+.s_product-title h1{
+    color: #212121;
+    font-size: 26px;
+    font-weight: 400;
+    line-height: 38px;
+}
+
+.s_product-content strong{
+    color: #555555;
+    display: inline-block;
+}
+
+.s_product-price {
+    height: 66px;
+    line-height: 66px;
+    display: inline-block;
+    color: #01a14b;
+    font-size: 30px;
+}
+
+.s_product-price span{
+    font-weight: 400;
+}
+
+.s_product-price del{
+    font-size: 28px;
+    color: #b0b0b0;
+}
+
+.s_product-subtitle .box-info{
+    max-width: 800px;
+}
+
+
+.box-info strong {
+    min-width: 137px;
+}
+
+.box-info span {
+    display: inline-block;
+}
+
+.s_product-action .select-quantity{
+    display: inline-block;
+}
+
+.select-quantity .qty-minus, .select-quantity .qty-plus{
+    display: inline-block;
+    text-align: center;
+    cursor: pointer;
+    line-height: 50px;
+    padding: 0px;
+    font-size: 20px;
+    width: 45px;
+    height: 50px;
+    background-color: #333;
+    color: #fff;
+    border: 1px solid transparent;
+    float: left;
+}
+
+.qty-minus{
+    border-radius: 4px 0px 0px 4px !important;
+}
+.qty-plus{
+    border-radius: 0 4px 4px 0 !important;
+}
+
+.quantity-selector{
+    font-size: 15px;
+    width: 45px;
+    height: 50px;
+    margin: 0;
+    text-align: center;
+    border: none;
+    float: left;
+    line-height: normal;
+    border-radius: 0;
+    border-right: 1px solid #fff;
+    border-left: 1px solid #fff;
+    outline: none;
+    background-color: #333;
+    color: #fff;
+}
+
+.s_product-meta{
+    font-size: 13px;
+    border-top: 1px solid;
+    border-bottom: 1px solid;
+    padding: 20px 0;
+    color: #787878;
+    margin-top: 20px;
+    border-color: #eaeaea;
+}
+
+.s_product-meta p{
+    color: #333;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.s_product-meta p a{
+    font-weight: 400;
+    color: #555;
+}
+
+.s_product-meta p a:hover{
+    color: #01a14b;
+}
+
+.s_product-reference {
+    border-top: 1px solid #e5e5e5;
+}
+
+.title-reference{
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.title-reference span{
+    font-size: 16px;
+    font-weight: 700;
+    color: #000000;
+    text-transform: uppercase;
+    display: inline-block;
+}
