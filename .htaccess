@@ -24,3 +24,5 @@
     # Chuyển hướng các lỗi trong trang web đến trang tương ứng
     ErrorDocument 404 404.php 
 </IfModule>
+
+/selling-book/contacts
