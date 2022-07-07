@@ -2,7 +2,7 @@
 require_once ROOT . DS . 'mvc' . DS . 'controllers' . DS . 'Controller.php';
 require_once ROOT . DS . 'mvc' . DS . 'controllers' . DS . 'DefaultController.php';
 
-class ListProductsController extends DefaultController implements Controller{
+class AdminController extends DefaultController implements Controller{
 
     private $route;
     public function __construct($route) {
@@ -11,13 +11,13 @@ class ListProductsController extends DefaultController implements Controller{
     public function __render(){
         switch ($this->route) {
             case '/':
-                require_once ROOT . DS . 'mvc' . DS . 'views' . DS . 'listCategory' . DS . 'list_products.php';
+                require_once ROOT . DS . 'mvc' . DS . 'views' . DS . 'admin' . DS . 'dashboard.php';
                 break;
-            case 'detective':
-                require_once ROOT . DS . 'mvc' . DS . 'views' . DS . 'listCategory' . DS . 'list_detective.php';
+            case 'manage-product':
+                require_once ROOT . DS . 'mvc' . DS . 'views' . DS . 'admin' . DS . 'list_detective.php';
                 break;
             default:
-                require_once ROOT . DS . 'mvc' . DS . 'views' . DS . 'listCategory' . DS . 'list_products.php';
+                require_once ROOT . DS . 'mvc' . DS . 'views' . DS . 'admin' . DS . 'list_products.php';
                 break;
         }
         
