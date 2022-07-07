@@ -7,8 +7,8 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <script src="https://kit.fontawesome.com/d433183ff3.js" crossorigin="anonymous"></script>
-        <link rel="shortcut icon" href="public/images/logo/logo_icon.png" type="image/x-icon">
-        <link rel="stylesheet" href="public/css/style.css" type="text/css">
+        <link rel="shortcut icon" href="/selling-book/public/images/logo/logo_icon.png" type="image/x-icon">
+        <link rel="stylesheet" href="/selling-book/public/css/style.css" type="text/css">
         <title>IPM | Tất cả sản phẩm</title>
     </head>
     <body>
@@ -40,7 +40,7 @@
                     <div class="list-pro grid-r4m3">
                         <div class="w100p flex mt10">
                             <div class="grid-r2 list-pro-title p-lr15 pb-16">
-                                <span>Tất cả sản phẩm</span>
+                                <span>Trinh thám - kinh dị</span>
                             </div>
                             <div class="grid-r2 list-pro-filtes">
 
@@ -56,7 +56,7 @@
                                         </div>
                                         <div class="img relative">
                                             <a href="#">
-                                                <img src="public/images/products/p1.png" alt="">
+                                                <img src="/selling-book/public/images/products/p1.png" alt="">
                                             </a>
                                         </div>
                                     </div>
@@ -81,7 +81,7 @@
                                         </div>
                                         <div class="img relative">
                                             <a href="#">
-                                                <img src="public/images/products/p1.png" alt="">
+                                                <img src="/selling-book/public/images/products/p1.png" alt="">
                                             </a>
                                         </div>
                                     </div>
@@ -106,7 +106,7 @@
                                         </div>
                                         <div class="img relative">
                                             <a href="#">
-                                                <img src="public/images/products/p1.png" alt="">
+                                                <img src="/selling-book/public/images/products/p1.png" alt="">
                                             </a>
                                         </div>
                                     </div>
@@ -131,7 +131,7 @@
                                         </div>
                                         <div class="img relative">
                                             <a href="#">
-                                                <img src="public/images/products/p1.png" alt="">
+                                                <img src="/selling-book/public/images/products/p1.png" alt="">
                                             </a>
                                         </div>
                                     </div>
@@ -156,7 +156,7 @@
                                         </div>
                                         <div class="img relative">
                                             <a href="#">
-                                                <img src="public/images/products/p1.png" alt="">
+                                                <img src="/selling-book/public/images/products/p1.png" alt="">
                                             </a>
                                         </div>
                                     </div>
@@ -181,7 +181,7 @@
                                         </div>
                                         <div class="img relative">
                                             <a href="#">
-                                                <img src="public/images/products/p1.png" alt="">
+                                                <img src="/selling-book/public/images/products/p1.png" alt="">
                                             </a>
                                         </div>
                                     </div>
@@ -206,7 +206,7 @@
                                         </div>
                                         <div class="img relative">
                                             <a href="#">
-                                                <img src="public/images/products/p1.png" alt="">
+                                                <img src="/selling-book/public/images/products/p1.png" alt="">
                                             </a>
                                         </div>
                                     </div>
@@ -231,7 +231,7 @@
                                         </div>
                                         <div class="img relative">
                                             <a href="#">
-                                                <img src="public/images/products/p1.png" alt="">
+                                                <img src="/selling-book/public/images/products/p1.png" alt="">
                                             </a>
                                         </div>
                                     </div>
@@ -256,7 +256,7 @@
                                         </div>
                                         <div class="img relative">
                                             <a href="#">
-                                                <img src="public/images/products/p1.png" alt="">
+                                                <img src="/selling-book/public/images/products/p1.png" alt="">
                                             </a>
                                         </div>
                                     </div>

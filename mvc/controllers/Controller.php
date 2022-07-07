@@ -2,7 +2,7 @@
 
 interface Controller {
     /**
-     * Method use render HTML code with control by controller
+     * Hàm vẽ giao diện HTML ứng với từng Controller
      */
     function __render();
 }
