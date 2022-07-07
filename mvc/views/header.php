@@ -22,7 +22,7 @@ echo $url;
         <div class="container flex f-space_between f-align_center">
             <div class="header-logo">
                 <a href=<?php echo "/" . $path_project . "/" ?>>
-                    <img src="public/images/logo/logo.webp" alt="logo" />
+                    <img src="/selling-book/public/images/logo/logo.webp" alt="logo" />
                 </a>
             </div>
 

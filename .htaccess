@@ -8,7 +8,7 @@
     RewriteCond %{REQUEST_URI} /profile$ [OR]
     RewriteCond %{REQUEST_URI} /login$ [OR]
     RewriteCond %{REQUEST_URI} /home$ [OR]
-    RewriteCond %{REQUEST_URI} /products$ [OR]
+    RewriteCond %{REQUEST_URI} /product [OR]
     RewriteCond %{REQUEST_URI} /contact$ [OR]
     RewriteCond %{REQUEST_URI} /cart$ [OR]
     RewriteCond %{REQUEST_URI} /details [OR]

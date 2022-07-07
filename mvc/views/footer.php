@@ -5,7 +5,7 @@
             <!-- Footer contact start -->
             <div class="footer-contact flex f-column">
                 <div class="fo-logo">
-                    <img src="public/images/logo/footer_logo.webp" alt="IPM">
+                    <img src="/selling-book/public/images/logo/footer_logo.webp" alt="IPM">
                 </div>
                 <div class="fo fo-address flex">
                     <span class="icon icon-address"><i class="fa-solid fa-location-dot"></i></span>

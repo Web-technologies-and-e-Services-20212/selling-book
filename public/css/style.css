@@ -17,6 +17,7 @@
 @import url("./layout/contact.css");
 @import url("./layout/account.css");
 @import url("./layout/404.css");
+@import url("./layout/product.css");
 
 * {
   margin: 0;
