@@ -1,12 +1,85 @@
 .list-products{
-    height: 100vh;
 }
 
 .list-products-wrapper{
-    padding: 30px 0 20px 20px;
 }
 
+/* Categories start */
 .categories{
-    width: 300px;
-    height: 800px;
+    padding: 0 15px;
+}
+
+.category-title{
+    font-size: 20px;
+    font-weight: 400;
+    text-transform: uppercase;
+    padding: 10px;
+    border-bottom: 3px solid #e0e0e0;
+}
+
+.category-list li{
+    border-bottom: 1px solid #e0e0e0;
+    padding: 10px 15px;
+    cursor: pointer;
+}
+
+.category-list li span{
+    font-size: 14px;
+    font-weight: 300;
+    color: #555555;
+}
+
+.category-list li:hover span{
+    color: #01a14b;
+}
+ 
+/* List products start */ 
+.list-pro {
+}
+
+.list-pro-title{
+    float: left;
+    font-size: 22px;
+    color: #000000;
+    text-transform: uppercase;
+    font-weight: 700;
+    line-height: 36px;
+}
+
+.pagination{
+    font-size: 16px;
+    color: #909090;
+    font-weight: 400;
+}
+
+.prev-page, .next-page {
+    border: 1px solid #e0e0e0;
+    line-height: 28px;
+    cursor: pointer;
+}
+
+.prev-page:hover, .next-page:hover{
+    background-color: #01a14b;
+    color: #fff;
+}
+
+.number-pages li{
+    display: inline-block;
+    border: 1px solid #e0e0e0;
+    padding: 0 10px;
+    margin: 10px 0;
+    cursor: pointer;
+}
+
+.number-pages li:hover{
+    background-color: #01a14b;
+}
+
+.number-pages li:hover a{
+    color: #fff;
+}
+
+.number-pages li a{
+    line-height: 28px;
+    color: #909090;
 }

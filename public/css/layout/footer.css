@@ -48,13 +48,20 @@
 }
 
 .footer-support{
-
     width: 500px;
     padding: 0 10px;
 }
 
 .support-header, .policy-header{
     margin-bottom: 20px;
+}
+
+.support-header h3, .policy-header h3, .register-email h3{
+    color: #fff;
+    font-size: 14px;
+    font-weight: 600;
+    text-transform: uppercase;
+    line-height: 1.25;
 }
 
 .support-detail a, .policy-detail a{

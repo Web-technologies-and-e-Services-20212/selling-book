@@ -1,0 +1,43 @@
+
+.contact-title h1{
+    background: #fff;
+    padding: 10px 15px 10px 15px;
+    border-bottom: 1px solid #e0e0e0;
+    text-transform: uppercase;
+    color: #000000;
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+
+.contact-content{
+    margin-bottom: 40px;
+}
+
+.contact-content p{
+    color: #555555;
+    font-size: 14px;
+    font-weight: 300;
+}
+
+.address iframe{
+    width: 100%;
+}
+
+
+.info-address i{
+    width: 35px;
+    height: 35px;
+    line-height: 35px;
+    text-align: center;
+    font-size: 15px;
+    margin-right: 10px;
+    border: 1px solid #e0e0e0;
+    color: #555555;
+}
+
+.info-address span{
+    color: #555555;
+    font-size: 14px;
+    font-weight: 300;
+}
+

@@ -1,0 +1,46 @@
+/* Input Component
+<div class="form-group p-b15">
+    <label for="contactFormName"></label>
+    <input required type="name" id="contactFormName" placeholder="Tên của bạn" 
+    class="p-b15 input-control form-control">
+</div> */
+
+.form-group{
+
+}
+
+.form-control{
+    color: #000;
+    border: 1px solid #D9D9D9;
+    display: block;
+    width: 100%;
+    padding: 8px 16px;
+    font-size: 14px;
+    border-radius: 4px;
+    line-height: 18px;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.08);
+    outline: none;
+}
+
+.form-control:focus{
+    border-color: #66afe9;
+    outline: 0;
+    box-shadow:0 0 8px rgba(102,175,233,.6);
+}
+.input-control{
+    height: 44px;
+}
+
+
+/*  Textarea Component 
+<div class="form-group p-b15">
+    <label for="contactFormMessage"></label>
+    <textarea required type="email" id="contactFormMessage" placeholder="Viết bình luận"
+    class="form-control"></textarea>
+</div> */
+
+textarea.form-control{
+    height: auto;
+    resize: none;
+    overflow: auto;
+}

@@ -1,6 +1,5 @@
 
-
-<div class="main-content w100p">
+<div class="w100p" id="main-content">
     <!-- Section slide start -->
     <section id="home-hero">
         <div class="main-img relative">
@@ -95,7 +94,7 @@
     <section id="products">
         <div class="container">
             <!-- Products nav start -->
-            <div class="pro-nav margin-auto_h">
+            <div class="pro-nav grid-r5m2 margin-auto_h">
                 <ul class="flex f-align_center f-space_between">
                     <li class="active" id="new">
                         <a>Sách mới</a>
@@ -116,7 +115,34 @@
             <div class="pro-list borderblack">
                 <div class="pro-list-new list-content flex w100p active">
                     <!-- Card product start -->
-                    <div class="product-card">
+                    <div class="product-card grid-r5">
+                        <div class="product-container m-b20">
+                            <div class="product-img relative">
+                                <div class="product-sale absolute">
+                                    <span class="sale-icon">- 15%</span>
+                                </div>
+                                <div class="img relative">
+                                    <a href="#">
+                                        <img src="public/images/products/p1.png" alt="">
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div class="product-detail">
+                                <h3 class="product-name">
+                                    <a href="#">Chào mừng đến với học thực lực</a>
+                                </h3>
+                                <div class="product-prices">
+                                    <div class="price price-new">49,300đ</div>
+                                    <div class="price price-old">58,000đ</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Card product end -->
+
+                    <!-- Card product start -->
+                    <div class="product-card grid-r5">
                         <div class="product-container">
                             <div class="product-img relative">
                                 <div class="product-sale absolute">
@@ -143,7 +169,7 @@
                     <!-- Card product end -->
 
                     <!-- Card product start -->
-                    <div class="product-card">
+                    <div class="product-card grid-r5">
                         <div class="product-container">
                             <div class="product-img relative">
                                 <div class="product-sale absolute">
@@ -170,7 +196,7 @@
                     <!-- Card product end -->
 
                     <!-- Card product start -->
-                    <div class="product-card">
+                    <div class="product-card grid-r5">
                         <div class="product-container">
                             <div class="product-img relative">
                                 <div class="product-sale absolute">
@@ -197,7 +223,7 @@
                     <!-- Card product end -->
 
                     <!-- Card product start -->
-                    <div class="product-card">
+                    <div class="product-card grid-r5">
                         <div class="product-container">
                             <div class="product-img relative">
                                 <div class="product-sale absolute">
@@ -224,7 +250,7 @@
                     <!-- Card product end -->
 
                     <!-- Card product start -->
-                    <div class="product-card">
+                    <div class="product-card grid-r5">
                         <div class="product-container">
                             <div class="product-img relative">
                                 <div class="product-sale absolute">
@@ -251,7 +277,7 @@
                     <!-- Card product end -->
 
                     <!-- Card product start -->
-                    <div class="product-card">
+                    <div class="product-card grid-r5">
                         <div class="product-container">
                             <div class="product-img relative">
                                 <div class="product-sale absolute">
@@ -278,7 +304,7 @@
                     <!-- Card product end -->
 
                     <!-- Card product start -->
-                    <div class="product-card">
+                    <div class="product-card grid-r5">
                         <div class="product-container">
                             <div class="product-img relative">
                                 <div class="product-sale absolute">
@@ -305,34 +331,7 @@
                     <!-- Card product end -->
 
                     <!-- Card product start -->
-                    <div class="product-card">
-                        <div class="product-container">
-                            <div class="product-img relative">
-                                <div class="product-sale absolute">
-                                    <span class="sale-icon">- 15%</span>
-                                </div>
-                                <div class="img relative">
-                                    <a href="#">
-                                        <img src="public/images/products/p1.png" alt="">
-                                    </a>
-                                </div>
-                            </div>
-
-                            <div class="product-detail">
-                                <h3 class="product-name">
-                                    <a href="#">Chào mừng đến với học thực lực</a>
-                                </h3>
-                                <div class="product-prices">
-                                    <div class="price price-new">49,300đ</div>
-                                    <div class="price price-old">58,000đ</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Card product end -->
-
-                    <!-- Card product start -->
-                    <div class="product-card">
+                    <div class="product-card grid-r5">
                         <div class="product-container">
                             <div class="product-img relative">
                                 <div class="product-sale absolute">
@@ -363,7 +362,7 @@
 
                 <div class="pro-list-top list-content flex w100p">
                     <!-- Card product start -->
-                    <div class="product-card">
+                    <div class="product-card grid-r5">
                         <div class="product-container">
                             <div class="product-img relative">
                                 <div class="product-sale absolute">
@@ -390,7 +389,7 @@
                     <!-- Card product end -->
 
                     <!-- Card product start -->
-                    <div class="product-card">
+                    <div class="product-card grid-r5">
                         <div class="product-container">
                             <div class="product-img relative">
                                 <div class="product-sale absolute">
@@ -417,7 +416,7 @@
                     <!-- Card product end -->
 
                     <!-- Card product start -->
-                    <div class="product-card">
+                    <div class="product-card grid-r5">
                         <div class="product-container">
                             <div class="product-img relative">
                                 <div class="product-sale absolute">
@@ -444,7 +443,7 @@
                     <!-- Card product end -->
 
                     <!-- Card product start -->
-                    <div class="product-card">
+                    <div class="product-card grid-r5">
                         <div class="product-container">
                             <div class="product-img relative">
                                 <div class="product-sale absolute">
@@ -471,7 +470,7 @@
                     <!-- Card product end -->
 
                     <!-- Card product start -->
-                    <div class="product-card">
+                    <div class="product-card grid-r5 ">
                         <div class="product-container">
                             <div class="product-img relative">
                                 <div class="product-sale absolute">
@@ -498,7 +497,7 @@
                     <!-- Card product end -->
 
                     <!-- Card product start -->
-                    <div class="product-card">
+                    <div class="product-card grid-r5 ">
                         <div class="product-container">
                             <div class="product-img relative">
                                 <div class="product-sale absolute">
@@ -525,7 +524,7 @@
                     <!-- Card product end -->
 
                     <!-- Card product start -->
-                    <div class="product-card">
+                    <div class="product-card grid-r5 ">
                         <div class="product-container">
                             <div class="product-img relative">
                                 <div class="product-sale absolute">
@@ -552,7 +551,7 @@
                     <!-- Card product end -->
 
                     <!-- Card product start -->
-                    <div class="product-card">
+                    <div class="product-card grid-r5 ">
                         <div class="product-container">
                             <div class="product-img relative">
                                 <div class="product-sale absolute">
@@ -579,7 +578,7 @@
                     <!-- Card product end -->
 
                     <!-- Card product start -->
-                    <div class="product-card">
+                    <div class="product-card grid-r5 ">
                         <div class="product-container">
                             <div class="product-img relative">
                                 <div class="product-sale absolute">
@@ -610,7 +609,7 @@
 
                 <div class="pro-list-hot list-content flex w100p">
                     <!-- Card product start -->
-                    <div class="product-card">
+                    <div class="product-card grid-r5 ">
                         <div class="product-container">
                             <div class="product-img relative">
                                 <div class="product-sale absolute">
@@ -637,7 +636,7 @@
                     <!-- Card product end -->
 
                     <!-- Card product start -->
-                    <div class="product-card">
+                    <div class="product-card grid-r5 ">
                         <div class="product-container">
                             <div class="product-img relative">
                                 <div class="product-sale absolute">
@@ -664,7 +663,7 @@
                     <!-- Card product end -->
 
                     <!-- Card product start -->
-                    <div class="product-card">
+                    <div class="product-card grid-r5 ">
                         <div class="product-container">
                             <div class="product-img relative">
                                 <div class="product-sale absolute">
@@ -691,7 +690,7 @@
                     <!-- Card product end -->
 
                     <!-- Card product start -->
-                    <div class="product-card">
+                    <div class="product-card grid-r5 ">
                         <div class="product-container">
                             <div class="product-img relative">
                                 <div class="product-sale absolute">
@@ -718,7 +717,7 @@
                     <!-- Card product end -->
 
                     <!-- Card product start -->
-                    <div class="product-card">
+                    <div class="product-card grid-r5 ">
                         <div class="product-container">
                             <div class="product-img relative">
                                 <div class="product-sale absolute">
@@ -745,7 +744,7 @@
                     <!-- Card product end -->
 
                     <!-- Card product start -->
-                    <div class="product-card">
+                    <div class="product-card grid-r5 ">
                         <div class="product-container">
                             <div class="product-img relative">
                                 <div class="product-sale absolute">
@@ -772,7 +771,7 @@
                     <!-- Card product end -->
 
                     <!-- Card product start -->
-                    <div class="product-card">
+                    <div class="product-card grid-r5 ">
                         <div class="product-container">
                             <div class="product-img relative">
                                 <div class="product-sale absolute">
@@ -799,7 +798,7 @@
                     <!-- Card product end -->
 
                     <!-- Card product start -->
-                    <div class="product-card">
+                    <div class="product-card grid-r5 ">
                         <div class="product-container">
                             <div class="product-img relative">
                                 <div class="product-sale absolute">
@@ -826,7 +825,7 @@
                     <!-- Card product end -->
 
                     <!-- Card product start -->
-                    <div class="product-card">
+                    <div class="product-card grid-r5 ">
                         <div class="product-container">
                             <div class="product-img relative">
                                 <div class="product-sale absolute">

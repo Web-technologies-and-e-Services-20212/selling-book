@@ -2,3 +2,37 @@
     width: 1200px;
     margin: 0 auto;
 }
+
+/* grid-row width: (100% / x) ,x trong grid-rx */
+/* 4m3 là 4.3 */
+.grid-r5{
+    width: 20%;
+}
+
+.grid-r4{
+    width: 25%;
+}
+
+.grid-r3{
+    width: calc(100% / 3);
+}
+
+.grid-r5m2{
+    width: 40%;
+}
+
+.grid-r5m3{
+    width: 60%;
+}
+
+.grid-r3m2{
+    width: calc(200% / 3);
+}
+
+.grid-r2{
+    width: 50%;
+}
+
+.grid-r4m3{
+    width: 75%;
+}

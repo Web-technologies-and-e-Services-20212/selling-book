@@ -1,0 +1,48 @@
+
+
+.list-blogs{
+}
+
+.blog-card{
+
+}
+
+.blog-img{
+
+}
+
+.blog-img img{
+    width: 100%;
+    object-fit: cover;
+}
+
+.blog-detail h2{
+    color: #212121;
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.blog-detail h2:hover{
+    color: #01a14b;
+}
+
+.blog-detail span{
+    color: #aab2bd;
+    font-weight: 300;
+    font-size: 12px;
+    border-left: 1px solid #c9c9c9;
+    padding: 0 10px;
+}
+
+.blog-detail p{
+    line-height: 24px;
+    font-size: 14px;
+    font-weight: 300;
+}
+
+.blog-detail p a{
+    display: block;
+    color: #01a14b;
+    font-size: 14px;
+    font-weight: 500;
+}
