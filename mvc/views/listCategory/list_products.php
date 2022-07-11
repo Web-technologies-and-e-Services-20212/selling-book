@@ -13,8 +13,8 @@ print_r($list) ;
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <script src="https://kit.fontawesome.com/d433183ff3.js" crossorigin="anonymous"></script>
-        <link rel="shortcut icon" href="public/images/logo/logo_icon.png" type="image/x-icon">
-        <link rel="stylesheet" href="public/css/style.css" type="text/css">
+        <link rel="shortcut icon" href="/selling-book/public/images/logo/logo_icon.png" type="image/x-icon">
+        <link rel="stylesheet" href="/selling-book/public/css/style.css" type="text/css">
         <title>IPM | Tất cả sản phẩm</title>
     </head>
     <body>

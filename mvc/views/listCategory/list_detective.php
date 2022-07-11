@@ -9,7 +9,7 @@
         <script src="https://kit.fontawesome.com/d433183ff3.js" crossorigin="anonymous"></script>
         <link rel="shortcut icon" href="/selling-book/public/images/logo/logo_icon.png" type="image/x-icon">
         <link rel="stylesheet" href="/selling-book/public/css/style.css" type="text/css">
-        <title>IPM | Tất cả sản phẩm</title>
+        <title>IPM | Trinh thám - Kinh dị</title>
     </head>
     <body>
         <!-- Nội dung phần Header -->

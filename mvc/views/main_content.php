@@ -1,4 +1,22 @@
-
+<?php
+    $newBooks = $bookStore->getAllSortByCreateAt();
+    // foreach ($newBooks as $key => $book) {
+    //     print_r("Book ID :" . $book->getBookId() . "<br>");
+    //     print_r("Book Author :" . $book->getAuthor()  . "<br>");
+    //     print_r("Book Available :" . $book->getAvailable() . "<br>");
+    //     print_r("Book getPublisher :" . $book->getPublisher() . "<br>");
+    //     print_r("Book getSize :" . $book->getSize() . "<br>");
+    //     print_r("Book getContent :" . $book->getContent() . "<br>");
+    //     print_r("Book getImage :" . $book->getImage() . "<br>");
+    //     print_r("Book getDiscount :" . $book->getDiscount() . "<br>");
+    //     print_r("Book getUsername :" . $book->getUsername() . "<br>");
+    //     print_r("Book getTitle :" . $book->getTitle() . "<br>");
+    //     print_r("Book getSoldNumber :" . $book->getSoldNumber() . "<br>");
+    //     print_r("Book getCreateAt :" . $book->getCreateAt()) . "<br>";
+    //     print_r("Book getPrice :" . $book->getPrice(). "<br>");
+    //     echo "-----------" . "<br>";
+    // }
+?>
 <div class="w100p" id="main-content">
     <!-- Section slide start -->
     <section id="home-hero">
