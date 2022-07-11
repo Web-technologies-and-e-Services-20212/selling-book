@@ -16,7 +16,10 @@ class Book {
     private $image;
     private $discount;
 
-    public function __construct($bookId, $createAt, $soldNumber, $available, $username, $title, $author, $price, $publishYear, $publisher, $size, $content, $image, $discount) {
+    public function __construct($bookId, $createAt, $soldNumber,
+    $available, $username, 
+    $title, $author, $price, $publishYear, 
+    $publisher, $size, $content, $image, $discount) {
         self::setBookId($bookId);
         self::setCreateAt($createAt);
         self::setSoldNumber($soldNumber);
