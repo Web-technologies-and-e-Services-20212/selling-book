@@ -10,11 +10,12 @@ class BookServices extends MySqlConnect
      */
     public function insert($book)
     {
-        $query = "insert into book(ID, createAt, soldNumber, available, author, price, publishYear, image, publisher, size, content, discount, title)
+        $query = "insert into book(ID, createAt, soldNumber, username, available, author, price, publishYear, image, publisher, size, content, discount, title)
         value(" .
             $book->getBookId() . "," .
             "'" . $book->getCreateAt() . "' ," .
             "'" . $book->getSoldNumber() . "' ," .
+            "'" . $book->getUsername() . "' ," .
             "'" . $book->getAvailable() . "' ," .
             "'" . $book->getAuthor() . "' ," .
             $book->getPrice() . "," .
@@ -104,7 +105,10 @@ class BookServices extends MySqlConnect
             $discount = $row["discount"];
             $title = $row["title"];
 
-            $book = new Book($bookId, $createAt, $soldNumber, $username, $available, $author, $price, $publishYear, $image, $publisher, $size, $content, $discount, $title);
+            $book = new Book($bookId, $createAt, $soldNumber, 
+            $available, $username, 
+            $title, $author, $price, $publishYear, 
+            $publisher, $size, $content, $image, $discount);
 
             array_push($listBook, $book);
         }
@@ -133,8 +137,10 @@ class BookServices extends MySqlConnect
             $discount = $row["discount"];
             $title = $row["title"];
 
-            $book = new Book($bookId, $createAt, $soldNumber, $username, $available, $author, $price, $publishYear, $image, $publisher, $size, $content, $discount, $title);
-
+            $book = new Book($bookId, $createAt, $soldNumber, 
+            $available, $username, 
+            $title, $author, $price, $publishYear, 
+            $publisher, $size, $content, $image, $discount);
             return $book;
         }
         
@@ -162,7 +168,10 @@ class BookServices extends MySqlConnect
             $discount = $row["discount"];
             $title = $row["title"];
 
-            $book = new Book($bookId, $createAt, $soldNumber, $username, $available, $author, $price, $publishYear, $image, $publisher, $size, $content, $discount, $title);
+            $book = new Book($bookId, $createAt, $soldNumber, 
+            $available, $username, 
+            $title, $author, $price, $publishYear, 
+            $publisher, $size, $content, $image, $discount);
 
             array_push($listBook, $book);
         }
@@ -191,7 +200,10 @@ class BookServices extends MySqlConnect
             $discount = $row["discount"];
             $title = $row["title"];
 
-            $book = new Book($bookId, $createAt, $soldNumber, $username, $available, $author, $price, $publishYear, $image, $publisher, $size, $content, $discount, $title);
+            $book = new Book($bookId, $createAt, $soldNumber, 
+            $available, $username, 
+            $title, $author, $price, $publishYear, 
+            $publisher, $size, $content, $image, $discount);
 
             array_push($listBook, $book);
         }
@@ -220,8 +232,11 @@ class BookServices extends MySqlConnect
             $discount = $row["discount"];
             $title = $row["title"];
 
-            $book = new Book($bookId, $createAt, $soldNumber, $username, $available, $author, $price, $publishYear, $image, $publisher, $size, $content, $discount, $title);
-
+            $book = new Book($bookId, $createAt, $soldNumber, 
+            $available, $username, 
+            $title, $author, $price, $publishYear, 
+            $publisher, $size, $content, $image, $discount);
+            
             array_push($listBook, $book);
         }
 
@@ -249,8 +264,11 @@ class BookServices extends MySqlConnect
             $discount = $row["discount"];
             $title = $row["title"];
 
-            $book = new Book($bookId, $createAt, $soldNumber, $username, $available, $author, $price, $publishYear, $image, $publisher, $size, $content, $discount, $title);
-
+            $book = new Book($bookId, $createAt, $soldNumber, 
+            $available, $username, 
+            $title, $author, $price, $publishYear, 
+            $publisher, $size, $content, $image, $discount);
+            
             array_push($listBook, $book);
         }
 
@@ -278,8 +296,11 @@ class BookServices extends MySqlConnect
             $discount = $row["discount"];
             $title = $row["title"];
 
-            $book = new Book($bookId, $createAt, $soldNumber, $username, $available, $author, $price, $publishYear, $image, $publisher, $size, $content, $discount, $title);
-
+            $book = new Book($bookId, $createAt, $soldNumber, 
+            $available, $username, 
+            $title, $author, $price, $publishYear, 
+            $publisher, $size, $content, $image, $discount);
+            
             array_push($listBook, $book);
         }
 
@@ -307,8 +328,11 @@ class BookServices extends MySqlConnect
             $discount = $row["discount"];
             $title = $row["title"];
 
-            $book = new Book($bookId, $createAt, $soldNumber, $username, $available, $author, $price, $publishYear, $image, $publisher, $size, $content, $discount, $title);
-
+            $book = new Book($bookId, $createAt, $soldNumber, 
+            $available, $username, 
+            $title, $author, $price, $publishYear, 
+            $publisher, $size, $content, $image, $discount);
+            
             array_push($listBook, $book);
         }
 
