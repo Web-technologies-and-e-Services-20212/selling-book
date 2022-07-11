@@ -69,23 +69,23 @@ echo $url;
 
                 <ul id="dropdown">
                     <li>
-                        <a class=<?php echo $url == "list_products" ? "active" : "non-active" ?> href=<?php echo "/" . $path_project . "/list-products" ?>>Sản phẩm</a>
+                        <a class=<?php echo $url == "list-products" ? "active" : "non-active" ?> href=<?php echo "/" . $path_project . DS ."list-products" ?>>Sản phẩm</a>
 
                     </li>
                     <ul class="menu-dropdown">
-                            <li><a href="#">Trinh Thám , Kinh dị</a></li>
-                            <li><a href="#">Văn học hiện đại</a></li>
-                            <li><a href="#">Văn học kinh điển</a></li>
-                            <li><a href="#">Fantasy</a></li>
-                            <li><a href="#">Light Novel</a></li>
-                            <li><a href="#">Manga - Comic</a></li>
-                            <li><a href="#">Sách học ngữ</a></li>
+                            <li><a href=<?php echo "/" . $path_project . DS . "list-products" . DS . "detecvive" ?>>Trinh Thám , Kinh dị</a></li>
+                            <li><a href=<?php echo "/" . $path_project . DS .  "list-products" . DS . "modern-literature" ?>>Văn học hiện đại</a></li>
+                            <li><a href=<?php echo "/" . $path_project . DS .  "list-products" . DS . "classic-literature" ?>>Văn học kinh điển</a></li>
+                            <li><a href=<?php echo "/" . $path_project . DS .  "list-products" . DS . "fantasy" ?>>Fantasy</a></li>
+                            <li><a href=<?php echo "/" . $path_project . DS .  "list-products" . DS . "light-novel" ?>>Light Novel</a></li>
+                            <li><a href=<?php echo "/" . $path_project . DS .  "list-products" . DS . "manga-comic" ?>>Manga - Comic</a></li>
+                            <li><a href=<?php echo "/" . $path_project . DS .  "list-products" . DS . "learning-book" ?>>Sách học ngữ</a></li>
                         </ul>
                 </ul>
 
                 <ul>
                     <li>
-                        <a class=<?php echo $url == "blogs" ? "active" : "non-active" ?> href=<?php echo "/" . $path_project . "/blogs" ?>>Tin tức</a>
+                        <a class=<?php echo $url == "blogs" ? "active" : "non-active" ?> href=<?php echo "/" . $path_project . DS ."blogs" ?>>Tin tức</a>
                     </li>
                 </ul>
 

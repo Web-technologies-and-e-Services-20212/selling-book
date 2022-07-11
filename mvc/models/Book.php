@@ -2,6 +2,8 @@
 
 class Book {
     private $bookId;
+    private $createAt;
+    private $soldNumber;
     private $available = true;
     private $username;
     private $title;
@@ -14,8 +16,10 @@ class Book {
     private $image;
     private $discount;
 
-    public function __construct($bookId, $available, $username, $title, $author, $price, $publishYear, $publisher, $size, $content, $image, $discount) {
+    public function __construct($bookId, $createAt, $soldNumber, $available, $username, $title, $author, $price, $publishYear, $publisher, $size, $content, $image, $discount) {
         self::setBookId($bookId);
+        self::setCreateAt($createAt);
+        self::setSoldNumber($soldNumber);
         self::setAvailable($available);
         self::setUsername($username);
         self::setTitle($title);
@@ -108,6 +112,14 @@ class Book {
     public function getAuthor()
     {
         return $this->author;
+    }
+
+    public function getCreateAt(){
+        return $this->createAt;
+    }
+
+    public function getSoldNumber(){
+        return $this->soldNumber;
     }
 
     /**
@@ -221,5 +233,11 @@ class Book {
     public function setDiscount($discount)
     {
         $this->discount = $discount;
+    }
+    public function setCreateAt($createAt){
+        $this->createAt = $createAt;
+    }
+    public function setSoldNumber($soldNumber){
+        $this->soldNumber = $soldNumber;
     }
 }

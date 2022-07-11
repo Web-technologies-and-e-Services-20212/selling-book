@@ -54,6 +54,10 @@
     margin-top: 14px;
 }
 
+.m-t20{
+    margin-top: 20px;
+}
+
 .m-b20{
     margin-bottom: 20px;
 }
@@ -64,6 +68,10 @@
 
 .m-t30{
     margin-top: 30px;
+}
+
+.m-b30{
+    margin-bottom: 30px !important;
 }
 
 .p-tb5{
