@@ -81,7 +81,9 @@ class Book {
      */
     public function getImage()
     {
-        return $this->image;
+        $image = $this->image;
+        $image = explode(" ", $image);
+        return $image;
     }
 
     /**

@@ -161,7 +161,11 @@ ul {
 }
 
 img {
-    width: 100%;
+    max-width: 100%;
+}
+
+.product-card img{
+    max-width: 118%;
 }
 
 

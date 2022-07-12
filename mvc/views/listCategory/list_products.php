@@ -1,9 +1,16 @@
 <?php
 require_once ROOT . DS . "services" . DS . "BookServices.php";
 
-$list_products = new BookServices();
-$list = $list_products->getById(22);
-print_r($list) ;
+$listProductStore = new BookServices();
+$listAllProducts = $listProductStore->getAll();
+if (!function_exists('currency_format')) {
+    function currency_format($number, $suffix = 'đ')
+    {
+        if (!empty($number)) {
+            return number_format($number, 0, ',', ',') . "{$suffix}";
+        }
+    }
+}
 
 ?>
 <!DOCTYPE html>
@@ -54,230 +61,37 @@ print_r($list) ;
                         </div>
 
                         <div class="flex w100p p-tb16">
+                        <?php foreach ($listAllProducts as $key => $book) { ?>
+                            <!-- Product Card Start -->
+
                             <div class="product-card grid-r4">
                                 <div class="product-container">
                                     <div class="product-img relative">
                                         <div class="product-sale absolute">
-                                            <span class="sale-icon">- 15%</span>
+                                            <span class="sale-icon">- <?php echo $book->getDiscount(); ?> %</span>
                                         </div>
                                         <div class="img relative">
-                                            <a href="#">
-                                                <img src="public/images/products/p1.png" alt="">
+                                            <a href=<?php echo "/" . $path_project . "/product" . "/" . $book->getBookId(); ?> title="<?php echo $book->getTitle(); ?>">
+                                                <img src="<?php echo $book->getImage()[0]; ?>" alt="<?php echo $book->getTitle(); ?>">
                                             </a>
                                         </div>
                                     </div>
 
                                     <div class="product-detail">
                                         <h3 class="product-name">
-                                            <a href="#">Chào mừng đến với học thực lực</a>
+                                            <a href=<?php echo "/" . $path_project . "/product" . "/" . $book->getBookId(); ?> title="<?php echo $book->getTitle(); ?>"><?php echo $book->getTitle(); ?></a>
                                         </h3>
                                         <div class="product-prices">
-                                            <div class="price price-new">49,300đ</div>
+                                            <div class="price price-new"><?php
+                                                                        echo currency_format($book->getPrice()); ?></div>
                                             <div class="price price-old">58,000đ</div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
+                            <!-- Product Card End -->
 
-                            <div class="product-card grid-r4">
-                                <div class="product-container">
-                                    <div class="product-img relative">
-                                        <div class="product-sale absolute">
-                                            <span class="sale-icon">- 15%</span>
-                                        </div>
-                                        <div class="img relative">
-                                            <a href="#">
-                                                <img src="public/images/products/p1.png" alt="">
-                                            </a>
-                                        </div>
-                                    </div>
-
-                                    <div class="product-detail">
-                                        <h3 class="product-name">
-                                            <a href="#">Chào mừng đến với học thực lực</a>
-                                        </h3>
-                                        <div class="product-prices">
-                                            <div class="price price-new">49,300đ</div>
-                                            <div class="price price-old">58,000đ</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="product-card grid-r4">
-                                <div class="product-container">
-                                    <div class="product-img relative">
-                                        <div class="product-sale absolute">
-                                            <span class="sale-icon">- 15%</span>
-                                        </div>
-                                        <div class="img relative">
-                                            <a href="#">
-                                                <img src="public/images/products/p1.png" alt="">
-                                            </a>
-                                        </div>
-                                    </div>
-
-                                    <div class="product-detail">
-                                        <h3 class="product-name">
-                                            <a href="#">Chào mừng đến với học thực lực</a>
-                                        </h3>
-                                        <div class="product-prices">
-                                            <div class="price price-new">49,300đ</div>
-                                            <div class="price price-old">58,000đ</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="product-card grid-r4">
-                                <div class="product-container">
-                                    <div class="product-img relative">
-                                        <div class="product-sale absolute">
-                                            <span class="sale-icon">- 15%</span>
-                                        </div>
-                                        <div class="img relative">
-                                            <a href="#">
-                                                <img src="public/images/products/p1.png" alt="">
-                                            </a>
-                                        </div>
-                                    </div>
-
-                                    <div class="product-detail">
-                                        <h3 class="product-name">
-                                            <a href="#">Chào mừng đến với học thực lực</a>
-                                        </h3>
-                                        <div class="product-prices">
-                                            <div class="price price-new">49,300đ</div>
-                                            <div class="price price-old">58,000đ</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="product-card grid-r4">
-                                <div class="product-container">
-                                    <div class="product-img relative">
-                                        <div class="product-sale absolute">
-                                            <span class="sale-icon">- 15%</span>
-                                        </div>
-                                        <div class="img relative">
-                                            <a href="#">
-                                                <img src="public/images/products/p1.png" alt="">
-                                            </a>
-                                        </div>
-                                    </div>
-
-                                    <div class="product-detail">
-                                        <h3 class="product-name">
-                                            <a href="#">Chào mừng đến với học thực lực</a>
-                                        </h3>
-                                        <div class="product-prices">
-                                            <div class="price price-new">49,300đ</div>
-                                            <div class="price price-old">58,000đ</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="product-card grid-r4">
-                                <div class="product-container">
-                                    <div class="product-img relative">
-                                        <div class="product-sale absolute">
-                                            <span class="sale-icon">- 15%</span>
-                                        </div>
-                                        <div class="img relative">
-                                            <a href="#">
-                                                <img src="public/images/products/p1.png" alt="">
-                                            </a>
-                                        </div>
-                                    </div>
-
-                                    <div class="product-detail">
-                                        <h3 class="product-name">
-                                            <a href="#">Chào mừng đến với học thực lực</a>
-                                        </h3>
-                                        <div class="product-prices">
-                                            <div class="price price-new">49,300đ</div>
-                                            <div class="price price-old">58,000đ</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="product-card grid-r4">
-                                <div class="product-container">
-                                    <div class="product-img relative">
-                                        <div class="product-sale absolute">
-                                            <span class="sale-icon">- 15%</span>
-                                        </div>
-                                        <div class="img relative">
-                                            <a href="#">
-                                                <img src="public/images/products/p1.png" alt="">
-                                            </a>
-                                        </div>
-                                    </div>
-
-                                    <div class="product-detail">
-                                        <h3 class="product-name">
-                                            <a href="#">Chào mừng đến với học thực lực</a>
-                                        </h3>
-                                        <div class="product-prices">
-                                            <div class="price price-new">49,300đ</div>
-                                            <div class="price price-old">58,000đ</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="product-card grid-r4">
-                                <div class="product-container">
-                                    <div class="product-img relative">
-                                        <div class="product-sale absolute">
-                                            <span class="sale-icon">- 15%</span>
-                                        </div>
-                                        <div class="img relative">
-                                            <a href="#">
-                                                <img src="public/images/products/p1.png" alt="">
-                                            </a>
-                                        </div>
-                                    </div>
-
-                                    <div class="product-detail">
-                                        <h3 class="product-name">
-                                            <a href="#">Chào mừng đến với học thực lực</a>
-                                        </h3>
-                                        <div class="product-prices">
-                                            <div class="price price-new">49,300đ</div>
-                                            <div class="price price-old">58,000đ</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="product-card grid-r4">
-                                <div class="product-container">
-                                    <div class="product-img relative">
-                                        <div class="product-sale absolute">
-                                            <span class="sale-icon">- 15%</span>
-                                        </div>
-                                        <div class="img relative">
-                                            <a href="#">
-                                                <img src="public/images/products/p1.png" alt="">
-                                            </a>
-                                        </div>
-                                    </div>
-
-                                    <div class="product-detail">
-                                        <h3 class="product-name">
-                                            <a href="#">Chào mừng đến với học thực lực</a>
-                                        </h3>
-                                        <div class="product-prices">
-                                            <div class="price price-new">49,300đ</div>
-                                            <div class="price price-old">58,000đ</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            <?php } ?>
                         </div>
                         
                         <div class="pagination flex f-space_between f-align_center p-lr16 p-tb16">

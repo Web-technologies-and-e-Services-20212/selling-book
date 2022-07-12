@@ -179,6 +179,38 @@ class BookServices extends MySqlConnect
         return $listBook;
     }
 
+    public function getAllSortByDiscount(){
+        $listBook = array();
+        $query = "select * from book order by discount desc";
+        parent::addQuerry($query);
+        $result = parent::executeQuery();
+        while($row = mysqli_fetch_array($result)){
+            $createAt =  $row["createAt"];
+            $soldNumber = $row["soldNumber"];
+            $bookId = $row["ID"];
+            $username = $row["username"];
+            $available = $row["available"];
+            $author = $row["author"];
+            $price = $row["price"];
+            $publishYear = $row["publishYear"];
+            $image = $row["image"];
+            $publisher = $row["publisher"];
+            $size = $row["size"];
+            $content = $row["content"];
+            $discount = $row["discount"];
+            $title = $row["title"];
+
+            $book = new Book($bookId, $createAt, $soldNumber, 
+            $available, $username, 
+            $title, $author, $price, $publishYear, 
+            $publisher, $size, $content, $image, $discount);
+
+            array_push($listBook, $book);
+        }
+
+        return $listBook;
+    }
+
     public function getAllSortByPriceDesc(){
         $listBook = array();
         $query = "select * from book order by price desc";
