@@ -81,7 +81,9 @@ class Book {
      */
     public function getImage()
     {
-        return $this->image;
+        $image = $this->image;
+        $image = explode(" ", $image);
+        return $image;
     }
 
     /**
@@ -130,7 +132,10 @@ class Book {
      */
     public function getPrice()
     {
-        return $this->price;
+        $price = $this->price;
+        $discount = $this->discount;
+        return $price * 100 / (100-$discount);
+        // return $price;
     }
 
     /**
