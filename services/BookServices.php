@@ -84,7 +84,7 @@ class BookServices extends MySqlConnect
         parent::updateQuery();
     }
 
-    public function getAll($param = 0){
+    public function getAll($param = 0, $pageIndex = 1, $sizePage = 10){
         $listBook = array();
         switch($param){
             case 0:{ 
@@ -133,14 +133,25 @@ class BookServices extends MySqlConnect
             $content = $row["content"];
             $discount = $row["discount"];
             $title = $row["title"];
+            $query = "SELECT category_name  FROM book_category, category WHERE book_category.categoryId = category.ID AND book_category.bookId = 11";
+            parent::addQuerry($query);
+            $categoryObject = parent::executeQuery();
+            // $category = mysqli_fetch_array($category);
+            $category = [];
+            while($row2 = mysqli_fetch_array($categoryObject)){
+                $category[] = $row2["category_name"];
+            }
 
             $book = new Book($bookId, $createAt, $soldNumber, 
             $available, $username, 
             $title, $author, $price, $publishYear, 
-            $publisher, $size, $content, $image, $discount);
+            $publisher, $size, $content, $image, $discount, $category);
 
             array_push($listBook, $book);
         }
+
+        $start = $sizePage * ($pageIndex - 1);
+        $listBook = array_slice($listBook, $start, $sizePage);
 
         return $listBook;
     }
@@ -165,11 +176,15 @@ class BookServices extends MySqlConnect
             $content = $row["content"];
             $discount = $row["discount"];
             $title = $row["title"];
+            $query = "SELECT category_name  FROM book_category, category WHERE book_category.categoryId = category.ID AND book_category.bookId = 11";
+            parent::addQuerry($query);
+            $category = parent::executeQuery();
+            $category = mysqli_fetch_array($category);
 
             $book = new Book($bookId, $createAt, $soldNumber, 
             $available, $username, 
             $title, $author, $price, $publishYear, 
-            $publisher, $size, $content, $image, $discount);
+            $publisher, $size, $content, $image, $discount, $category);
             return $book;
         }
         
