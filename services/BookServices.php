@@ -84,9 +84,38 @@ class BookServices extends MySqlConnect
         parent::updateQuery();
     }
 
-    public function getAll(){
+    public function getAll($param = 0, $pageIndex = 1, $sizePage = 10){
         $listBook = array();
-        $query = "select * from book";
+        switch($param){
+            case 0:{ 
+                $query = "select * from book";
+                break;
+            }
+            case 1:{
+                $query = "select * from book order by createAt desc";
+                break;
+            }
+            case 2:{
+                $query = "select * from book order by price desc";
+                break;
+            }
+            case 3:{
+                $query = "select * from book order by price asc";
+                break;
+            }
+            case 4:{
+                $query = "select * from book order by soldNumber desc";
+                break;
+            }
+            case 5:{
+                $query = "select * from book order by title desc";
+                break;
+            }
+            case 6:{
+                $query = "select * from book order by title asc";
+                break;
+            }
+        }
         parent::addQuerry($query);
         $result = parent::executeQuery();
         while($row = mysqli_fetch_array($result)){
@@ -104,14 +133,25 @@ class BookServices extends MySqlConnect
             $content = $row["content"];
             $discount = $row["discount"];
             $title = $row["title"];
+            $query = "SELECT category_name  FROM book_category, category WHERE book_category.categoryId = category.ID AND book_category.bookId = 11";
+            parent::addQuerry($query);
+            $categoryObject = parent::executeQuery();
+            // $category = mysqli_fetch_array($category);
+            $category = [];
+            while($row2 = mysqli_fetch_array($categoryObject)){
+                $category[] = $row2["category_name"];
+            }
 
             $book = new Book($bookId, $createAt, $soldNumber, 
             $available, $username, 
             $title, $author, $price, $publishYear, 
-            $publisher, $size, $content, $image, $discount);
+            $publisher, $size, $content, $image, $discount, $category);
 
             array_push($listBook, $book);
         }
+
+        $start = $sizePage * ($pageIndex - 1);
+        $listBook = array_slice($listBook, $start, $sizePage);
 
         return $listBook;
     }
@@ -136,238 +176,19 @@ class BookServices extends MySqlConnect
             $content = $row["content"];
             $discount = $row["discount"];
             $title = $row["title"];
+            $query = "SELECT category_name  FROM book_category, category WHERE book_category.categoryId = category.ID AND book_category.bookId = 11";
+            parent::addQuerry($query);
+            $category = parent::executeQuery();
+            $category = mysqli_fetch_array($category);
 
             $book = new Book($bookId, $createAt, $soldNumber, 
             $available, $username, 
             $title, $author, $price, $publishYear, 
-            $publisher, $size, $content, $image, $discount);
+            $publisher, $size, $content, $image, $discount, $category);
             return $book;
         }
         
         return null;
     }
 
-    public function getAllSortByCreateAt(){
-        $listBook = array();
-        $query = "select * from book order by createAt desc";
-        parent::addQuerry($query);
-        $result = parent::executeQuery();
-        while($row = mysqli_fetch_array($result)){
-            $createAt =  $row["createAt"];
-            $soldNumber = $row["soldNumber"];
-            $bookId = $row["ID"];
-            $username = $row["username"];
-            $available = $row["available"];
-            $author = $row["author"];
-            $price = $row["price"];
-            $publishYear = $row["publishYear"];
-            $image = $row["image"];
-            $publisher = $row["publisher"];
-            $size = $row["size"];
-            $content = $row["content"];
-            $discount = $row["discount"];
-            $title = $row["title"];
-
-            $book = new Book($bookId, $createAt, $soldNumber, 
-            $available, $username, 
-            $title, $author, $price, $publishYear, 
-            $publisher, $size, $content, $image, $discount);
-
-            array_push($listBook, $book);
-        }
-
-        return $listBook;
-    }
-
-    public function getAllSortByDiscount(){
-        $listBook = array();
-        $query = "select * from book order by discount desc";
-        parent::addQuerry($query);
-        $result = parent::executeQuery();
-        while($row = mysqli_fetch_array($result)){
-            $createAt =  $row["createAt"];
-            $soldNumber = $row["soldNumber"];
-            $bookId = $row["ID"];
-            $username = $row["username"];
-            $available = $row["available"];
-            $author = $row["author"];
-            $price = $row["price"];
-            $publishYear = $row["publishYear"];
-            $image = $row["image"];
-            $publisher = $row["publisher"];
-            $size = $row["size"];
-            $content = $row["content"];
-            $discount = $row["discount"];
-            $title = $row["title"];
-
-            $book = new Book($bookId, $createAt, $soldNumber, 
-            $available, $username, 
-            $title, $author, $price, $publishYear, 
-            $publisher, $size, $content, $image, $discount);
-
-            array_push($listBook, $book);
-        }
-
-        return $listBook;
-    }
-
-    public function getAllSortByPriceDesc(){
-        $listBook = array();
-        $query = "select * from book order by price desc";
-        parent::addQuerry($query);
-        $result = parent::executeQuery();
-        while($row = mysqli_fetch_array($result)){
-            $createAt =  $row["createAt"];
-            $soldNumber = $row["soldNumber"];
-            $bookId = $row["ID"];
-            $username = $row["username"];
-            $available = $row["available"];
-            $author = $row["author"];
-            $price = $row["price"];
-            $publishYear = $row["publishYear"];
-            $image = $row["image"];
-            $publisher = $row["publisher"];
-            $size = $row["size"];
-            $content = $row["content"];
-            $discount = $row["discount"];
-            $title = $row["title"];
-
-            $book = new Book($bookId, $createAt, $soldNumber, 
-            $available, $username, 
-            $title, $author, $price, $publishYear, 
-            $publisher, $size, $content, $image, $discount);
-
-            array_push($listBook, $book);
-        }
-
-        return $listBook;
-    }
-
-    public function getAllSortByPriceAsc(){
-        $listBook = array();
-        $query = "select * from book order by price asc";
-        parent::addQuerry($query);
-        $result = parent::executeQuery();
-        while($row = mysqli_fetch_array($result)){
-            $createAt =  $row["createAt"];
-            $soldNumber = $row["soldNumber"];
-            $bookId = $row["ID"];
-            $username = $row["username"];
-            $available = $row["available"];
-            $author = $row["author"];
-            $price = $row["price"];
-            $publishYear = $row["publishYear"];
-            $image = $row["image"];
-            $publisher = $row["publisher"];
-            $size = $row["size"];
-            $content = $row["content"];
-            $discount = $row["discount"];
-            $title = $row["title"];
-
-            $book = new Book($bookId, $createAt, $soldNumber, 
-            $available, $username, 
-            $title, $author, $price, $publishYear, 
-            $publisher, $size, $content, $image, $discount);
-            
-            array_push($listBook, $book);
-        }
-
-        return $listBook;
-    }
-
-    public function getAllSortBySoldNumber(){
-        $listBook = array();
-        $query = "select * from book order by soldNumber desc";
-        parent::addQuerry($query);
-        $result = parent::executeQuery();
-        while($row = mysqli_fetch_array($result)){
-            $createAt =  $row["createAt"];
-            $soldNumber = $row["soldNumber"];
-            $bookId = $row["ID"];
-            $username = $row["username"];
-            $available = $row["available"];
-            $author = $row["author"];
-            $price = $row["price"];
-            $publishYear = $row["publishYear"];
-            $image = $row["image"];
-            $publisher = $row["publisher"];
-            $size = $row["size"];
-            $content = $row["content"];
-            $discount = $row["discount"];
-            $title = $row["title"];
-
-            $book = new Book($bookId, $createAt, $soldNumber, 
-            $available, $username, 
-            $title, $author, $price, $publishYear, 
-            $publisher, $size, $content, $image, $discount);
-            
-            array_push($listBook, $book);
-        }
-
-        return $listBook;
-    }
-
-    public function getAllSortByTitleDesc(){
-        $listBook = array();
-        $query = "select * from book order by title desc";
-        parent::addQuerry($query);
-        $result = parent::executeQuery();
-        while($row = mysqli_fetch_array($result)){
-            $createAt =  $row["createAt"];
-            $soldNumber = $row["soldNumber"];
-            $bookId = $row["ID"];
-            $username = $row["username"];
-            $available = $row["available"];
-            $author = $row["author"];
-            $price = $row["price"];
-            $publishYear = $row["publishYear"];
-            $image = $row["image"];
-            $publisher = $row["publisher"];
-            $size = $row["size"];
-            $content = $row["content"];
-            $discount = $row["discount"];
-            $title = $row["title"];
-
-            $book = new Book($bookId, $createAt, $soldNumber, 
-            $available, $username, 
-            $title, $author, $price, $publishYear, 
-            $publisher, $size, $content, $image, $discount);
-            
-            array_push($listBook, $book);
-        }
-
-        return $listBook;
-    }
-
-    public function getAllSortByTitleAsc(){
-        $listBook = array();
-        $query = "select * from book order by title asc";
-        parent::addQuerry($query);
-        $result = parent::executeQuery();
-        while($row = mysqli_fetch_array($result)){
-            $createAt =  $row["createAt"];
-            $soldNumber = $row["soldNumber"];
-            $bookId = $row["ID"];
-            $username = $row["username"];
-            $available = $row["available"];
-            $author = $row["author"];
-            $price = $row["price"];
-            $publishYear = $row["publishYear"];
-            $image = $row["image"];
-            $publisher = $row["publisher"];
-            $size = $row["size"];
-            $content = $row["content"];
-            $discount = $row["discount"];
-            $title = $row["title"];
-
-            $book = new Book($bookId, $createAt, $soldNumber, 
-            $available, $username, 
-            $title, $author, $price, $publishYear, 
-            $publisher, $size, $content, $image, $discount);
-            
-            array_push($listBook, $book);
-        }
-
-        return $listBook;
-    }
 }

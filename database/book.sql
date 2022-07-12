@@ -411,3 +411,15 @@ INSERT INTO `book_category` (`bookId`, `categoryId`) VALUES
 	(62, 12),
 	(62, 13);
 /*!40000 ALTER TABLE `book_category` ENABLE KEYS */;
+
+CREATE TABLE `news` (
+	`ID` int(11) NOT NULL AUTO_INCREMENT,
+    `title` varchar(1024) NOT NULL DEFAULT '0',
+    `content` varchar(1024) NOT NULL DEFAULT '0',
+    `image` varchar(1024) not null DEFAULT '0',
+    `adminId` int(11),
+    `createdAt` datetime NOT NULL,
+    PRIMARY KEY (`ID`),
+    KEY `FK_news_admin` (`adminId`),
+    CONSTRAINT `FK_news_admin` FOREIGN KEY (`adminId`) REFERENCES `admin` (`ID`)
+)
