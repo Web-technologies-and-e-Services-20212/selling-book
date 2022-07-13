@@ -38,8 +38,8 @@
             <div class='time'> <?php
 
                                 $dt = new DateTime("now", new DateTimeZone('Asia/Ho_Chi_Minh'));
-
-                                echo $dt->format('m/d/Y')
+                                echo 'Ngày hôm nay : ';
+                                echo  $dt->format('m/d/Y')
                                 ?></div>
 
             <div class='right-items'>
@@ -49,9 +49,11 @@
         </div>
         <ul>
             <li><a class="active" href="#home">Home</a></li>
-            <li><a href="#news">News</a></li>
-            <li><a href="#contact">Contact</a></li>
-            <li><a href="#about">About</a></li>
+            <li><a href="#news">Sản phẩm</a></li>
+            <li><a href="#contact">Tài khoản</a></li>
+            <li><a href="#about">Blog</a></li>
+            <li><a href="#about">Banner</a></li>
+            <li><a href="#about">Đơn hàng</a></li>
         </ul>
 
         <div class='content'>

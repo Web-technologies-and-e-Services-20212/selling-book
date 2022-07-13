@@ -1,7 +1,6 @@
 <IfModule mod_rewrite.c>
     RewriteEngine On
     
-    RewriteCond %{REQUEST_URI} /dashboard [OR]
     RewriteCond %{REQUEST_URI} /about$ [OR]
     RewriteCond %{REQUEST_URI} /list-products$ [OR]
     RewriteCond %{REQUEST_URI} /blogs [OR]
