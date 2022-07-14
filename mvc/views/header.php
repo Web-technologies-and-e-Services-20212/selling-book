@@ -10,7 +10,7 @@ echo $url;
         <div class="container flex f-space_between f-align_center h100p">
             <div>CÔNG TY CỔ PHẦN XUẤT BẢN VÀ TRUYỀN THÔNG IPM</div>
             <div class="account">
-                <a href=<?php echo "/" . $path_project . "/account" ?>>Xin chào: Trần Lâm</a>
+                <a href=<?php echo "/" . $path_project . "/login" ?>>Đăng nhập</a>
                 <p class="divider">|</p>
                 <a href="#">Đăng xuất</a>
             </div>

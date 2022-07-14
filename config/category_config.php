@@ -1,0 +1,18 @@
+<?php
+
+// Định nghĩa các danh mục/
+define('NO_CATEGORY', 0);
+define('CATEGORY_DETECTIVE', 1);
+define('CATEGORY_MODERN_LITERARURE', 2);
+define('CATEGORY_CLASSIC_LITERATURE', 3);
+define('CATEGORY_FANTASY', 4);
+define('CATEGORY_LIGHT_NOVEL', 5);
+define('CATEGORY_BOY_LOVE', 6);
+define('CATEGORY_BOXSET', 7);
+define('CATEGORY_LEARNING_BOOK', 8);
+define('CATEGORY_MANGA_COMIC', 9);
+define('CATEGORY_CHILD_BOOK', 10);
+define('CATEGORY_HOT_DEALS', 11);
+define('CATEGORY_NEW_BOOKS', 12);
+define('CATEGORY_HOT_BOOKS', 13);
+define('CATEGORY_ACCESSORES', 14);

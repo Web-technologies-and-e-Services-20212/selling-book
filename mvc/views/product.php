@@ -38,8 +38,11 @@ if (!function_exists('currency_format')) {
                 <div class="grid-r5m2 p-lr15">
                     <div class="s_product-img relative">
                         <div class="product-sale absolute">
-                            <span class="sale-icon">- <?php echo $book->getDiscount(); ?>%</span>
+                            <span class="sale-icon">-<?php echo $book->getDiscount(); ?>%</span>
                         </div>
+                        <?php if (true) { ?>
+                            <div class="sold-out" style="background-color:#eee ;">Hết hàng</div>
+                        <?php } ?>
                         <div class="w100p relative">
                             <img src="<?php echo $book->getImage()[1]; ?>" alt="<?php echo $book->getTitle(); ?>">
                         </div>
@@ -55,7 +58,7 @@ if (!function_exists('currency_format')) {
                     <div class="s_product-price">
                         <span><?php
                                 echo currency_format($book->getPrice()); ?></span>
-                        <del class="m-l20">58,000d</del>
+                        <del class="m-l20"><?php echo currency_format($book->getPrice() - $book->getPrice() * $book->getDiscount() / 100); ?> </del>
                     </div>
 
                     <div class="s_product-subtitle m-t10">
@@ -101,12 +104,12 @@ if (!function_exists('currency_format')) {
                         <div class="s_product-action flex f-align_center">
                             <div class="select-quantity">
                                 <input type="button" value="-" class="qty-minus">
-                                <input type="text" value="1" min="1" class="quantity-selector">
+                                <input type="text" value="1" min="1" id="qty-product" required oninput="this.value=this.value.replace(/[^0-9]/g,'');" class="quantity-selector">
                                 <input type="button" value="+" class="qty-plus">
                             </div>
 
-                            <div class="s_product-btn">
-                                <button class="btn product-add">Thêm vào giỏ</button>
+                            <div class="s_product-btn ">
+                                <button class="btn product-add <?php if (false) echo "btn-buy-disable" ?>">Thêm vào giỏ</button>
                             </div>
 
 
@@ -118,9 +121,11 @@ if (!function_exists('currency_format')) {
                     <div class="s_product-meta">
                         <p>danh mục :
                             <span class="s_product-category">
-                                <a href="#">sách mới</a>
-                                ,
-                                <a href="#">Manga - comic</a>
+                                <?php $arrlength = count($book->getCategory());
+                                for ($x = 0; $x < $arrlength; $x++) { ?>
+                                    <a href="#"><?php echo $book->getCategory()[$x] ?></a>
+                                <?php if ($x != $arrlength - 1) echo ",";
+                                } ?>
                             </span>
                         </p>
                     </div>
@@ -309,6 +314,9 @@ if (!function_exists('currency_format')) {
 
     <!-- Nội dung phần Footer -->
     <?php require_once ROOT . DS . 'mvc' . DS . 'views' . DS . 'footer.php'; ?>
+
+    <!-- JS dùng riêng -->
+    <script src="/selling-book/public/javascript/product.js"></script>
 </body>
 
 </html>

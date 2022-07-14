@@ -12,16 +12,6 @@ require_once ROOT . DS . 'services' . DS . 'BookServices.php';
 // Lấy url trên đường dẫn
 $url = isset($_GET["url"]) ? $_GET["url"] : "/";
 
-echo "Hello";
-echo '<br/>';
-echo "Hello";
-echo '<br/>';
-
-$bookService = new BookServices();
-$books = $bookService->getAll(1);
-$firstBook = $books[0];
-print_r($firstBook->getCategory());
-exit(1);
 
 $route = new RouteController($url);
 $route->show();

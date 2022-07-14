@@ -68,8 +68,11 @@ if (!function_exists('currency_format')) {
                                 <div class="product-container">
                                     <div class="product-img relative">
                                         <div class="product-sale absolute">
-                                            <span class="sale-icon">- <?php echo $book->getDiscount(); ?> %</span>
+                                            <span class="sale-icon">-<?php echo $book->getDiscount(); ?>%</span>
                                         </div>
+                                        <?php if(true){ ?>
+                                        <div class="sold-out">Hết hàng</div>
+                                    <?php } ?>
                                         <div class="img relative">
                                             <a href=<?php echo "/" . $path_project . "/product" . "/" . $book->getBookId(); ?> title="<?php echo $book->getTitle(); ?>">
                                                 <img src="<?php echo $book->getImage()[0]; ?>" alt="<?php echo $book->getTitle(); ?>">

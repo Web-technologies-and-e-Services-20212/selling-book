@@ -1,10 +1,12 @@
 <?php
+require_once ROOT . DS . 'config' . DS . 'category_config.php';
 global $path_project;
 // Định nghĩa số sản phẩm cố định
 $numBook = 10;
-$newBookStore = $bookStore->getAllSortByCreateAt();
-$topBookStore = $bookStore->getAllSortBySoldNumber();
-$hotBookStore = $bookStore->getAllSortByCreateAt();
+$newBookList = $bookStore->getAll(CATEGORY_NEW_BOOKS, 1, 10);
+// $topBookList = $bookStore->getAll(4);
+// $hotBookList = $bookStore->getAll(3);
+// 
 // foreach ($newBooks as $key => $book) {
 //     print_r("Book ID :" . $book->getBookId() . "<br>");
 //     print_r("Book Author :" . $book->getAuthor()  . "<br>");
@@ -23,14 +25,12 @@ $hotBookStore = $bookStore->getAllSortByCreateAt();
 //     print_r("Book getPrice :" . $book->getPrice(). "<br>");
 //     echo "-----------" . "<br>";
 // }
-$newBookList = array_slice($newBookStore, 0, $numBook);
-$topBookList = array_slice($topBookStore, 0, $numBook);
-$hotBookList = array_slice($hotBookStore, 0, $numBook);
+
 if (!function_exists('currency_format')) {
     function currency_format($number, $suffix = 'đ')
     {
         if (!empty($number)) {
-            return number_format($number, 0, ',', ',') . "{$suffix}";
+            return number_format($number, 0, ' ', ',') . "{$suffix}";
         }
     }
 }
@@ -158,8 +158,11 @@ if (!function_exists('currency_format')) {
                             <div class="product-container m-b20">
                                 <div class="product-img relative">
                                     <div class="product-sale absolute">
-                                        <span class="sale-icon">- <?php echo $book->getDiscount(); ?> %</span>
+                                        <span class="sale-icon"> -<?php echo $book->getDiscount(); ?>%</span>
                                     </div>
+                                    <?php if(true){ ?>
+                                        <div class="sold-out">Hết hàng</div>
+                                    <?php } ?>
                                     <div class="img relative">
                                         <a href=<?php echo "/" . $path_project . "/product" . "/" . $book->getBookId(); ?> title="<?php echo $book->getTitle(); ?>">
                                             <img src="<?php echo $book->getImage()[0]; ?>" alt="<?php echo $book->getTitle(); ?>">
@@ -225,7 +228,7 @@ if (!function_exists('currency_format')) {
                         <div class="product-container m-b20">
                             <div class="product-img relative">
                                 <div class="product-sale absolute">
-                                    <span class="sale-icon">- <?php echo $book->getDiscount(); ?> %</span>
+                                    <span class="sale-icon">-<?php echo $book->getDiscount(); ?>%</span>
                                 </div>
                                 <div class="img relative">
                                     <a href="#">
@@ -266,19 +269,61 @@ if (!function_exists('currency_format')) {
                 <h2>Bài viết mới</h2>
             </div>
 
-            <div class="posts-list borderblack">
-                <div class="flex f-space_evenly">
-                    <div class="post-container borderblack">
-
+            <div class="posts-list relative" style="overflow: scroll">
+                <div class="flex" style="width: 4680px; transform: translate3d(0px, 0px, 0px); transition: all 0.25s ease 0s;">
+                    <div class="post-container" style="width: 390px;">
+                        <h1>1</h1>
                     </div>
 
-                    <div class="post-container borderblack">
-
+                    <div class="post-container " style="width: 390px;">
+                        <h1>2</h1>
                     </div>
 
-                    <div class="post-container borderblack">
-
+                    <div class="post-container " style="width: 390px;">
+                        <h1>3</h1>
                     </div>
+
+                    <div class="post-container " style="width: 390px;">
+                        <h1>3</h1>
+                    </div>
+
+                    <div class="post-container " style="width: 390px;">
+                        <h1>4</h1>
+                    </div>
+
+                    <div class="post-container " style="width: 390px;">
+                        <h1>5</h1>
+                    </div>
+
+                    <div class="post-container " style="width: 390px;">
+                        <h1>6</h1>
+                    </div>
+
+                    <div class="post-container " style="width: 390px;">
+                        <h1>7</h1>
+                    </div>
+
+                    <div class="post-container" style="width: 390px;">
+                        <h1>8</h1>
+                    </div>
+
+                    <div class="post-container borderblack" style="width: 390px;">
+                        <h1>9</h1>
+                    </div>
+
+                    <div class="post-container borderblack" style="width: 390px;">
+                        <h1>10</h1>
+                    </div>
+
+                    <div class="post-container borderblack" style="width: 390px;">
+                        <h1>11</h1>
+                    </div>
+
+                </div>
+
+                <div class="nav-btns">
+                    <div class="nav-btn nav-prev borderblack">Prev</div>
+                    <div class="nav-btn nav-next borderblack">Next</div>
                 </div>
             </div>
         </div>
