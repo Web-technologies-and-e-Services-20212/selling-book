@@ -1,6 +1,7 @@
 <?php
 
-class Guest {
+class Book
+{
     private $bookId;
     private $available = true;
     private $username;
@@ -14,7 +15,8 @@ class Guest {
     private $image;
     private $discount;
 
-    public function __construct($bookId, $available, $username, $title, $author, $price, $publishYear, $publisher, $size, $content, $image, $discount) {
+    public function __construct($bookId, $available, $username, $title, $author, $price, $publishYear, $publisher, $size, $content, $image, $discount)
+    {
         self::setBookId($bookId);
         self::setAvailable($available);
         self::setUsername($username);
