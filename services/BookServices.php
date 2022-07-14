@@ -1,7 +1,11 @@
 <?php
 
+use function PHPSTORM_META\type;
+
 require_once ROOT . DS . 'services' . DS . 'MySqlConnect.php';
 require_once ROOT . DS . 'mvc' . DS . 'models' . DS . 'Book.php';
+require_once ROOT . DS . 'config' . DS . 'category_config.php';
+
 
 class BookServices extends MySqlConnect
 {
@@ -88,186 +92,68 @@ class BookServices extends MySqlConnect
         parent::updateQuery();
     }
 
-    public function getAll($param = 0, $pageIndex = 1, $sizePage = 10, $categoryName = null)
+    public function getAll($param = NO_CATEGORY, $pageIndex = 1, $pageSize = 10)
     {
         $listBook = array();
-        switch ($param) {
-            case 0: {
-                    $query = "select * from book";
-                    break;
-                }
-            case 1: {
-                    $query = "select * from book order by createAt desc";
-                    break;
-                }
-            case 2: {
-                    $query = "select * from book order by price desc";
-                    break;
-                }
-            case 3: {
-                    $query = "select * from book order by price asc";
-                    break;
-                }
-            case 4: {
-                    $query = "select * from book order by soldNumber desc";
-                    break;
-                }
-            case 5: {
-                    $query = "select * from book order by title desc";
-                    break;
-                }
-            case 6: {
-                    $query = "select * from book order by title asc";
-                    break;
-                }
-        }
+        // switch($param){
+        //     case 0:{ 
+        //         $query = "select * from book";
+        //         break;
+        //     }
+        //     case 1:{
+        //         $query = "select * from book order by createAt desc";
+        //         break;
+        //     }
+        //     case 2:{
+        //         $query = "select * from book order by price desc";
+        //         break;
+        //     }
+        //     case 3:{
+        //         $query = "select * from book order by price asc";
+        //         break;
+        //     }
+        //     case 4:{
+        //         $query = "select * from book order by soldNumber desc";
+        //         break;
+        //     }
+        //     case 5:{
+        //         $query = "select * from book order by title desc";
+        //         break;
+        //     }
+        //     case 6:{
+        //         $query = "select * from book order by title asc";
+        //         break;
+        //     }
+        // }
+        $query = "CALL Proc_getBookByCategoryPaging($param, $pageIndex, $pageSize)";
         parent::addQuerry($query);
         $result = parent::executeQuery();
         while ($row = mysqli_fetch_array($result)) {
-            $createAt =  $row["createAt"];
+            
             $soldNumber = $row["soldNumber"];
             $bookId = $row["ID"];
-            $username = $row["username"];
             $available = $row["available"];
-            $author = $row["author"];
             $price = $row["price"];
-            $publishYear = $row["publishYear"];
             $image = $row["image"];
-            $publisher = $row["publisher"];
-            $size = $row["size"];
-            $content = $row["content"];
             $discount = $row["discount"];
             $title = $row["title"];
-            $query = "SELECT category_name  FROM book_category, category WHERE book_category.categoryId = category.ID AND book_category.bookId = 11";
-            parent::addQuerry($query);
-            $categoryObject = parent::executeQuery();
-            // $category = mysqli_fetch_array($category);
-            $category = [];
-            while ($row2 = mysqli_fetch_array($categoryObject)) {
-                $category[] = $row2["category_name"];
-            }
 
-            if ($categoryName == null) {
-                $book = new Book(
-                    $bookId,
-                    $createAt,
-                    $soldNumber,
-                    $available,
-                    $username,
-                    $title,
-                    $author,
-                    $price,
-                    $publishYear,
-                    $publisher,
-                    $size,
-                    $content,
-                    $image,
-                    $discount,
-                    $category
-                );
-            } elseif (in_array($categoryName, $category)) {
-                $book = new Book(
-                    $bookId,
-                    $createAt,
-                    $soldNumber,
-                    $available,
-                    $username,
-                    $title,
-                    $author,
-                    $price,
-                    $publishYear,
-                    $publisher,
-                    $size,
-                    $content,
-                    $image,
-                    $discount,
-                    $category
-                );
-            }
-
-
-            array_push($listBook, $book);
-        }
-
-        $start = $sizePage * ($pageIndex - 1);
-        $listBook = array_slice($listBook, $start, $sizePage);
-
-        return $listBook;
-    }
-
-    public function search($keyword = null,  $pageIndex = 1, $sizePage = 10)
-    {
-        $listBook = array();
-        if ($keyword != null) {
-            $query = "select * from book where createAt like '" . $keyword . "'" .
-                "or soldNumber like '%" . $keyword . "%'" .
-                "or ID like '%" . $keyword . "%'" .
-                "or username like '%" . $keyword . "%'" .
-                "or available like '%" . $keyword . "%'" .
-                "or author like '%" . $keyword . "%'" .
-                "or price like '%" . $keyword . "%'" .
-                "or publishYear like '%" . $keyword . "%'" .
-                "or image like '%" . $keyword . "%'" .
-                "or publisher like '%" . $keyword . "%'" .
-                "or size like '%" . $keyword . "%'" .
-                "or content like '%" . $keyword . "%'" .
-                "or discount like '%" . $keyword . "%'" .
-                "or title like '%" . $keyword . "%'";
-        }
-
-        parent::addQuerry($query);
-        $result = parent::executeQuery();
-        while ($row = mysqli_fetch_array($result)) {
-            $createAt =  $row["createAt"];
-            $soldNumber = $row["soldNumber"];
-            $bookId = $row["ID"];
-            $username = $row["username"];
-            $available = $row["available"];
-            $author = $row["author"];
-            $price = $row["price"];
-            $publishYear = $row["publishYear"];
-            $image = $row["image"];
-            $publisher = $row["publisher"];
-            $size = $row["size"];
-            $content = $row["content"];
-            $discount = $row["discount"];
-            $title = $row["title"];
-            $query = "SELECT category_name  FROM book_category, category WHERE book_category.categoryId = category.ID AND book_category.bookId = 11";
-            parent::addQuerry($query);
-            $categoryObject = parent::executeQuery();
-            // $category = mysqli_fetch_array($category);
-            $category = [];
-            while ($row2 = mysqli_fetch_array($categoryObject)) {
-                $category[] = $row2["category_name"];
-            }
 
             $book = new Book(
                 $bookId,
-                $createAt,
                 $soldNumber,
                 $available,
-                $username,
-                $title,
-                $author,
                 $price,
-                $publishYear,
-                $publisher,
-                $size,
-                $content,
                 $image,
                 $discount,
-                $category
+                $title
             );
 
             array_push($listBook, $book);
         }
 
-        $start = $sizePage * ($pageIndex - 1);
-        $listBook = array_slice($listBook, $start, $sizePage);
-
         return $listBook;
     }
-
 
     public function getById($bookId)
     {
@@ -309,8 +195,7 @@ class BookServices extends MySqlConnect
                 $size,
                 $content,
                 $image,
-                $discount,
-                $category
+                $discount
             );
             return $book;
         }

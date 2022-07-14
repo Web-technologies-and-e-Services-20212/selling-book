@@ -33,6 +33,10 @@ strong{
     color: transparent;
 }
 
+.text-center{
+    text-align: center;
+}
+
 .line{
     margin-top: 20px;
     margin-bottom: 20px;

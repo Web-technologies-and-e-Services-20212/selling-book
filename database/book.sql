@@ -423,3 +423,26 @@ CREATE TABLE `news` (
     KEY `FK_news_admin` (`adminId`),
     CONSTRAINT `FK_news_admin` FOREIGN KEY (`adminId`) REFERENCES `admin` (`ID`)
 )
+
+/**
+- Create Procedure Paging by Category
+*/
+DELIMITER $$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `Proc_getBookByCategoryPaging`(IN `m_categoryId` INT, IN `m_pageIndex` INT UNSIGNED, IN `m_pageSize` INT UNSIGNED)
+    COMMENT 'Phân trang cho danh sách sách lọc theo danh mục'
+BEGIN
+	SET @recordStart = ((m_pageIndex - 1) * m_pageSize) + 1,@recordEnd = m_pageIndex * m_pageSize;
+    IF m_categoryId = 0 THEN
+	CREATE TEMPORARY TABLE tb_book_category
+    SELECT ROW_NUMBER() OVER (ORDER BY b.createAt DESC) AS stt, b.ID,b.soldNumber,b.price,b.image,b.discount,b.title, b.available
+    FROM book b;
+    ELSE 
+    CREATE TEMPORARY TABLE tb_book_category
+    SELECT ROW_NUMBER() OVER (ORDER BY b.createAt DESC) AS stt, b.ID,b.soldNumber,b.price,b.image,b.discount,b.title, b.available
+    FROM book b, book_category bc
+    WHERE b.ID = bc.bookId AND bc.categoryId = m_categoryId;
+    END IF;
+	SELECT DISTINCT * FROM tb_book_category tb WHERE stt BETWEEN @recordStart AND @recordEnd;
+    DROP TABLE tb_book_category;
+END$$
+DELIMITER ;

@@ -1,6 +1,8 @@
 <?php
+require_once ROOT . DS . 'services' . DS . 'MySqlConnect.php';
 
-class Book {
+class Book
+{
     private $bookId;
     private $createAt;
     private $soldNumber;
@@ -17,11 +19,52 @@ class Book {
     private $discount;
     private $category;
 
-    public function __construct($bookId, $createAt, $soldNumber,
-    $available, $username, 
-    $title, $author, $price, $publishYear, 
-    $publisher, $size, $content, $image, $discount,
-    $category) {
+
+
+    public function __construct()
+    {
+        $arguments = func_get_args();
+        $numberOfArguments = func_num_args();
+
+        if (method_exists($this, $function = '__construct' . $numberOfArguments)) {
+            call_user_func_array(array($this, $function), $arguments);
+        }
+    }
+
+    public function __construct7(
+        $bookId,
+        $soldNumber,
+        $available,
+        $price,
+        $image,
+        $discount,
+        $title
+    ) {
+        self::setBookId($bookId);
+        self::setSoldNumber($soldNumber);
+        self::setAvailable($available);
+        self::setPrice($price);
+        self::setImage($image);
+        self::setDiscount($discount);
+        self::setTitle($title);
+    }
+
+    public function __construct14(
+        $bookId,
+        $createAt,
+        $soldNumber,
+        $available,
+        $username,
+        $title,
+        $author,
+        $price,
+        $publishYear,
+        $publisher,
+        $size,
+        $content,
+        $image,
+        $discount
+    ) {
         self::setBookId($bookId);
         self::setCreateAt($createAt);
         self::setSoldNumber($soldNumber);
@@ -36,7 +79,7 @@ class Book {
         self::setContent($content);
         self::setImage($image);
         self::setDiscount($discount);
-        self::setCategory($category);
+        self::setCategory($bookId);
     }
 
     /**
@@ -122,11 +165,13 @@ class Book {
         return $this->author;
     }
 
-    public function getCreateAt(){
+    public function getCreateAt()
+    {
         return $this->createAt;
     }
 
-    public function getSoldNumber(){
+    public function getSoldNumber()
+    {
         return $this->soldNumber;
     }
 
@@ -137,7 +182,7 @@ class Book {
     {
         $price = $this->price;
         $discount = $this->discount;
-        return $price * 100 / (100-$discount);
+        return $price * 100 / (100 - $discount);
         // return $price;
     }
 
@@ -148,7 +193,8 @@ class Book {
     {
         return $this->publishYear;
     }
-    public function getCategory(){
+    public function getCategory()
+    {
         return $this->category;
     }
 
@@ -197,7 +243,7 @@ class Book {
      */
     public function setPrice($price)
     {
-        $this->price = $price;
+        $this->price = (int)$price;
     }
 
     /**
@@ -248,13 +294,25 @@ class Book {
     {
         $this->discount = $discount;
     }
-    public function setCreateAt($createAt){
+    public function setCreateAt($createAt)
+    {
         $this->createAt = $createAt;
     }
-    public function setSoldNumber($soldNumber){
+    public function setSoldNumber($soldNumber)
+    {
         $this->soldNumber = $soldNumber;
     }
-    public function setCategory($category){
+    public function setCategory($bookId)
+    {
+        $sqlConnect = new MySqlConnect();
+        $getCategoryQuery = "SELECT c.category_name  FROM book_category, category c WHERE book_category.bookId = $bookId AND c.ID = book_category.categoryId;";
+        $sqlConnect->addQuerry($getCategoryQuery);
+        $categoryObject = $sqlConnect->executeQuery();
+        // $category = mysqli_fetch_array($category);
+        $category = [];
+        while ($row2 = mysqli_fetch_array($categoryObject)) {
+            array_push($category, $row2["category_name"]);
+        }
         $this->category = $category;
     }
 }

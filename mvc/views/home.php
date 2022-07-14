@@ -1,4 +1,9 @@
 <?php
+
+require_once ROOT . DS . "services" . DS . "BookServices.php";
+
+$bookStore = new BookServices();
+
 ?>
 <!DOCTYPE html>
 <html lang="en">

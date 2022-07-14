@@ -1,5 +1,16 @@
 <?php
+require_once ROOT . DS . "services" . DS . "BookServices.php";
 
+$bookStore = new BookServices();
+$book = $bookStore->getById($productId);
+if (!function_exists('currency_format')) {
+    function currency_format($number, $suffix = 'đ')
+    {
+        if (!empty($number)) {
+            return number_format($number, 0, ',', ',') . "{$suffix}";
+        }
+    }
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -11,7 +22,7 @@
     <script src="https://kit.fontawesome.com/d433183ff3.js" crossorigin="anonymous"></script>
     <link rel="shortcut icon" href="/selling-book/public/images/logo/logo_icon.png" type="image/x-icon">
     <link rel="stylesheet" href="/selling-book/public/css/style.css" type="text/css">
-    <title>IPM | Sách <?php echo $productId ?> </title>
+    <title>IPM | <?php echo $book->getTitle() ?> </title>
 
 </head>
 
@@ -27,61 +38,59 @@
                 <div class="grid-r5m2 p-lr15">
                     <div class="s_product-img relative">
                         <div class="product-sale absolute">
-                            <span class="sale-icon">- 15%</span>
+                            <span class="sale-icon">-<?php echo $book->getDiscount(); ?>%</span>
                         </div>
+                        <?php if (true) { ?>
+                            <div class="sold-out" style="background-color:#eee ;">Hết hàng</div>
+                        <?php } ?>
                         <div class="w100p relative">
-                            <img src="/selling-book/public/images/products/p1.png" alt="Sp1">
+                            <img src="<?php echo $book->getImage()[1]; ?>" alt="<?php echo $book->getTitle(); ?>">
                         </div>
                     </div>
                 </div>
 
                 <div class="grid-r5m3 p-lr15">
                     <div class="s_product-title">
-                        <h1>Monster #8</h1>
+                        <h1><?php echo $book->getTitle(); ?></h1>
                         <span>SKU: 8935250707718</span>
                     </div>
 
                     <div class="s_product-price">
-                        <span>49,300d</span>
-                        <del class="m-l20">58,000d</del>
+                        <span><?php
+                                echo currency_format($book->getPrice()); ?></span>
+                        <del class="m-l20"><?php echo currency_format($book->getPrice() - $book->getPrice() * $book->getDiscount() / 100); ?> </del>
                     </div>
 
                     <div class="s_product-subtitle m-t10">
                         <div class="box-info flex m-b10">
                             <div class="w50p m-b10 p-r10">
                                 <strong>Tác giả</strong>
-                                <span>Naoya Matsumoto</span>
+                                <span><?php echo $book->getAuthor(); ?></span>
                             </div>
                             <div class="w50p m-b10 p-r10">
                                 <strong>Nhà xuất bản</strong>
-                                <span>Hồng Đức</span>
+                                <span><?php echo $book->getPublisher(); ?></span>
                             </div>
                             <div class="w50p m-b10 p-r10">
                                 <strong>Năm xuất bản</strong>
-                                <span>2022</span>
+                                <span><?php echo $book->getPublishYear(); ?></span>
                             </div>
 
                             <div class="w50p m-b10 p-r10">
                                 <strong>Hình thức</strong>
-                                <span>Bìa mềm</span>
+                                <span><?php echo $book->getAuthor(); ?></span>
                             </div>
 
                             <div class="w50p m-b10 p-r10">
                                 <strong>Kích thước</strong>
-                                <span>12 x 18 cm</span>
+                                <span><?php echo $book->getSize(); ?></span>
                             </div>
                         </div>
 
                         <div class="short-desc">
                             <div class="w100p">
                                 <strong>Nội dung:</strong>
-                                <p>Phần thi cuối cùng của kì thi tuyển Lực lượng Phòng vệ đã kết thúc. Song, quái chính
-                                    (rõ ràng đã bị tiêu diệt) lại được một quái vật bí ẩn dạng người giúp hồi sinh, từ
-                                    đó tấn công Shinomiya Kikoru và các thí sinh khác. Ngay lúc Kikoru rơi vào đường
-                                    cùng, Hibino Kafka đột nhiên xuất hiện trong hình dạng quái vật…! Rốt cuộc con quái
-                                    vật dạng người kia là ai? Mục đích của nó là gì?
-                                    <br>
-                                    Mời các bạn thưởng thức tập 2 ngập tràn bí ẩn!
+                                <p><?php echo $book->getContent(); ?>
                                 </p>
                                 <p></p>
 
@@ -95,12 +104,12 @@
                         <div class="s_product-action flex f-align_center">
                             <div class="select-quantity">
                                 <input type="button" value="-" class="qty-minus">
-                                <input type="text" value="1" min="1" class="quantity-selector">
+                                <input type="text" value="1" min="1" id="qty-product" required oninput="this.value=this.value.replace(/[^0-9]/g,'');" class="quantity-selector">
                                 <input type="button" value="+" class="qty-plus">
                             </div>
 
-                            <div class="s_product-btn">
-                                <button class="btn product-add">Thêm vào giỏ</button>
+                            <div class="s_product-btn ">
+                                <button class="btn product-add <?php if (false) echo "btn-buy-disable" ?>">Thêm vào giỏ</button>
                             </div>
 
 
@@ -112,9 +121,11 @@
                     <div class="s_product-meta">
                         <p>danh mục :
                             <span class="s_product-category">
-                                <a href="#">sách mới</a>
-                                ,
-                                <a href="#">Manga - comic</a>
+                                <?php $arrlength = count($book->getCategory());
+                                for ($x = 0; $x < $arrlength; $x++) { ?>
+                                    <a href="#"><?php echo $book->getCategory()[$x] ?></a>
+                                <?php if ($x != $arrlength - 1) echo ",";
+                                } ?>
                             </span>
                         </p>
                     </div>
@@ -303,6 +314,9 @@
 
     <!-- Nội dung phần Footer -->
     <?php require_once ROOT . DS . 'mvc' . DS . 'views' . DS . 'footer.php'; ?>
+
+    <!-- JS dùng riêng -->
+    <script src="/selling-book/public/javascript/product.js"></script>
 </body>
 
 </html>

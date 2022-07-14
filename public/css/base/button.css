@@ -65,6 +65,7 @@ button {
 
 .btn-more:hover, .btn-default:hover {
   background-color: #009234;
+  color: #ffffff;
 }
 
 .btn i{
@@ -90,4 +91,22 @@ button {
 
 .product-add:hover, .product-add:active{
   background-color: #009234;
+}
+
+.product-add.btn-buy-disable {
+  pointer-events: none;
+  cursor: default;
+  opacity: 0.4;
+}
+
+.btn.btn-icon-center {
+  width: 100%;
+  max-width: calc(50% - 7px);
+  height: 36px;
+  text-align: center;
+  line-height: 24px;
+  color: #fff;
+  border: none;
+  border-radius: 3px;
+  font-size: 20px;
 }
