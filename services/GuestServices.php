@@ -233,6 +233,18 @@ class GuestServices extends MySqlConnect {
         }
     }
 
+    public function checkUsernameExist($username){
+        $query = "select * from guest where username = '$username'";
+        parent::addQuerry($query);
+
+        $result = parent::executeQuery();
+        if(mysqli_fetch_array($result)){
+            return True;
+        } else {
+            return False;
+        }
+    }
+
     /**
      * Get all book in bill
      * @param String $username

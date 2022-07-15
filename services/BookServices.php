@@ -70,7 +70,7 @@ class BookServices extends MySqlConnect
             "discount = " . "'" . $book->getDiscount() . "' ," .
             "content = " . "'" . $book->getContent() . "' ," .
             "title = " . $book->getTitle() . " " .
-            "where $book = " . $book->getBookId()
+            "where ID = " . $book->getBookId()
             . "";
         parent::addQuerry($query);
         parent::updateQuery();
