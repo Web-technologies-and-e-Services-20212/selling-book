@@ -1,47 +1,53 @@
 <?php
+require_once ROOT . DS . 'config' . DS . 'category_config.php';
 require_once ROOT . DS . 'mvc' . DS . 'controllers' . DS . 'Controller.php';
 require_once ROOT . DS . 'mvc' . DS . 'controllers' . DS . 'DefaultController.php';
 
 class ListProductsController extends DefaultController implements Controller
 {
 
-    private $route;
-    public function __construct($route)
-    {
-        $this->route = $route;
-    }
+
+    //Override
     public function __render()
-    {   
-        
-        switch ($this->route) {
-            case '/':
-                require_once ROOT . DS . 'mvc' . DS . 'views' . DS . 'listCategory' . DS . 'list_products.php';
+    {
+        $_category = NO_CATEGORY;
+        switch ($this->getRoute()) {
+            case CATEGORY_DETECTIVE['route']:
+                $_category = CATEGORY_DETECTIVE;
                 break;
-            case 'detective':
-                require_once ROOT . DS . 'mvc' . DS . 'views' . DS . 'listCategory' . DS . 'list_detective.php';
+            case CATEGORY_MODERN_LITERARURE['route']:
+                $_category = CATEGORY_MODERN_LITERARURE;
                 break;
-            case 'modern-literature':
-                require_once ROOT . DS . 'mvc' . DS . 'views' . DS . 'listCategory' . DS . 'list_modern.php';
+            case CATEGORY_CLASSIC_LITERATURE['route']:
+                $_category = CATEGORY_CLASSIC_LITERATURE;
                 break;
-            case 'classic-literature':
-                require_once ROOT . DS . 'mvc' . DS . 'views' . DS . 'listCategory' . DS . 'list_classic.php';
+            case CATEGORY_FANTASY['route']:
+                $_category = CATEGORY_FANTASY;
                 break;
-            case 'fantasy':
-                require_once ROOT . DS . 'mvc' . DS . 'views' . DS . 'listCategory' . DS . 'list_fantasy.php';
+            case CATEGORY_LIGHT_NOVEL['route']:
+                $_category = CATEGORY_LIGHT_NOVEL;
                 break;
-            case 'light-novel':
-                require_once ROOT . DS . 'mvc' . DS . 'views' . DS . 'listCategory' . DS . 'list_novel.php';
+            case CATEGORY_MANGA_COMIC['route']:
+                $_category = CATEGORY_MANGA_COMIC;
                 break;
-            case 'manga':
-                require_once ROOT . DS . 'mvc' . DS . 'views' . DS . 'listCategory' . DS . 'list_manga.php';
+            case CATEGORY_LEARNING_BOOK['route']:
+                $_category = CATEGORY_LEARNING_BOOK;
                 break;
-            case 'learning-book':
-                require_once ROOT . DS . 'mvc' . DS . 'views' . DS . 'listCategory' . DS . 'list_learning.php';
+            case CATEGORY_NEW_BOOKS['route']:
+                $_category = CATEGORY_NEW_BOOKS;
                 break;
 
+            case CATEGORY_TOP_BOOKS['route']:
+                $_category = CATEGORY_TOP_BOOKS;
+                break;
+
+            case CATEGORY_HOT_DEALS['route']:
+                $_category = CATEGORY_HOT_DEALS;
+                break;
             default:
-                require_once ROOT . DS . 'mvc' . DS . 'views' . DS . 'listCategory' . DS . 'list_products.php';
                 break;
         }
+
+        require_once ROOT . DS . 'mvc' . DS . 'views'. DS . 'list_products.php';
     }
 }

@@ -111,7 +111,7 @@ class GuestServices extends MySqlConnect {
      */
     public function get($username){
         $query = "select * from guest
-                    where user_name='" . $username . "'";
+                    where username='" . $username . "'";
         parent::addQuerry($query);
         $result = parent::executeQuery();
 

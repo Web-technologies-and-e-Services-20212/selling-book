@@ -3,9 +3,10 @@ require_once ROOT . DS . 'config' . DS . 'category_config.php';
 global $path_project;
 // Định nghĩa số sản phẩm cố định
 $numBook = 10;
-$newBookList = $bookStore->getAll(CATEGORY_NEW_BOOKS, 1, 10);
-// $topBookList = $bookStore->getAll(4);
-// $hotBookList = $bookStore->getAll(3);
+$currentCategory = CATEGORY_NEW_BOOKS; 
+$newBookList = $bookStore->getAll(CATEGORY_NEW_BOOKS['id'], 1, 12);
+$topBookList = $bookStore->getAll(CATEGORY_TOP_BOOKS['id'], 1, 12);
+$hotBookList = $bookStore->getAll(CATEGORY_HOT_DEALS['id'], 1, 12);
 // 
 // foreach ($newBooks as $key => $book) {
 //     print_r("Book ID :" . $book->getBookId() . "<br>");
@@ -160,7 +161,7 @@ if (!function_exists('currency_format')) {
                                     <div class="product-sale absolute">
                                         <span class="sale-icon"> -<?php echo $book->getDiscount(); ?>%</span>
                                     </div>
-                                    <?php if(true){ ?>
+                                    <?php if (true) { ?>
                                         <div class="sold-out">Hết hàng</div>
                                     <?php } ?>
                                     <div class="img relative">
@@ -176,8 +177,11 @@ if (!function_exists('currency_format')) {
                                     </h3>
                                     <div class="product-prices">
                                         <div class="price price-new"><?php
-                                                                        echo currency_format($book->getPrice()); ?></div>
-                                        <div class="price price-old">58,000đ</div>
+                                                                        echo currency_format($book->getPrice()); ?>
+                                        </div>
+                                        <div class="price price-old">
+                                            <?php echo currency_format($book->getPrice() - $book->getPrice() * $book->getDiscount() / 100); ?>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -188,34 +192,37 @@ if (!function_exists('currency_format')) {
                 </div>
 
                 <div class="pro-list-top list-content flex w100p">
-                <?php foreach ($topBookList as $key => $book) { ?>
-                    <!-- Card product start -->
-                    <div class="product-card grid-r5">
-                        <div class="product-container m-b20">
-                            <div class="product-img relative">
-                                <div class="product-sale absolute">
-                                    <span class="sale-icon">- <?php echo $book->getDiscount(); ?> %</span>
+                    <?php foreach ($topBookList as $key => $book) { ?>
+                        <!-- Card product start -->
+                        <div class="product-card grid-r5">
+                            <div class="product-container m-b20">
+                                <div class="product-img relative">
+                                    <div class="product-sale absolute">
+                                        <span class="sale-icon">- <?php echo $book->getDiscount(); ?> %</span>
+                                    </div>
+                                    <div class="img relative">
+                                        <a href="#">
+                                            <img src="<?php echo $book->getImage()[0]; ?>" alt="<?php echo $book->getTitle(); ?>">
+                                        </a>
+                                    </div>
                                 </div>
-                                <div class="img relative">
-                                    <a href="#">
-                                        <img src="<?php echo $book->getImage()[0]; ?>" alt="<?php echo $book->getTitle(); ?>">
-                                    </a>
-                                </div>
-                            </div>
 
-                            <div class="product-detail">
-                                <h3 class="product-name">
-                                    <a href="#"><?php echo $book->getTitle(); ?></a>
-                                </h3>
-                                <div class="product-prices">
-                                    <div class="price price-new"><?php
-                                                                        echo currency_format($book->getPrice()); ?></div>
-                                    <div class="price price-old">58,000đ</div>
+                                <div class="product-detail">
+                                    <h3 class="product-name">
+                                        <a href="#"><?php echo $book->getTitle(); ?></a>
+                                    </h3>
+                                    <div class="product-prices">
+                                        <div class="price price-new">
+                                            <?php echo currency_format($book->getPrice()); ?>
+                                        </div>
+                                        <div class="price price-old">
+                                            <?php echo currency_format($book->getPrice() - $book->getPrice() * $book->getDiscount() / 100); ?>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <!-- Card product end -->
+                        <!-- Card product end -->
                     <?php } ?>
 
 
@@ -223,39 +230,42 @@ if (!function_exists('currency_format')) {
 
                 <div class="pro-list-hot list-content flex w100p">
                     <?php foreach ($hotBookList as $key => $book) { ?>
-                    <!-- Card product start -->
-                    <div class="product-card grid-r5">
-                        <div class="product-container m-b20">
-                            <div class="product-img relative">
-                                <div class="product-sale absolute">
-                                    <span class="sale-icon">-<?php echo $book->getDiscount(); ?>%</span>
+                        <!-- Card product start -->
+                        <div class="product-card grid-r5">
+                            <div class="product-container m-b20">
+                                <div class="product-img relative">
+                                    <div class="product-sale absolute">
+                                        <span class="sale-icon">-<?php echo $book->getDiscount(); ?>%</span>
+                                    </div>
+                                    <div class="img relative">
+                                        <a href="#">
+                                            <img src="<?php echo $book->getImage()[0]; ?>" alt="<?php echo $book->getTitle(); ?>">
+                                        </a>
+                                    </div>
                                 </div>
-                                <div class="img relative">
-                                    <a href="#">
-                                        <img src="<?php echo $book->getImage()[0]; ?>" alt="<?php echo $book->getTitle(); ?>">
-                                    </a>
-                                </div>
-                            </div>
 
-                            <div class="product-detail">
-                                <h3 class="product-name">
-                                    <a href="#"><?php echo $book->getTitle(); ?></a>
-                                </h3>
-                                <div class="product-prices">
-                                    <div class="price price-new"><?php
-                                                                        echo currency_format($book->getPrice()); ?></div>
-                                    <div class="price price-old">58,000đ</div>
+                                <div class="product-detail">
+                                    <h3 class="product-name">
+                                        <a href="#"><?php echo $book->getTitle(); ?></a>
+                                    </h3>
+                                    <div class="product-prices">
+                                        <div class="price price-new">
+                                            <?php echo currency_format($book->getPrice()); ?>
+                                        </div>
+                                        <div class="price price-old">
+                                            <?php echo currency_format($book->getPrice() - $book->getPrice() * $book->getDiscount() / 100); ?>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <!-- Card product end -->
+                        <!-- Card product end -->
                     <?php } ?>
 
                 </div>
 
                 <div class="see-more w100p flex f-center">
-                    <a href="#" class="btn btn-more">Xem thêm</a>
+                    <a id="see-more" href=<?php echo "/" . $path_project . "/" ."list-products" . "/" . CATEGORY_NEW_BOOKS['route'] ?> class="btn btn-more">Xem thêm</a>
                 </div>
             </div>
             <!-- List product end -->

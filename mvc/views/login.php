@@ -2,21 +2,21 @@
 ob_start();
 session_start();
 
-if(array_key_exists("username", $_POST)){
+if (array_key_exists("username", $_POST)) {
     $username = $_POST['username'];
-    $password = $_POST['password'];
+    $password = sha1($_POST['password']);
     require_once ROOT . DS . 'services' . DS . 'GuestServices.php';
     $service = new GuestServices();
     $checker = $service->checkAccount($username, $password);
-    if($checker){
-            $_SESSION['username'] = $username;
-            $_SESSION['password'] = $password;
-            // header("Location: profile");
+    if ($checker) {
+        $_SESSION['username'] = $username;
+        $_SESSION['password'] = $password;
+        // header("Location: profile");
     }
 }
-if(isset($_SESSION['username']) && isset($_SESSION['password'])){
-    if($_SESSION['username'] != '' && $_SESSION['password'] != '') {
-            header("Location: /");
+if (isset($_SESSION['username']) && isset($_SESSION['password'])) {
+    if ($_SESSION['username'] != '' && $_SESSION['password'] != '') {
+        header("Location: account");
     }
 }
 ?>
@@ -58,11 +58,12 @@ if(isset($_SESSION['username']) && isset($_SESSION['password'])){
                         <input type="email" name="username" id="username" placeholder="Email">
                     </div>
 
-                    <div id="form-password" class="form__input">
+                    <div id="form-password" class="form__input relative">
                         <label for="" class="form__lable-icon">
                             <i class="fa-solid fa-lock"></i>
                         </label>
                         <input type="password" name="password" id="password" placeholder="Mật khẩu">
+                        <div onclick="togglePassword()" class="toggle-password"><i class="fa-solid fa-eye"></i></div>
                     </div>
 
                     <div id="form-action">
@@ -72,17 +73,17 @@ if(isset($_SESSION['username']) && isset($_SESSION['password'])){
                     <div id="form-back" class="m-t14">
                         <a href="#">Quên mật khẩu ?</a>
                         hoặc
-                        <a href="#">Đăng ký</a>
-                        
+                        <a href=<?php echo "/" . $path_project . "/" ."register" ?>>Đăng ký</a>
+
                     </div>
 
                     <div id="form-login_social" class="m-t20 m-b10 flex f-space_between ">
                         <button class="btn btn-icon-center w45p icon-fb">
-                        <i class="fa-brands fa-facebook-f"></i>
+                            <i class="fa-brands fa-facebook-f"></i>
                         </button>
 
                         <button class="btn btn-icon-center w45p icon-gg">
-                        <i class="fa-brands fa-google"></i>
+                            <i class="fa-brands fa-google"></i>
                         </button>
                     </div>
                 </form>
@@ -93,6 +94,9 @@ if(isset($_SESSION['username']) && isset($_SESSION['password'])){
 
     <!-- Nội dung phần Footer -->
     <?php require_once ROOT . DS . 'mvc' . DS . 'views' . DS . 'footer.php'; ?>
+
+    <!-- JS dùng chung -->
+    <script src="public/javascript/base.js"></script>
 </body>
 
 </html>

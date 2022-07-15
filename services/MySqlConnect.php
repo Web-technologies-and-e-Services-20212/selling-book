@@ -48,4 +48,9 @@ class MySqlConnect implements ISqlConnect {
         // no return result
     }
 
+    public function closeQuery($result){
+        $result->close();
+        $this->db->next_result();
+    }
+
 }

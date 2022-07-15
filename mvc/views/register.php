@@ -42,21 +42,22 @@
                         <label for="" class="form__lable-icon">
                             <i class="fa-solid fa-user"></i>
                         </label>
-                        <input type="text" name="fname" id="last_name" placeholder="Tên">
+                        <input type="text" name="fname" id="first_name" placeholder="Tên">
                     </div>
 
                     <div id="form-email" class="form__input">
                         <label for="" class="form__lable-icon">
                             <i class="fa-solid fa-envelope"></i>
                         </label>
-                        <input type="text" name="lastName" id="last_name" placeholder="Email">
+                        <input type="text" name="lastName" id="email" placeholder="Email">
                     </div>
 
-                    <div id="form-password" class="form__input">
+                    <div id="form-password" class="form__input relative">
                         <label for="" class="form__lable-icon">
                             <i class="fa-solid fa-lock"></i>
                         </label>
-                        <input type="password" name="password" id="last_name" placeholder="Mật khẩu">
+                        <input type="password" name="password" id="password" placeholder="Mật khẩu">
+                        <div onclick="togglePassword()" class="toggle-password"><i class="fa-solid fa-eye"></i></div>
                     </div>
 
                     <div id="form-action">
@@ -84,6 +85,7 @@
 
     <!-- Nội dung phần Footer -->
     <?php require_once ROOT . DS . 'mvc' . DS . 'views' . DS . 'footer.php'; ?>
+    <script src="library/javascript/base.js"></script>
 </body>
 
 </html>
