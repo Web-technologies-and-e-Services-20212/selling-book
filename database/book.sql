@@ -446,3 +446,9 @@ BEGIN
     DROP TABLE tb_book_category;
 END$$
 DELIMITER ;
+
+CREATE TABLE `banner` (
+	`ID` int(11) NOT NULL AUTO_INCREMENT,
+    `image` varchar(1024) not null DEFAULT '0',
+    PRIMARY KEY (`ID`)
+)
