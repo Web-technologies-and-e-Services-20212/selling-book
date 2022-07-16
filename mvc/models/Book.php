@@ -18,6 +18,7 @@ class Book
     private $image;
     private $discount;
     private $category;
+    private $type;
 
 
 
@@ -49,7 +50,7 @@ class Book
         self::setTitle($title);
     }
 
-    public function __construct14(
+    public function __construct15(
         $bookId,
         $createAt,
         $soldNumber,
@@ -63,7 +64,8 @@ class Book
         $size,
         $content,
         $image,
-        $discount
+        $discount,
+        $type
     ) {
         self::setBookId($bookId);
         self::setCreateAt($createAt);
@@ -80,6 +82,7 @@ class Book
         self::setImage($image);
         self::setDiscount($discount);
         self::setCategory($bookId);
+        self::setType($type);
     }
 
     /**
@@ -89,6 +92,15 @@ class Book
     {
         return $this->bookId;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getType()
+    {
+        return $this->type;
+    }
+
 
     /**
      * @return mixed
@@ -286,6 +298,15 @@ class Book
     {
         $this->image = $image;
     }
+
+    /**
+     * @param mixed $type
+     */
+    public function setType($type)
+    {
+        $this->type = $type;
+    }
+
 
     /**
      * @param mixed $discount
