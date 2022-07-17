@@ -7,10 +7,9 @@
     font-size: 18px;
     margin-bottom: 20px;
 }
-#cartForm {
-    overflow-y: auto;
-    height: 500px;
-}
+
+
+
 
 .back:hover{
     color:#01a14b;

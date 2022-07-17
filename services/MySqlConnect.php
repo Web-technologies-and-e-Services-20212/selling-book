@@ -41,7 +41,7 @@ class MySqlConnect implements ISqlConnect {
         $result = mysqli_query($this->db, $this->query);
 
         if(!$result){
-            echo "FAIL when update!";
+            echo "FAIL when update!" . mysqli_error($this->db);
             exit();
         }
 

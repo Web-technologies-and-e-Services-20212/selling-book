@@ -100,11 +100,11 @@ if (!function_exists('currency_format')) {
 
                     </div>
 
-                    <form action="#">
+                    <form method="POST" onsubmit="return validCart()">
                         <div class="s_product-action flex f-align_center">
                             <div class="select-quantity">
                                 <input type="button" value="-" class="qty-minus">
-                                <input type="text" value="1" min="1" id="qty-product" required oninput="this.value=this.value.replace(/[^0-9]/g,'');" class="quantity-selector">
+                                <input type="text" name="product-number" value="1" min="1" id="qty-product" required oninput="this.value=this.value.replace(/[^0-9]/g,'');" class="quantity-selector">
                                 <input type="button" value="+" class="qty-plus">
                             </div>
 
@@ -117,7 +117,19 @@ if (!function_exists('currency_format')) {
 
 
                     </form>
-
+                    <?php
+                    if (array_key_exists('product-number', $_POST)) {
+                        require_once ROOT . DS . 'services' . DS . 'GuestServices.php';
+                        $username = $_SESSION['username'];
+                        $quantity = $_POST['product-number'];
+                        $guestServices = new GuestServices();
+                        $listProducts = $guestServices->getListCartBooks($_SESSION['username']);
+                        if (!in_array($book , $listProducts)) {
+                            $guestServices->insertBookToCart($username, $book , $quantity);
+                        }
+                        header("refresh: 0");
+                    }
+                    ?>
                     <div class="s_product-meta">
                         <p>danh mục :
                             <span class="s_product-category">
@@ -317,6 +329,38 @@ if (!function_exists('currency_format')) {
 
     <!-- JS dùng riêng -->
     <script src="/selling-book/public/javascript/product.js"></script>
+    <script>
+	var session = "";
+	<?php
+	if(isset($_SESSION['username'])){
+			echo "session = '" . $_SESSION['username'] . "' ;";
+	}
+	?>
+	function validComment(){
+			if(session == ""){
+					alert("Vui lòng đăng nhập để bình luận!");
+					return false;
+			}
+
+			let comment = document.getElementById("your_comment").value;
+
+			if(comment == ""){
+				alert("Nhập bình luận để tiếp tục!");
+				return false;
+			}
+
+			return true;
+	}
+
+	function validCart(){
+			if(session == ""){
+					alert("Vui lòng đăng nhập để sử dụng giỏ hàng!")
+					return false;
+			}
+
+			return true;
+	}
+	</script>
 </body>
 
 </html>

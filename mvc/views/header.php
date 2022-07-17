@@ -17,17 +17,25 @@ $url = isset($_GET["url"]) ? $_GET["url"] : "/";
         <div class="container flex f-space_between f-align_center h100p">
             <div>CÔNG TY CỔ PHẦN XUẤT BẢN VÀ TRUYỀN THÔNG IPM</div>
             <div class="account">
-                <a href=<?php echo "/" . $path_project . "/login" ?>><?php
-                                                                        if (isset($_SESSION['username'])) {
-                                                                            $guestService = new GuestServices();
-                                                                            $currentUser = $guestService->get($_SESSION['username']);
-                                                                            echo "Xin chào : " . $currentUser->getName();
-                                                                        } else {
-                                                                            echo "Đăng nhập";
-                                                                        }
-                                                                        ?></a>
-                <p class="divider">|</p>
-                <a href=<?php echo "/" . $path_project . "/library/refresh_session.php" ?>>Đăng xuất</a>
+                <?php
+                    if (!isset($_SESSION['username'])) { ?>
+                    <a href=<?php echo "/" . $path_project . "/" . "register"; ?>>Đăng ký</a>
+                    <p class="divider">|</p>
+                    <a href=<?php echo "/" . $path_project . "/login"; ?>>Đăng nhập</a>
+
+                 <?php   } ?>
+                <?php
+                    if (isset($_SESSION['username'])) {
+                        $guestService = new GuestServices();
+                        $currentUser = $guestService->get($_SESSION['username']);
+                        $productsNumber =count($guestService->getListCartBooks($_SESSION['username']));
+                        ?>
+                    <a href=<?php echo "/" . $path_project . "/account"; ?>>
+                    <?php echo "Xin chào: " . $currentUser->getName(); ?>
+                    </a>
+                    <p class="divider">|</p>
+                    <a href=<?php echo "/" . $path_project . "/library/refresh_session.php"; ?>>Đăng xuất</a>
+                 <?php   } ?>
             </div>
         </div>
     </div>
@@ -57,12 +65,16 @@ $url = isset($_GET["url"]) ? $_GET["url"] : "/";
                         <a class="flex f-space_between f-align_center" href=<?php echo "/" . $path_project . "/cart" ?>>
                             <div class="cart-icon relative">
                                 <i class="fa-solid fa-cart-shopping"></i>
-                                <span class="quantity absolute">3</span>
+                                <span class="quantity absolute"><?php 
+                                if(!isset($_SESSION['username'])) echo "0";
+                                else echo $productsNumber; ?></span>
                             </div>
 
                             <div class="cart-info">
                                 <h2>Giỏ hàng</h2>
-                                <span>3 sản phẩm</span>
+                                <span><?php 
+                                if(!isset($_SESSION['username'])) echo "0";
+                                else echo $productsNumber; ?> sản phẩm</span>
                             </div>
                         </a>
                     </div>

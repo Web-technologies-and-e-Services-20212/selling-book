@@ -1,6 +1,8 @@
 <?php
 require_once ROOT . DS . "services" . DS . "BookServices.php";
 require_once ROOT . DS . 'config' . DS . 'category_config.php';
+require_once ROOT . DS . 'library' . DS . 'format.php';
+
 
 $pageSize = 12;
 $currentRoute = "list-products";
@@ -20,16 +22,6 @@ if (isset($_category)) {
 
 }
 
-
-
-if (!function_exists('currency_format')) {
-    function currency_format($number, $suffix = 'đ')
-    {
-        if (!empty($number)) {
-            return number_format($number, 0, ' ', ',') . "{$suffix}";
-        }
-    }
-}
 
 ?>
 <!DOCTYPE html>

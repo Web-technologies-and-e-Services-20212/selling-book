@@ -1,6 +1,5 @@
 <?php
-ob_start();
-session_start();
+
 
 if (array_key_exists("username", $_POST)) {
     $username = $_POST['username'];
@@ -9,9 +8,13 @@ if (array_key_exists("username", $_POST)) {
     $service = new GuestServices();
     $checker = $service->checkAccount($username, $password);
     if ($checker) {
+        ob_start();
+        session_start();
         $_SESSION['username'] = $username;
         $_SESSION['password'] = $password;
         // header("Location: profile");
+    }else{
+        $exitsAccountMessage = "Thông tin tài khoản không chính xác";
     }
 }
 if (isset($_SESSION['username']) && isset($_SESSION['password'])) {
@@ -49,6 +52,9 @@ if (isset($_SESSION['username']) && isset($_SESSION['password'])) {
             </div>
 
             <div class="register__form p-lr15 p-tb15 m-b20">
+                <?php if(isset($exitsAccountMessage)){ ?>
+                    <div class="error-exits"><?php echo $exitsAccountMessage; ?></div>
+                <?php }?>
                 <form action="" id="create-customer" method="POST">
 
                     <div id="form-email" class="form__input">
@@ -73,7 +79,7 @@ if (isset($_SESSION['username']) && isset($_SESSION['password'])) {
                     <div id="form-back" class="m-t14">
                         <a href="#">Quên mật khẩu ?</a>
                         hoặc
-                        <a href=<?php echo "/" . $path_project . "/" ."register" ?>>Đăng ký</a>
+                        <a href=<?php echo "/" . $path_project . "/" . "register" ?>>Đăng ký</a>
 
                     </div>
 

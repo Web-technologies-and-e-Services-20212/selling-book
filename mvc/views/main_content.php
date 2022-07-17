@@ -1,12 +1,14 @@
 <?php
 require_once ROOT . DS . 'config' . DS . 'category_config.php';
+require_once ROOT . DS . 'library' . DS . 'format.php';
+
 global $path_project;
 // Định nghĩa số sản phẩm cố định
 $numBook = 10;
 $currentCategory = CATEGORY_NEW_BOOKS; 
-$newBookList = $bookStore->getAll(CATEGORY_NEW_BOOKS['id'], 1, 12);
-$topBookList = $bookStore->getAll(CATEGORY_TOP_BOOKS['id'], 1, 12);
-$hotBookList = $bookStore->getAll(CATEGORY_HOT_DEALS['id'], 1, 12);
+$newBookList = $bookStore->getAll(CATEGORY_NEW_BOOKS['id'], 1, $numBook);
+$topBookList = $bookStore->getAll(CATEGORY_TOP_BOOKS['id'], 1, $numBook);
+$hotBookList = $bookStore->getAll(CATEGORY_HOT_DEALS['id'], 1, $numBook);
 // 
 // foreach ($newBooks as $key => $book) {
 //     print_r("Book ID :" . $book->getBookId() . "<br>");
@@ -27,14 +29,14 @@ $hotBookList = $bookStore->getAll(CATEGORY_HOT_DEALS['id'], 1, 12);
 //     echo "-----------" . "<br>";
 // }
 
-if (!function_exists('currency_format')) {
-    function currency_format($number, $suffix = 'đ')
-    {
-        if (!empty($number)) {
-            return number_format($number, 0, ' ', ',') . "{$suffix}";
-        }
-    }
-}
+// if (!function_exists('currency_format')) {
+//     function currency_format($number, $suffix = 'đ')
+//     {
+//         if (!empty($number)) {
+//             return number_format($number, 0, ' ', ',') . "{$suffix}";
+//         }
+//     }
+// }
 
 ?>
 <div class="w100p" id="main-content">
