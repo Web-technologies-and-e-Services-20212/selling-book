@@ -58,8 +58,13 @@
     cursor: pointer;
 }
 
+
 .prev-page:hover, .next-page:hover{
     background-color: #01a14b;
+    color: #fff;
+}
+
+.prev-page:hover a, .next-page:hover a{
     color: #fff;
 }
 
@@ -69,6 +74,11 @@
     padding: 0 10px;
     margin: 10px 0;
     cursor: pointer;
+    line-height: 28px;
+}
+
+.number-pages li.active{
+    background-color: #01a14b;
 }
 
 .number-pages li:hover{
@@ -80,6 +90,9 @@
 }
 
 .number-pages li a{
-    line-height: 28px;
     color: #909090;
+}
+
+.number-pages li.active a{
+    color: #fff;
 }

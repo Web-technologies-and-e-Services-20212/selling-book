@@ -92,7 +92,7 @@ class BookServices extends MySqlConnect
         parent::updateQuery();
     }
 
-    public function getAll($param = NO_CATEGORY, $pageIndex = 1, $pageSize = 10)
+    public function getAll($param = NO_CATEGORY['id'], $pageIndex = 1, $pageSize = 10)
     {
         $listBook = array();
         // switch($param){
@@ -151,8 +151,17 @@ class BookServices extends MySqlConnect
 
             array_push($listBook, $book);
         }
+        parent::closeQuery($result);
 
         return $listBook;
+    }
+
+    public function getTotalRecord($param = NO_CATEGORY['id']){
+        $query = "CALL Proc_getAllRecordByCategory($param)";
+        parent::addQuerry($query);
+        $result = parent::executeQuery();
+        $row = mysqli_fetch_assoc($result);
+        return $row['totalRecord'];
     }
 
     public function getById($bookId)

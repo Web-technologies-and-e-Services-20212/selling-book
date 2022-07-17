@@ -1,5 +1,27 @@
 <?php
+if (array_key_exists("username", $_POST)) {
+    $lastName = $_POST['lname'];
+    $firstName = $_POST['fname'];
+    $username = $_POST['username'];
+    $password = sha1($_POST['password']);
+    
+    $name = $lastName . " " . $firstName;
+    require_once ROOT . DS . 'services' . DS . 'GuestServices.php';
+    require_once ROOT . DS . 'mvc' . DS . 'models' . DS . 'Guest.php';
+    $guest = new Guest($username, $password, $name);
+    $service = new GuestServices();
 
+    $isExitUser = $service->checkUsernameExist($username);
+    $exitUserMessage = "Email đã tồn tại trong hệ thống !";
+
+    if(!$isExitUser) {
+        $service->insert($guest);
+        header("Location: login");
+    } else {
+        // echo "<script type='text/javascript'>alert('tài khoản đã tồn tại trong hệ thống');</script>";
+        // header("Location: register");
+    }
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -23,44 +45,55 @@
 
     <!-- Nội dung phần Register -->
     <div class="w100p">
-        <div class="container p-t30 m-b30">
+        <div class="container m-b30">
             <div class="register__title p-tb10 p-lr10 text-center">
                 <h1>Tạo tài khoản</h1>
                 <div class="line"></div>
             </div>
 
             <div class="register__form p-lr15 p-tb15 m-b20">
-                <form action="/" id="create-customer">
+                <?php if(isset($exitUserMessage)){ ?>
+                    <div class="error-exits"><?php echo $exitUserMessage; ?></div>
+                <?php }?>
+                <form action="" id="create-customer" method="POST">
                     <div id="form-last_name" class="form__input">
                         <label for="" class="form__lable-icon">
                             <i class="fa-solid fa-user"></i>
                         </label>
-                        <input type="text" name="lname" id="last_name" placeholder="Họ">
+                        <input type="text" name="lname" required id="last_name" placeholder="Họ">
                     </div>
 
                     <div id="form-first_name" class="form__input">
                         <label for="" class="form__lable-icon">
                             <i class="fa-solid fa-user"></i>
                         </label>
-                        <input type="text" name="fname" id="last_name" placeholder="Tên">
+                        <input type="text" name="fname" required id="first_name" placeholder="Tên">
                     </div>
 
                     <div id="form-email" class="form__input">
                         <label for="" class="form__lable-icon">
                             <i class="fa-solid fa-envelope"></i>
                         </label>
-                        <input type="text" name="lastName" id="last_name" placeholder="Email">
+                        <input type="email" name="username" required id="email" placeholder="Email">
                     </div>
 
-                    <div id="form-password" class="form__input">
+                    <div id="form-password" class="form__input relative">
                         <label for="" class="form__lable-icon">
                             <i class="fa-solid fa-lock"></i>
                         </label>
-                        <input type="password" name="password" id="last_name" placeholder="Mật khẩu">
+                        <input type="password" name="password" required id="register-password" placeholder="Mật khẩu">
+                    </div>
+
+                    <div id="form-password" class="form__input relative">
+                        <label for="" class="form__lable-icon">
+                            <i class="fa-solid fa-lock"></i>
+                        </label>
+                        <input type="password" name=confirm-password" required id="confirm-password" placeholder="Xác nhận mật khẩu">
+                        
                     </div>
 
                     <div id="form-action">
-                        <input type="submit" value="Đăng ký" class="btn w100p m-t20 btn-default">
+                        <input type="submit" onsubmit="validateRegister()" value="Đăng ký" class="btn w100p m-t20 btn-default">
                     </div>
 
                     <div id="form-back" class="m-t14">
@@ -69,11 +102,11 @@
 
                     <div id="form-login_social" class="m-t20 m-b10 flex f-space_between ">
                         <button class="btn btn-icon-center w45p icon-fb">
-                        <i class="fa-brands fa-facebook-f"></i>
+                            <i class="fa-brands fa-facebook-f"></i>
                         </button>
 
                         <button class="btn btn-icon-center w45p icon-gg">
-                        <i class="fa-brands fa-google"></i>
+                            <i class="fa-brands fa-google"></i>
                         </button>
                     </div>
                 </form>
@@ -84,6 +117,7 @@
 
     <!-- Nội dung phần Footer -->
     <?php require_once ROOT . DS . 'mvc' . DS . 'views' . DS . 'footer.php'; ?>
+    <script src="public/javascript/base.js"></script>
 </body>
 
 </html>

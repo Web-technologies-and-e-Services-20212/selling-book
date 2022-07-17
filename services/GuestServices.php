@@ -99,7 +99,12 @@ class GuestServices extends MySqlConnect {
         $result = parent::executeQuery();
 
         $row = mysqli_fetch_array($result);
+        if(isset($row["ID"])){
         $cart_id = $row["ID"];
+
+        }else{
+            
+        }
 
         return $cart_id;
     }
@@ -111,7 +116,7 @@ class GuestServices extends MySqlConnect {
      */
     public function get($username){
         $query = "select * from guest
-                    where user_name='" . $username . "'";
+                    where username='" . $username . "'";
         parent::addQuerry($query);
         $result = parent::executeQuery();
 
@@ -205,9 +210,10 @@ class GuestServices extends MySqlConnect {
 
         while($row = mysqli_fetch_array($result)){
             $book_id = $row["bookId"];
+            $quantity = $row["quantity"];
             $bookServices = new BookServices();
             $book = $bookServices->getById($book_id);
-            array_push($listCartProducts, $book);
+            array_push($listCartProducts, ['book' => $book, 'quantity' => $quantity]);
 
         }
 
@@ -237,7 +243,7 @@ class GuestServices extends MySqlConnect {
      */
     public function removeBookFromCart($product_id, $username){
         $cart_id = self::getCartID($username);
-        $query = "delete from cart_book where bookId = $product_id and cardId = $cart_id";
+        $query = "CALL Proc_DeleteCartBooks($cart_id, $product_id)";
 
         parent::addQuerry($query);
         parent::updateQuery();
