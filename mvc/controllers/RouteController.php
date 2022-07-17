@@ -43,7 +43,7 @@ class RouteController
                 $param = isset($urlArray[0]) ? $urlArray[0] : "/";
                 break;
             case 'admin':
-                $param = $urlArray[0];
+                $param = isset($urlArray[0]) ? $urlArray[0] : "/";
                 break;
             case 'account':
                 $param = isset($urlArray[0]) ? $urlArray[0] : "/";

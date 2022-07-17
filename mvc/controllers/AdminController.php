@@ -13,11 +13,27 @@ class AdminController extends DefaultController implements Controller
     public function __render()
     {
         switch ($this->route) {
-            case 'dashboard':
+            case '/':
                 require_once ROOT . DS . 'mvc' . DS . 'views' . DS . 'admin' . DS . 'dashboard.php';
                 break;
-            case 'manage-product':
-                require_once ROOT . DS . 'mvc' . DS . 'views' . DS . 'admin' . DS . 'manage_product.php';
+            case 'product-management':
+                require_once ROOT . DS . 'mvc' . DS . 'views' . DS . 'admin' . DS . 'product_management.php';
+                break;
+            case 'account-management':
+                require_once ROOT . DS . 'mvc' . DS . 'views' . DS . 'admin' . DS . 'account_management.php';
+                break;
+            case 'banner-management':
+                require_once ROOT . DS . 'mvc' . DS . 'views' . DS . 'admin' . DS . 'banner_management.php';
+                break;
+            case 'product-management':
+                require_once ROOT . DS . 'mvc' . DS . 'views' . DS . 'admin' . DS . 'product_management.php';
+                break;
+            case 'blog-management':
+                require_once ROOT . DS . 'mvc' . DS . 'views' . DS . 'admin' . DS . 'blog_management.php';
+                break;
+
+            case 'order-management':
+                require_once ROOT . DS . 'mvc' . DS . 'views' . DS . 'admin' . DS . 'order_management.php';
                 break;
             default:
                 require_once ROOT . DS . 'mvc' . DS . 'views' . DS . 'admin' . DS . 'dashboard.php';
