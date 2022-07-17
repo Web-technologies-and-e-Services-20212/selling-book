@@ -489,3 +489,9 @@ CREATE TABLE `banner` (
     `image` varchar(1024) not null DEFAULT '0',
     PRIMARY KEY (`ID`)
 )
+
+DELIMITER $$
+CREATE DEFINER=root`@`localhost PROCEDURE Proc_DeleteCartBooks(IN m_cartId INT UNSIGNED, IN m_bookId INT UNSIGNED)
+    COMMENT 'Xóa sản phẩm trong giỏ hàng'
+DELETE FROM cart_book WHERE cart_book.cartId = m_cartId AND cart_book.bookId = m_bookId$$
+DELIMITER ;
