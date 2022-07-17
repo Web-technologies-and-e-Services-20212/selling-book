@@ -4,7 +4,6 @@ require_once ROOT . DS . 'services' . DS . 'GuestServices.php';
 require_once ROOT . DS . 'services' . DS . 'BookServices.php';
 $service = new GuestServices();
 $guests = $service->getAll();
-$listTmpBill = $service->getAllListProductsBill();
 
 
 $user = "";
@@ -23,6 +22,7 @@ if (array_key_exists("phone", $_POST)) {
 
 $users = array();
 $listBill = array();
+
 foreach ($guests as $g) {
     $guser = strtolower($g->getUsername());
     $gname = strtolower($g->getName());
@@ -94,25 +94,59 @@ foreach ($guests as $g) {
             <div style='margin-top:65px'>
                 <h1>Quản lý tài khoản </h1>
 
-                <table style="width:100%;">
+                <form action="" method="post">
+                    <div>
+                        <div style="width:28%; float:left; height: 70px;">
+                            <p>Tên tài khoản</p>
+                            <input class="input1" type="text" name="user">
+                        </div>
+
+                        <div style="width:28%; float:left; height: 70px;">
+                            <p>Họ và tên</p>
+                            <input class="input1" type="text" name="name">
+                        </div>
+                        <div style="width:28%; float:left; height: 70px;">
+                            <p>Số điện thoại</p>
+                            <input class="input1" type="text" name="phone">
+                        </div>
+                        <div style="width:16%; float:left; height: 70px;">
+                            <input class="btn" type="submit" value="Tìm kiếm">
+                        </div>
+
+
+
+                    </div>
+                </form>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <hr>
+                <br><br>
+
+                <table style="width:100%; border:1px solid black">
                     <tr>
                         <th>UserName</th>
                         <th>Full Name</th>
                         <th>Phone</th>
                         <th>Address</th>
+                        <th>Thêm</th>
                     </tr>
                     <?php
                     foreach ($users as $u) {
                     ?>
-                        <tr>
+                        <tr style="text-align: center">
                             <td><?php echo $u->getUsername() ?></td>
                             <td><?php echo $u->getName() ?></td>
                             <td><?php echo $u->getPhoneNumber() ?></td>
                             <td><?php echo $u->getAddress() ?></td>
+                            <td><button class="btn"><i style='vertical-align: middle' class="fa fa-solid fa-trash fa-2x"></i></button></td>
                         </tr>
                     <?php } ?>
                 </table>
 
+                <button class="btn btn-primary" style='margin-top: 20px' onclick={renderForm}>Tạo tài khoản mới</button>
 
             </div>
 
