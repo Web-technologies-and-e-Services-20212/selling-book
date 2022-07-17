@@ -1,7 +1,14 @@
 <?php
+include_once ROOT . DS . 'services' . DS . "GuestServices.php";
+
 global $path_project;
+
+if (!isset($_SESSION)) {
+    ob_start();
+    session_start();
+}
 $url = isset($_GET["url"]) ? $_GET["url"] : "/";
-echo $url;
+
 ?>
 <!-- HTML Here -->
 <header id="header">
@@ -10,9 +17,25 @@ echo $url;
         <div class="container flex f-space_between f-align_center h100p">
             <div>CÔNG TY CỔ PHẦN XUẤT BẢN VÀ TRUYỀN THÔNG IPM</div>
             <div class="account">
-                <a href="/account">Xin chào: Trần Lâm</a>
-                <p class="divider">|</p>
-                <a href="#">Đăng xuất</a>
+                <?php
+                    if (!isset($_SESSION['username'])) { ?>
+                    <a href=<?php echo "/" . $path_project . "/" . "register"; ?>>Đăng ký</a>
+                    <p class="divider">|</p>
+                    <a href=<?php echo "/" . $path_project . "/login"; ?>>Đăng nhập</a>
+
+                 <?php   } ?>
+                <?php
+                    if (isset($_SESSION['username'])) {
+                        $guestService = new GuestServices();
+                        $currentUser = $guestService->get($_SESSION['username']);
+                        $productsNumber =count($guestService->getListCartBooks($_SESSION['username']));
+                        ?>
+                    <a href=<?php echo "/" . $path_project . "/account"; ?>>
+                    <?php echo "Xin chào: " . $currentUser->getName(); ?>
+                    </a>
+                    <p class="divider">|</p>
+                    <a href=<?php echo "/" . $path_project . "/library/refresh_session.php"; ?>>Đăng xuất</a>
+                 <?php   } ?>
             </div>
         </div>
     </div>
@@ -22,7 +45,7 @@ echo $url;
         <div class="container flex f-space_between f-align_center">
             <div class="header-logo">
                 <a href=<?php echo "/" . $path_project . "/" ?>>
-                    <img src="public/images/logo/logo.webp" alt="logo" />
+                    <img src="/selling-book/public/images/logo/logo.webp" alt="logo" />
                 </a>
             </div>
 
@@ -42,12 +65,16 @@ echo $url;
                         <a class="flex f-space_between f-align_center" href=<?php echo "/" . $path_project . "/cart" ?>>
                             <div class="cart-icon relative">
                                 <i class="fa-solid fa-cart-shopping"></i>
-                                <span class="quantity absolute">3</span>
+                                <span class="quantity absolute"><?php 
+                                if(!isset($_SESSION['username'])) echo "0";
+                                else echo $productsNumber; ?></span>
                             </div>
 
                             <div class="cart-info">
                                 <h2>Giỏ hàng</h2>
-                                <span>3 sản phẩm</span>
+                                <span><?php 
+                                if(!isset($_SESSION['username'])) echo "0";
+                                else echo $productsNumber; ?> sản phẩm</span>
                             </div>
                         </a>
                     </div>
@@ -69,23 +96,23 @@ echo $url;
 
                 <ul id="dropdown">
                     <li>
-                        <a class=<?php echo $url == "list_products" ? "active" : "non-active" ?> href=<?php echo "/" . $path_project . "/list-products" ?>>Sản phẩm</a>
+                        <a class=<?php echo $url == "list-products" ? "active" : "non-active" ?> href=<?php echo "/" . $path_project . DS . "list-products" ?>>Sản phẩm</a>
 
                     </li>
                     <ul class="menu-dropdown">
-                            <li><a href="#">Trinh Thám , Kinh dị</a></li>
-                            <li><a href="#">Văn học hiện đại</a></li>
-                            <li><a href="#">Văn học kinh điển</a></li>
-                            <li><a href="#">Fantasy</a></li>
-                            <li><a href="#">Light Novel</a></li>
-                            <li><a href="#">Manga - Comic</a></li>
-                            <li><a href="#">Sách học ngữ</a></li>
-                        </ul>
+                        <li><a href=<?php echo "/" . $path_project . DS . "list-products" . DS . "detecvive" ?>>Trinh Thám , Kinh dị</a></li>
+                        <li><a href=<?php echo "/" . $path_project . DS .  "list-products" . DS . "modern-literature" ?>>Văn học hiện đại</a></li>
+                        <li><a href=<?php echo "/" . $path_project . DS .  "list-products" . DS . "classic-literature" ?>>Văn học kinh điển</a></li>
+                        <li><a href=<?php echo "/" . $path_project . DS .  "list-products" . DS . "fantasy" ?>>Fantasy</a></li>
+                        <li><a href=<?php echo "/" . $path_project . DS .  "list-products" . DS . "light-novel" ?>>Light Novel</a></li>
+                        <li><a href=<?php echo "/" . $path_project . DS .  "list-products" . DS . "manga-comic" ?>>Manga - Comic</a></li>
+                        <li><a href=<?php echo "/" . $path_project . DS .  "list-products" . DS . "learning-book" ?>>Sách học ngữ</a></li>
+                    </ul>
                 </ul>
 
                 <ul>
                     <li>
-                        <a class=<?php echo $url == "blogs" ? "active" : "non-active" ?> href=<?php echo "/" . $path_project . "/blogs" ?>>Tin tức</a>
+                        <a class=<?php echo $url == "blogs" ? "active" : "non-active" ?> href=<?php echo "/" . $path_project . DS . "blogs" ?>>Tin tức</a>
                     </li>
                 </ul>
 

@@ -63,10 +63,50 @@ button {
   text-transform: uppercase;
 }
 
-.btn-more:hover {
+.btn-more:hover, .btn-default:hover {
   background-color: #009234;
+  color: #ffffff;
 }
 
 .btn i{
   padding-left: 8px;
+}
+
+.product-add{
+  margin-left: 10px;
+  height: 50px;
+  padding: 0 30px;
+  font-size: 14px;
+  font-weight: 700;
+  margin-right: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0;
+  background: #01a14b;
+  border-radius: 4px;
+  color: #fff;
+  border: 2px solid #01a14b;
+  border-right-color: #212121;
+  border-bottom-color: #212121;
+}
+
+.product-add:hover, .product-add:active{
+  background-color: #009234;
+}
+
+.product-add.btn-buy-disable {
+  pointer-events: none;
+  cursor: default;
+  opacity: 0.4;
+}
+
+.btn.btn-icon-center {
+  width: 100%;
+  max-width: calc(50% - 7px);
+  height: 36px;
+  text-align: center;
+  line-height: 24px;
+  color: #fff;
+  border: none;
+  border-radius: 3px;
+  font-size: 20px;
 }

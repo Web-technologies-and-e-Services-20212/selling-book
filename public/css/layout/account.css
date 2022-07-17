@@ -1,0 +1,19 @@
+
+.account-title h1, .customer-order h1{
+    background: #fff;
+    padding: 10px 15px 10px 15px;
+    border-bottom: 1px solid #e0e0e0;
+    text-transform: uppercase;
+    color: #000000;
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+
+.log-out{
+    color: #ff6517;
+    text-transform: none;
+    font-size: 16px;
+    margin-left: 10px;
+    line-height: 27px;
+
+}
