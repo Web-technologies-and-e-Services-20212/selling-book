@@ -95,36 +95,6 @@ class BookServices extends MySqlConnect
     public function getAll($param = NO_CATEGORY['id'], $pageIndex = 1, $pageSize = 10)
     {
         $listBook = array();
-        // switch($param){
-        //     case 0:{ 
-        //         $query = "select * from book";
-        //         break;
-        //     }
-        //     case 1:{
-        //         $query = "select * from book order by createAt desc";
-        //         break;
-        //     }
-        //     case 2:{
-        //         $query = "select * from book order by price desc";
-        //         break;
-        //     }
-        //     case 3:{
-        //         $query = "select * from book order by price asc";
-        //         break;
-        //     }
-        //     case 4:{
-        //         $query = "select * from book order by soldNumber desc";
-        //         break;
-        //     }
-        //     case 5:{
-        //         $query = "select * from book order by title desc";
-        //         break;
-        //     }
-        //     case 6:{
-        //         $query = "select * from book order by title asc";
-        //         break;
-        //     }
-        // }
         $query = "CALL Proc_getBookByCategoryPaging($param, $pageIndex, $pageSize)";
         parent::addQuerry($query);
         $result = parent::executeQuery();

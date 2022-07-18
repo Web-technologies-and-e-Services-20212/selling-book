@@ -9,7 +9,7 @@ require_once ROOT . DS . 'services' . DS . 'GuestServices.php';
 // require_once ROOT . DS . 'mvc' . DS . 'models' . DS . 'Bill.php';
 
 $service = new GuestServices();
-$listProducts = $service->getListCartBooks($_SESSION['username']);
+$listCartProducts = $service->getListCartBooks($_SESSION['username']);
 foreach ($listCartProducts as $key => $cartBook) {
     $book = $cartBook['book'];
     $bookId = $book->getBookId();
