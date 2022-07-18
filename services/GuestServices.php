@@ -281,14 +281,41 @@ class GuestServices extends MySqlConnect {
     }
 
     /**
-     * Get all book in bill
+     * Get all bill of username
      * @param String $username
+     * @return array[Bill]
+     */
+    public function getListBill($username){
+        $listBill = array();
+        $query = "select * from bill
+                    where username ='" . $username . "'";
+
+        parent::addQuerry($query);
+        $result = parent::executeQuery();
+
+        while($row = mysqli_fetch_array($result)){
+            $dateBill = $row["dateBill"];
+            $totalPrice = $row["totalPrice"];
+            $bill = new Bill($username, $dateBill, $totalPrice, []);
+            $bill->setBillID($row["ID"]);
+            $bill->setStatus($row["status"]);
+            array_push($listBill, $bill);
+
+        }
+
+        return $listBill;
+    }
+
+
+    /**
+     * Get all book in bill
+     * @param String $bill_id
      * @return array
      */
-    public function getListBillBooks($username){
+    public function getListBillBooks($bill_id){
         $listBillProducts = array();
         
-        $query = "select * from bill where username = '$username'";
+        $query = "select * from bill where ID = '$bill_id'";
         parent::addQuerry($query);
         $result = parent::executeQuery();
 
@@ -361,7 +388,7 @@ class GuestServices extends MySqlConnect {
             $dateBill = $row["dateBill"];
             $status = $row["status"];
 
-            $query = "select * from bill_book where billId = '$billId'";
+            $query = "select * from bill_book where billId = $billId";
             parent::addQuerry($query);
             $result2 = parent::executeQuery();
             $listBooks = array();
@@ -371,7 +398,8 @@ class GuestServices extends MySqlConnect {
                 $book = $bookServices->getById($bookId);
                 array_push($listBooks, [$book, $row2["quantity"]]);
             }
-            $bill = new Bill($billId, $dateBill, $totalPrice, $listBooks);
+            $bill = new Bill($row["username"], $dateBill, $totalPrice, $listBooks);
+            $bill->setBillID($billId);
             $bill->setStatus($status);
             return $bill;
         } else {
