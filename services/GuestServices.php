@@ -185,7 +185,7 @@ class GuestServices extends MySqlConnect {
         // $phoneNumber = $guest->getPhoneNumber();
 
         $query = "update guest
-                  set password = '$password'
+                  set password = '$newPassword'
                   where username = '$username'
                   ";
 

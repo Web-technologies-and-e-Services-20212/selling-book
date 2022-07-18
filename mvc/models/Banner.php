@@ -3,12 +3,20 @@
 class Banner {
     private $bannerId;
     private $image;
+    private $categoryId;
 
-    public function __construct($bannerId, $image) {
+    public function __construct($bannerId, $image, $categoryId) {
         self::setImage($image);
         self::setBannerId($bannerId);
+
     }
 
+    public function getCategoryId(){
+        return $this->categoryId;
+    }
+    public function setCategoryId($categoryId){
+        $this->categoryId = $categoryId;
+    }
     /**
      * @return mixed
      */

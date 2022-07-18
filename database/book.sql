@@ -465,7 +465,7 @@ CREATE TABLE `news` (
 - Create Procedure Paging by Category
 */
 DELIMITER $$
-CREATE DEFINER=`root`@`localhost` PROCEDURE `Proc_getBookByCategoryPaging`(IN `m_categoryId` INT, IN `m_pageIndex` INT UNSIGNED, IN `m_pageSize` INT UNSIGNED)
+CREATE DEFINER=`root`@`localhost` PROCEDURE `Proc_getBookByCategoryPaging`(IN `m_categoryId` INT, IN `m_pageIndex` INT UNSIGNED, IN `m_pageSize` INT UNSIGNED, IN `m_sort_param` INT UNSIGNED)
     COMMENT 'Phân trang cho danh sách sách lọc theo danh mục'
 BEGIN
 	SET @recordStart = ((m_pageIndex - 1) * m_pageSize) + 1,@recordEnd = m_pageIndex * m_pageSize;
@@ -487,11 +487,20 @@ DELIMITER ;
 CREATE TABLE `banner` (
 	`ID` int(11) NOT NULL AUTO_INCREMENT,
     `image` varchar(1024) not null DEFAULT '0',
-    PRIMARY KEY (`ID`)
-)
+	`categoryId` int(11),
+    PRIMARY KEY (`ID`),
+	KEY `FK_banner_category` (`categoryId`),
+	CONSTRAINT `FK_banner_category` FOREIGN KEY (`categoryId`) REFERENCES `category` (`ID`)
+);
+
+INSERT INTO `banner`(`ID`, `image`, `categoryId`) VALUES ('1','https://user-images.githubusercontent.com/60845268/179411148-01a32e1a-28c5-42cf-bf9d-ac2ac64099ab.png','12'), 
+('2','https://user-images.githubusercontent.com/60845268/179411155-cb31b25a-89f3-4e90-8f7b-317dc476e4da.png','10'),
+('3','https://user-images.githubusercontent.com/60845268/179411183-9cfb17c9-888a-49e7-a9e8-a16da75ab0ea.png','12'),
+('4','https://user-images.githubusercontent.com/60845268/179411186-3a148d8f-a4a7-4bf4-8eb6-4964968a8fb5.png','9');
 
 DELIMITER $$
-CREATE DEFINER=root`@`localhost PROCEDURE Proc_DeleteCartBooks(IN m_cartId INT UNSIGNED, IN m_bookId INT UNSIGNED)
+CREATE DEFINER=`root`@`localhost` PROCEDURE `Proc_DeleteCartBooks`(IN `m_cartId` INT UNSIGNED, IN `m_bookId` INT UNSIGNED)
     COMMENT 'Xóa sản phẩm trong giỏ hàng'
 DELETE FROM cart_book WHERE cart_book.cartId = m_cartId AND cart_book.bookId = m_bookId$$
 DELIMITER ;
+

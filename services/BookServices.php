@@ -92,7 +92,7 @@ class BookServices extends MySqlConnect
         parent::updateQuery();
     }
 
-    public function getAll($param = NO_CATEGORY['id'], $pageIndex = 1, $pageSize = 10)
+    public function getAll($param = NO_CATEGORY['id'], $pageIndex = 1, $pageSize = 10, $sortParam = 0)
     {
         $listBook = array();
         // switch($param){
@@ -125,7 +125,7 @@ class BookServices extends MySqlConnect
         //         break;
         //     }
         // }
-        $query = "CALL Proc_getBookByCategoryPaging($param, $pageIndex, $pageSize)";
+        $query = "CALL Proc_getBookByCategoryPaging($param, $pageIndex, $pageSize, $sortParam)";
         parent::addQuerry($query);
         $result = parent::executeQuery();
         while ($row = mysqli_fetch_array($result)) {
