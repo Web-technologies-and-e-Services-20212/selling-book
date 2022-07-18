@@ -30,7 +30,7 @@ CREATE TABLE IF NOT EXISTS `admin` (
 -- Dumping data for table selling_book.admin: ~2 rows (approximately)
 /*!40000 ALTER TABLE `admin` DISABLE KEYS */;
 INSERT INTO `admin` (`ID`, `username`, `password`, `name`) VALUES
-	(1,'2021-11-11',0, 'admin001','2021-11-11',0, 'admin001', 'admin khong mot'),
+	(1, 'admin001', 'admin001', 'admin khong mot'),
 	(2, 'admin002', 'admin002', 'admin khong hai');
 /*!40000 ALTER TABLE `admin` ENABLE KEYS */;
 
@@ -467,17 +467,97 @@ CREATE TABLE `news` (
 - Create Procedure Paging by Category
 */
 DELIMITER $$
-CREATE DEFINER=`root`@`localhost` PROCEDURE `Proc_getBookByCategoryPaging`(IN `m_categoryId` INT, IN `m_pageIndex` INT UNSIGNED, IN `m_pageSize` INT UNSIGNED, IN `m_sort_param` INT UNSIGNED)
+CREATE DEFINER=`root`@`localhost` PROCEDURE `Proc_getBookByCategoryPagingSortByTimeAsc`(IN `m_categoryId` INT, IN `m_pageIndex` INT UNSIGNED, IN `m_pageSize` INT UNSIGNED)
     COMMENT 'Phân trang cho danh sách sách lọc theo danh mục'
 BEGIN
 	SET @recordStart = ((m_pageIndex - 1) * m_pageSize) + 1,@recordEnd = m_pageIndex * m_pageSize;
     IF m_categoryId = 0 THEN
 	CREATE TEMPORARY TABLE tb_book_category
-    SELECT ROW_NUMBER() OVER (ORDER BY b.createAt DESC) AS stt, b.ID,b.soldNumber,b.price,b.image,b.discount,b.title, b.available
+    SELECT ROW_NUMBER() OVER (ORDER BY b.createAt ASC) AS stt, b.ID,b.soldNumber,b.price,b.image,b.discount,b.title, b.available, b.createAt
     FROM book b;
     ELSE 
     CREATE TEMPORARY TABLE tb_book_category
-    SELECT ROW_NUMBER() OVER (ORDER BY b.createAt DESC) AS stt, b.ID,b.soldNumber,b.price,b.image,b.discount,b.title, b.available
+    SELECT ROW_NUMBER() OVER (ORDER BY b.createAt ASC) AS stt, b.ID,b.soldNumber,b.price,b.image,b.discount,b.title, b.available, b.createAt
+    FROM book b, book_category bc
+    WHERE b.ID = bc.bookId AND bc.categoryId = m_categoryId;
+    END IF;
+	SELECT DISTINCT * FROM tb_book_category tb WHERE stt BETWEEN @recordStart AND @recordEnd;
+    DROP TABLE tb_book_category;
+END$$
+DELIMITER ;
+
+DELIMITER $$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `Proc_getBookByCategoryPagingSortByTimeDesc`(IN `m_categoryId` INT, IN `m_pageIndex` INT UNSIGNED, IN `m_pageSize` INT UNSIGNED)
+    COMMENT 'Phân trang cho danh sách sách lọc theo danh mục'
+BEGIN
+	SET @recordStart = ((m_pageIndex - 1) * m_pageSize) + 1,@recordEnd = m_pageIndex * m_pageSize;
+    IF m_categoryId = 0 THEN
+	CREATE TEMPORARY TABLE tb_book_category
+    SELECT ROW_NUMBER() OVER (ORDER BY b.createAt DESC) AS stt, b.ID,b.soldNumber,b.price,b.image,b.discount,b.title, b.available, b.createAt
+    FROM book b;
+    ELSE 
+    CREATE TEMPORARY TABLE tb_book_category
+    SELECT ROW_NUMBER() OVER (ORDER BY b.createAt DESC) AS stt, b.ID,b.soldNumber,b.price,b.image,b.discount,b.title, b.available, b.createAt
+    FROM book b, book_category bc
+    WHERE b.ID = bc.bookId AND bc.categoryId = m_categoryId;
+    END IF;
+	SELECT DISTINCT * FROM tb_book_category tb WHERE stt BETWEEN @recordStart AND @recordEnd;
+    DROP TABLE tb_book_category;
+END$$
+DELIMITER ;
+
+DELIMITER $$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `Proc_getBookByCategoryPagingSortBySoldNumberDesc`(IN `m_categoryId` INT, IN `m_pageIndex` INT UNSIGNED, IN `m_pageSize` INT UNSIGNED)
+    COMMENT 'Phân trang cho danh sách sách lọc theo danh mục'
+BEGIN
+	SET @recordStart = ((m_pageIndex - 1) * m_pageSize) + 1,@recordEnd = m_pageIndex * m_pageSize;
+    IF m_categoryId = 0 THEN
+	CREATE TEMPORARY TABLE tb_book_category
+    SELECT ROW_NUMBER() OVER (ORDER BY b.soldNumber DESC) AS stt, b.ID,b.soldNumber,b.price,b.image,b.discount,b.title, b.available, b.createAt
+    FROM book b;
+    ELSE 
+    CREATE TEMPORARY TABLE tb_book_category
+    SELECT ROW_NUMBER() OVER (ORDER BY b.soldNumber DESC) AS stt, b.ID,b.soldNumber,b.price,b.image,b.discount,b.title, b.available, b.createAt
+    FROM book b, book_category bc
+    WHERE b.ID = bc.bookId AND bc.categoryId = m_categoryId;
+    END IF;
+	SELECT DISTINCT * FROM tb_book_category tb WHERE stt BETWEEN @recordStart AND @recordEnd;
+    DROP TABLE tb_book_category;
+END$$
+DELIMITER ;
+
+DELIMITER $$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `Proc_getBookByCategoryPagingSortByPriceAsc`(IN `m_categoryId` INT, IN `m_pageIndex` INT UNSIGNED, IN `m_pageSize` INT UNSIGNED)
+    COMMENT 'Phân trang cho danh sách sách lọc theo danh mục'
+BEGIN
+	SET @recordStart = ((m_pageIndex - 1) * m_pageSize) + 1,@recordEnd = m_pageIndex * m_pageSize;
+    IF m_categoryId = 0 THEN
+	CREATE TEMPORARY TABLE tb_book_category
+    SELECT ROW_NUMBER() OVER (ORDER BY b.price ASC) AS stt, b.ID,b.soldNumber,b.price,b.image,b.discount,b.title, b.available, b.createAt
+    FROM book b;
+    ELSE 
+    CREATE TEMPORARY TABLE tb_book_category
+    SELECT ROW_NUMBER() OVER (ORDER BY b.price ASC) AS stt, b.ID,b.soldNumber,b.price,b.image,b.discount,b.title, b.available, b.createAt
+    FROM book b, book_category bc
+    WHERE b.ID = bc.bookId AND bc.categoryId = m_categoryId;
+    END IF;
+	SELECT DISTINCT * FROM tb_book_category tb WHERE stt BETWEEN @recordStart AND @recordEnd;
+    DROP TABLE tb_book_category;
+END$$
+DELIMITER ;
+
+DELIMITER $$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `Proc_getBookByCategoryPagingSortByPriceDesc`(IN `m_categoryId` INT, IN `m_pageIndex` INT UNSIGNED, IN `m_pageSize` INT UNSIGNED)
+    COMMENT 'Phân trang cho danh sách sách lọc theo danh mục'
+BEGIN
+	SET @recordStart = ((m_pageIndex - 1) * m_pageSize) + 1,@recordEnd = m_pageIndex * m_pageSize;
+    IF m_categoryId = 0 THEN
+	CREATE TEMPORARY TABLE tb_book_category
+    SELECT ROW_NUMBER() OVER (ORDER BY b.price DESC) AS stt, b.ID,b.soldNumber,b.price,b.image,b.discount,b.title, b.available, b.createAt
+    FROM book b;
+    ELSE 
+    CREATE TEMPORARY TABLE tb_book_category
+    SELECT ROW_NUMBER() OVER (ORDER BY b.price DESC) AS stt, b.ID,b.soldNumber,b.price,b.image,b.discount,b.title, b.available, b.createAt
     FROM book b, book_category bc
     WHERE b.ID = bc.bookId AND bc.categoryId = m_categoryId;
     END IF;
