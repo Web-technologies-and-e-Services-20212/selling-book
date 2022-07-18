@@ -16,7 +16,7 @@ if (isset($_category)) {
         $currentPage = 1;
     }
     $listProductStore = new BookServices();
-    $listAllProducts = $listProductStore->getAll($_category['id'], $currentPage, $pageSize);
+    $listAllProducts = $listProductStore->getAllSortByTimeDesc($_category['id'], $currentPage, $pageSize);
     $numProducts = $listProductStore->getTotalRecord($_category['id']);
     $totalPage = ceil($numProducts / $pageSize);
 
@@ -103,9 +103,9 @@ if (isset($_category)) {
                                         </h3>
                                         <div class="product-prices">
                                             <div class="price price-new"><?php
-                                                                            echo currency_format($book->getPrice()); ?></div>
+                                                                            echo currency_format($book->getPrice() - $book->getPrice() * $book->getDiscount() / 100); ?></div>
                                             <div class="price price-old">
-                                                <?php echo currency_format($book->getPrice() - $book->getPrice() * $book->getDiscount() / 100); ?>
+                                                <?php echo currency_format($book->getPrice()); ?>
                                             </div>
                                         </div>
                                     </div>

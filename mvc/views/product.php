@@ -57,8 +57,8 @@ if (!function_exists('currency_format')) {
 
                     <div class="s_product-price">
                         <span><?php
-                                echo currency_format($book->getPrice()); ?></span>
-                        <del class="m-l20"><?php echo currency_format($book->getPrice() - $book->getPrice() * $book->getDiscount() / 100); ?> </del>
+                                echo currency_format($book->getPrice() - $book->getPrice() * $book->getDiscount() / 100); ?></span>
+                        <del class="m-l20"><?php echo currency_format($book->getPrice()); ?> </del>
                     </div>
 
                     <div class="s_product-subtitle m-t10">
@@ -78,7 +78,7 @@ if (!function_exists('currency_format')) {
 
                             <div class="w50p m-b10 p-r10">
                                 <strong>Hình thức</strong>
-                                <span><?php echo $book->getAuthor(); ?></span>
+                                <span><?php echo $book->getType(); ?></span>
                             </div>
 
                             <div class="w50p m-b10 p-r10">

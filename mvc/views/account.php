@@ -47,14 +47,20 @@ if (!isset($_SESSION['username']) || $_SESSION['username'] == '') {
                 <p><?php echo $currentUser->getUsername(); ?></p>
                 <p></p>
                 <div class="address">
-                    <p><?php echo $currentUser->getAddress(); ?></p>
+                    <p><?php if(!empty($currentUser->getAddress())){
+                        echo $currentUser->getAddress();
+                    }else echo "Bạn chưa cập nhật địa chỉ";
+                     ?></p>
                     <p></p>
                     <p>VietNam</p>
                     <p></p>
-                    <p><?php echo $currentUser->getPhoneNumber(); ?></p>
+                    <p><?php if(!empty($currentUser->getPhoneNumber())){
+                        echo $currentUser->getPhoneNumber();
+                    }else echo "Bạn chưa cập nhật số điện thoại";
+                     ?></p>
                     <p></p>
-                    <p><a href="#">Xem địa chỉ</a></p>
-                </div>
+                    <p><a href=<?php echo "/" . $path_project . "/" . "account" . "/" . "address" ?>>Xem địa chỉ</a></p>
+                </div> 
             </div>
 
             <div class="customer-order">

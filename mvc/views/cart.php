@@ -59,7 +59,9 @@ $listCartProducts = $guestService->getListCartBooks($_SESSION['username']);
                                 $bookId = $book->getBookId();
                                 $bookImage = $book->getImage()[0];
                                 $bookTitle = $book->getTitle();
-                                $bookPrice = $book->getPrice();
+                                $bookDiscount = $book->getDiscount();
+                                $bookOldPrice = $book->getPrice();
+                                $bookPrice = $bookOldPrice - $bookOldPrice * $bookDiscount / 100;
                                 $totalPrice += $bookPrice * $quantity;
 
                             ?>

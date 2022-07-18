@@ -5,10 +5,10 @@ require_once ROOT . DS . 'library' . DS . 'format.php';
 global $path_project;
 // Định nghĩa số sản phẩm cố định
 $numBook = 10;
-$currentCategory = CATEGORY_NEW_BOOKS; 
-$newBookList = $bookStore->getAll(CATEGORY_NEW_BOOKS['id'], 1, $numBook);
-$topBookList = $bookStore->getAll(CATEGORY_TOP_BOOKS['id'], 1, $numBook);
-$hotBookList = $bookStore->getAll(CATEGORY_HOT_DEALS['id'], 1, $numBook);
+$currentCategory = CATEGORY_NEW_BOOKS;
+$newBookList = $bookStore->getAllSortByTimeDesc(CATEGORY_NEW_BOOKS['id'], 1, $numBook);
+$topBookList = $bookStore->getAllSortByTimeDesc(CATEGORY_TOP_BOOKS['id'], 1, $numBook);
+$hotBookList = $bookStore->getAllSortByTimeDesc(CATEGORY_HOT_DEALS['id'], 1, $numBook);
 // 
 // foreach ($newBooks as $key => $book) {
 //     print_r("Book ID :" . $book->getBookId() . "<br>");
@@ -178,11 +178,12 @@ $hotBookList = $bookStore->getAll(CATEGORY_HOT_DEALS['id'], 1, $numBook);
                                         <a href=<?php echo "/" . $path_project . "/product" . "/" . $book->getBookId(); ?> title="<?php echo $book->getTitle(); ?>"><?php echo $book->getTitle(); ?></a>
                                     </h3>
                                     <div class="product-prices">
-                                        <div class="price price-new"><?php
-                                                                        echo currency_format($book->getPrice()); ?>
+                                        <div class="price price-new">
+                                            <?php
+                                            echo currency_format($book->getPrice() - $book->getPrice() * $book->getDiscount() / 100); ?>
                                         </div>
                                         <div class="price price-old">
-                                            <?php echo currency_format($book->getPrice() - $book->getPrice() * $book->getDiscount() / 100); ?>
+                                            <?php echo currency_format($book->getPrice()); ?>
                                         </div>
                                     </div>
                                 </div>
@@ -267,7 +268,7 @@ $hotBookList = $bookStore->getAll(CATEGORY_HOT_DEALS['id'], 1, $numBook);
                 </div>
 
                 <div class="see-more w100p flex f-center">
-                    <a id="see-more" href=<?php echo "/" . $path_project . "/" ."list-products" . "/" . CATEGORY_NEW_BOOKS['route'] ?> class="btn btn-more">Xem thêm</a>
+                    <a id="see-more" href=<?php echo "/" . $path_project . "/" . "list-products" . "/" . CATEGORY_NEW_BOOKS['route'] ?> class="btn btn-more">Xem thêm</a>
                 </div>
             </div>
             <!-- List product end -->

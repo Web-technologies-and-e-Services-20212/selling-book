@@ -10,19 +10,19 @@ require_once ROOT . DS . 'services' . DS . 'GuestServices.php';
 
 $service = new GuestServices();
 $listCartProducts = $service->getListCartBooks($_SESSION['username']);
+$billBookArray = array();
 foreach ($listCartProducts as $key => $cartBook) {
     $book = $cartBook['book'];
     $bookId = $book->getBookId();
+    array_push($billBookArray, ['bookId'=> $bookId, 'quantity' => $_POST['quantity-product' .$bookId ]]);
 }
-$quantityArr = $_POST['quantity-product'];
 // $text = $_POST['list_quantity'];
 // $list_text = explode(" ", $text);
-$x = 1;
 // $list_quantity = array();
 // foreach ($list_text as $text) {
 //     array_push($list_quantity, intval($text));
 // }
-
+print_r($billBookArray) ;
 // $lens = count($listProducts);
 // for($i=0; $i<$lens; $i++){
 //     $product = $listProducts[$i];

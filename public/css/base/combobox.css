@@ -44,3 +44,18 @@ textarea.form-control{
     resize: none;
     overflow: auto;
 }
+
+
+
+/* Input Component 2
+<div class="input-group m-t10 m-b10">
+    <span class="input-group-addon">
+        <i ></i>
+    </span>
+    <input required type="name" id="contactFormName" size="40" placeholder="Tên của bạn" 
+    class="p-b15 textbox form-control">
+</div> */
+
+.input-group-addon {
+    border-right: 0;
+}
