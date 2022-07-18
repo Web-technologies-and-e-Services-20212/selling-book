@@ -148,16 +148,44 @@ class GuestServices extends MySqlConnect {
         //             . "";
 
         $username = $guest->getUsername();
-        $password = $guest->getPassword();
+        // $password = $guest->getPassword();
         $name = $guest->getName();
         $address = $guest->getAddress();
         $phoneNumber = $guest->getPhoneNumber();
 
         $query = "update guest
-                  set password = '$password',
-                      name = '$name',
+                  set name = '$name',
                       address = '$address',
                       phoneNumber = '$phoneNumber'
+                  where username = '$username'
+                  ";
+
+        parent::addQuerry($query);
+        parent::updateQuery();
+    }
+
+    /**
+     * The method update data to database
+     * @param String $username
+     * @param String $newPassword
+     */
+    public function updatePassword($username, $newPassword) {
+        // update to products table
+        // $query = "update guest
+        //             set " .
+        //             "your_password = " . "'" . $guest->getPassword() . "' ," .
+        //             "your_name = " . "'" . $guest->getPassword() . "'" .
+        //             "where user_name = '" . $guest->getUsername() . "'"
+        //             . "";
+
+        // $username = $guest->getUsername();
+        // $password = $guest->getPassword();
+        // $name = $guest->getName();
+        // $address = $guest->getAddress();
+        // $phoneNumber = $guest->getPhoneNumber();
+
+        $query = "update guest
+                  set password = '$newPassword'
                   where username = '$username'
                   ";
 
