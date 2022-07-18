@@ -608,3 +608,20 @@ BEGIN
     DROP TABLE tb_book_category;
 END$$
 DELIMITER ;
+
+DELIMITER $$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `Proc_GetBookWithCategory`(IN `m_billId` INT)
+BEGIN
+
+CREATE TEMPORARY TABLE tb_book0
+SELECT bc.categoryId as category FROM book b, book_category bc where b.ID = bc.bookId;
+
+CREATE TEMPORARY TABLE tb_book
+SELECT ROW_NUMBER() OVER (ORDER BY b.createAt DESC) AS stt, b.ID,b.soldNumber,b.price,b.image,b.discount,b.title, b.available, b.createAt
+FROM book b, book_category bc
+WHERE (b.ID = bc.bookId) AND ( bc.categoryId IN (SELECT * FROM tb_book0));
+SELECT DISTINCT * FROM tb_book tb WHERE stt BETWEEN 1 AND 6;
+DROP TABLE tb_book;
+DROP TABLE tb_book0;
+END$$
+DELIMITER ;

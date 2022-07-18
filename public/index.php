@@ -13,17 +13,18 @@ require_once ROOT . DS . 'services' . DS . 'BookServices.php';
 $url = isset($_GET["url"]) ? $_GET["url"] : "/";
 
 
-/* Test backend - Do not delete - Only comment this - love you !!!
-echo "<pre>";
+// // /* Test backend - Do not delete - Only comment this - love you !!!
+// echo "<pre>";
 
-$bookService = new BookServices();
-// $book = $bookService->getAllSortByPriceDesc(12, 2, 10);
-$book = $bookService->search(1, 10, 'Chào');
-print_r($book);
+// $bookService = new BookServices();
+// // $book = $bookService->getAllSortByPriceDesc(12, 2, 10);
+// // $book = $bookService->search(1, 10, 'Chào');
+// $book = $bookService->getBookWithCategory(63);
+// print_r($book);
 
-echo "</pre>";
-exit(1);
-*/
+// echo "</pre>";
+// exit(1);
+// // */
 
 $route = new RouteController($url);
 $route->show();
