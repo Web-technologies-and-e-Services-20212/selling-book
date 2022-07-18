@@ -625,3 +625,16 @@ DROP TABLE tb_book;
 DROP TABLE tb_book0;
 END$$
 DELIMITER ;
+
+DELIMITER $$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `Proc_GetBookWithSameAuthor`(IN `m_author` VARCHAR(255) CHARSET utf8)
+BEGIN
+	CREATE TEMPORARY TABLE tb_book
+    SELECT ROW_NUMBER() OVER (ORDER BY b.createAt DESC) AS stt, b.ID,b.soldNumber,b.price,b.image,b.discount,b.title, b.available, b.createAt
+    FROM book b
+    WHERE (m_author IS NULL ) OR ( b.author LIKE CONCAT("%", m_author, "%"));
+    
+	SELECT DISTINCT * FROM tb_book tb WHERE stt BETWEEN 0 AND 6;
+    DROP TABLE tb_book;
+END$$
+DELIMITER ;

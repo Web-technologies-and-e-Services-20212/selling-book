@@ -19,7 +19,8 @@ $url = isset($_GET["url"]) ? $_GET["url"] : "/";
 // $bookService = new BookServices();
 // // $book = $bookService->getAllSortByPriceDesc(12, 2, 10);
 // // $book = $bookService->search(1, 10, 'Chào');
-// $book = $bookService->getBookWithCategory(63);
+// // $book = $bookService->getBookByCategory(63);
+// $book = $bookService->getBookByAuthor('Akihito Tsukushi');
 // print_r($book);
 
 // echo "</pre>";
