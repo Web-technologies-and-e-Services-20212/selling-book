@@ -586,3 +586,11 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `Proc_DeleteCartBooks`(IN `m_cartId`
 DELETE FROM cart_book WHERE cart_book.cartId = m_cartId AND cart_book.bookId = m_bookId$$
 DELIMITER ;
 
+INSERT INTO `bill`(`ID`, `username`, `totalPrice`, `dateBill`, `status`) VALUES (1, 'user001', '0', '2022-02-02', 'PENDING'),
+(2, 'user002', '0', '2022-05-02', 'PENDING'),(3, 'user001', '0', '2022-12-12', 'PAID'),(4, 'user001', '0', '2021-02-02', 'CANCELLED');
+
+-- enum('PENDING','PAID','CANCELLED')
+
+INSERT INTO `bill_book`(`billId`, `quantity`, `totalPrice`, `bookId`) VALUES (1,1,0,80), (1,2,0,81), (1,3,0,82),
+(2,2,0,81), (2,2,0,82), (3,5,0,83), (4,2,0,81),(4,3,0,84),(4,1,0,85)
+
