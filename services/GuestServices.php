@@ -370,6 +370,22 @@ class GuestServices extends MySqlConnect {
                   ";
         parent::addQuerry($query);
         parent::updateQuery();
+
+        // empty the cart
+        $cart_id = self::getCartID($username);
+        $query = "delete from cart_book where cartId = $cart_id";
+        parent::addQuerry($query);
+        parent::updateQuery();
+
+        // update cart total price
+        $query = "update cart
+                    set totalPrice = 0
+                    where username = '$username'
+                  ";
+        parent::addQuerry($query);
+        parent::updateQuery();
+
+
         
     }
 
