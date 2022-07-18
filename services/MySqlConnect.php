@@ -53,4 +53,8 @@ class MySqlConnect implements ISqlConnect {
         $this->db->next_result();
     }
 
+    public function getLastInsertedId(){
+        return mysqli_insert_id($this->db);
+    }
+
 }

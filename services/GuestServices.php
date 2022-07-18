@@ -109,6 +109,7 @@ class GuestServices extends MySqlConnect {
         return $cart_id;
     }
 
+
     /**
      * Return guest have username = $username
      * @param String $username
@@ -286,12 +287,75 @@ class GuestServices extends MySqlConnect {
      */
     public function getListBillBooks($username){
         $listBillProducts = array();
-
+        
         $query = "select * from bill where username = '$username'";
         parent::addQuerry($query);
         $result = parent::executeQuery();
 
         while($row = mysqli_fetch_array($result)){
+            $billId = $row["ID"];
+
+            $query = "select * from bill_book where billId = '$billId'";
+            parent::addQuerry($query);
+            $result2 = parent::executeQuery();
+            $listBooks = array();
+            while($row2 = mysqli_fetch_array($result2)){
+                $bookId = $row2["bookId"];
+                $bookServices = new BookServices();
+                $book = $bookServices->getById($bookId);
+                array_push($listBillProducts, [$book, $row2["quantity"]]);
+            }
+        }
+
+        return $listBillProducts;
+    }
+
+    /**
+    * Insert product to bill
+    * @param String $username
+    * @param Array $array
+    */
+    public function submitBill($username, $array){
+        // create bill by username
+        $query = "insert into bill(username, totalPrice, dateBill, status)
+                    value('$username', 0, ". "'". date("Y-m-d") . "', 'PENDING')";
+        parent::addQuerry($query);
+        parent::updateQuery();
+        $billId = parent::getLastInsertedId();
+        $totalPrice = 0;
+        $bookServices = new BookServices();
+        foreach($array as $bill_item){
+            // insert book to bill_book
+            $query = "insert into bill_book(billId, bookId, quantity)
+                    value($billId, $bill_item[0], $bill_item[1])
+                  ";
+            parent::addQuerry($query);
+            parent::updateQuery();
+
+            // get and add book price to total price
+            $book = $bookServices->getById($bill_item[0]);
+            $totalPrice += $book->getPrice() * $bill_item[1];
+        }
+        // update total price of bill
+        $query = "update bill
+                    set totalPrice = $totalPrice
+                    where ID = $billId
+                  ";
+        parent::addQuerry($query);
+        parent::updateQuery();
+        
+    }
+
+    /**
+    * Get bill from bill id
+    * @param int $bill_id
+    * @return Bill
+    */
+    public function getBill($bill_id){
+        $query = "select * from bill where ID = $bill_id";
+        parent::addQuerry($query);
+        $result = parent::executeQuery();
+        if($row = mysqli_fetch_array($result)){
             $billId = $row["ID"];
             $totalPrice = $row["totalPrice"];
             $dateBill = $row["dateBill"];
@@ -305,80 +369,25 @@ class GuestServices extends MySqlConnect {
                 $bookId = $row2["bookId"];
                 $bookServices = new BookServices();
                 $book = $bookServices->getById($bookId);
-                array_push($listBillProducts, $book);
+                array_push($listBooks, [$book, $row2["quantity"]]);
             }
-            // $bill = new Bill($username, $dateBill, $totalPrice, $listBooks);
-            // $bill->setStatus($status);
-            // array_push($listProductsBill, $bill);
+            $bill = new Bill($billId, $dateBill, $totalPrice, $listBooks);
+            $bill->setStatus($status);
+            return $bill;
+        } else {
+            return null;
         }
-
-        return $listBillProducts;
-    }
-
-    /**
-    * Insert product to bill
-    * @param Bill $bill
-    */
-    public function submitBill($bill){
-        // $product_id = $bill->getProductID();
-        // $username = $bill->getUsername();
-        // $date_bill = $bill->getDateBill();
-        // $total_money = $bill->getTotalMoney();
-        // $quantity = $bill->getQuantity();
-        // $status = $bill->getStatus();
-
-        // $query = "insert into bill(product_id, user_name, date_bill, total_money, quantity, bill_status)
-        //           value($product_id, '$username', '$date_bill', $total_money, $quantity, $status)
-        //           ";
-
-        // $listBooks = $bill->getListBooks();
-        // foreach($listBooks as $bookId){
-
-        // }
-
-
-        // parent::addQuerry($query);
-        // parent::updateQuery();
-        
-        
-    }
-
-    /**
-    * Get bill from bill id
-    * @param int $bill_id
-    */
-    public function getBill($bill_id){
-        //   $query = "select * from bill where bill_id = $bill_id";
-
-        //   parent::addQuerry($query);
-        //   $result = parent::executeQuery();
-
-        //   if($row = mysqli_fetch_array($result)){
-        //     $username = $row["user_name"];
-        //     $product_id = $row["product_id"];
-        //     $bill_id = $row["bill_id"];
-        //     $date_bill = $row["date_bill"];
-        //     $total_money = $row["total_money"];
-        //     $quantity = $row["quantity"];
-        //     $status = $row["bill_status"];
-        //     $bill_id = $row["bill_id"];
-
-        //     $bill = new Bill($product_id, $username, $date_bill, $total_money, $quantity);
-        //     $bill->setStatus($status);
-        //     $bill->setBillID($bill_id);
-
-        //     return $bill;
-        // }
     }
 
     /**
      * Update status bill from bill id and status
      * @param int $bill_id
+     * @param String $status
     */
     public function updateStatusBill($bill_id, $status){
-    //     $query = "update bill set bill_status = $status where bill_id = $bill_id";
+        $query = "update bill set status = $status where ID = $bill_id";
 
-    //     parent::addQuerry($query);
-    //     parent::updateQuery();
+        parent::addQuerry($query);
+        parent::updateQuery();
     }
 }
