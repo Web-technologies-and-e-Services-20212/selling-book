@@ -314,24 +314,15 @@ class GuestServices extends MySqlConnect {
      */
     public function getListBillBooks($bill_id){
         $listBillProducts = array();
-        
-        $query = "select * from bill where ID = '$bill_id'";
+
+        $query = "select * from bill_book where billId = '$bill_id'";
         parent::addQuerry($query);
-        $result = parent::executeQuery();
-
-        while($row = mysqli_fetch_array($result)){
-            $billId = $row["ID"];
-
-            $query = "select * from bill_book where billId = '$billId'";
-            parent::addQuerry($query);
-            $result2 = parent::executeQuery();
-            $listBooks = array();
-            while($row2 = mysqli_fetch_array($result2)){
-                $bookId = $row2["bookId"];
-                $bookServices = new BookServices();
-                $book = $bookServices->getById($bookId);
-                array_push($listBillProducts, [$book, $row2["quantity"]]);
-            }
+        $result2 = parent::executeQuery();
+        while($row2 = mysqli_fetch_array($result2)){
+            $bookId = $row2["bookId"];
+            $bookServices = new BookServices();
+            $book = $bookServices->getById($bookId);
+            array_push($listBillProducts, [$book, $row2["quantity"]]);
         }
 
         return $listBillProducts;
@@ -345,7 +336,7 @@ class GuestServices extends MySqlConnect {
     public function submitBill($username, $array){
         // create bill by username
         $query = "insert into bill(username, totalPrice, dateBill, status)
-                    value('$username', 0, ". "'". date("Y-m-d") . "', 'PENDING')";
+                    value('$username', 0, ". "'". date("Y-m-d h:i:sa") . "', 'PENDING')";
         parent::addQuerry($query);
         parent::updateQuery();
         $billId = parent::getLastInsertedId();
