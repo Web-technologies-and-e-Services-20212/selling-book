@@ -81,19 +81,19 @@ if (array_key_exists("username", $_POST)) {
                         <label for="" class="form__lable-icon">
                             <i class="fa-solid fa-lock"></i>
                         </label>
-                        <input type="password" name="password" required id="register-password" placeholder="Mật khẩu">
+                        <input type="password" name="password" required id="register-password" onchange="validateRegister()" placeholder="Mật khẩu">
                     </div>
 
                     <div id="form-password" class="form__input relative">
                         <label for="" class="form__lable-icon">
                             <i class="fa-solid fa-lock"></i>
                         </label>
-                        <input type="password" name=confirm-password" required id="confirm-password" placeholder="Xác nhận mật khẩu">
+                        <input type="password" name=confirm-password" required id="confirm-password" onkeyup="validateRegister()" placeholder="Xác nhận mật khẩu">
                         
                     </div>
 
                     <div id="form-action">
-                        <input type="submit" onsubmit="validateRegister()" value="Đăng ký" class="btn w100p m-t20 btn-default">
+                        <input type="submit" value="Đăng ký" class="btn w100p m-t20 btn-default">
                     </div>
 
                     <div id="form-back" class="m-t14">

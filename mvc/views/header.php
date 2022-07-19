@@ -50,7 +50,7 @@ $url = isset($_GET["url"]) ? $_GET["url"] : "/";
             </div>
 
             <div class="header-search w50p">
-                <form class="relative w100p">
+                <form action="/selling-book/search" method="POST" class="relative w100p" id="form-seach">
                     <label htmlFor="search" class="hidden"></label>
                     <input class="search-text" name="search" id="search" type="search" placeholder="Tìm kiếm ..."></input>
                     <button type="submit" class="search-btn absolute">

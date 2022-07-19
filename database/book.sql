@@ -667,9 +667,22 @@ BEGIN
 	CREATE TEMPORARY TABLE tb_book
     SELECT ROW_NUMBER() OVER (ORDER BY b.createAt DESC) AS stt, b.ID,b.soldNumber,b.price,b.image,b.discount,b.title, b.available, b.createAt
     FROM book b
-    WHERE (m_author IS NULL ) OR ( b.author LIKE CONCAT("%", m_author, "%"));
+    WHERE b.author LIKE CONCAT("%", m_author, "%");
     
-	SELECT DISTINCT * FROM tb_book tb WHERE stt BETWEEN 0 AND 6;
+	SELECT DISTINCT * FROM tb_book tb WHERE stt BETWEEN 1 AND 6;
     DROP TABLE tb_book;
+END$$
+DELIMITER ;
+
+DELIMITER $$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `Proc_getAllRecordBySeach`(IN `m_filter` VARCHAR(255) CHARSET utf8)
+BEGIN
+	CREATE TEMPORARY TABLE tb_book_category
+    SELECT ROW_NUMBER() OVER (ORDER BY b.createAt DESC) AS stt, b.ID,b.soldNumber,b.price,b.image,b.discount,b.title, b.available, b.createAt
+    FROM book b
+    WHERE (m_filter IS NULL ) OR ( b.title LIKE CONCAT("%", m_filter, "%"));
+    
+	SELECT COUNT(ID) as totalRecord FROM tb_book_category tb ;
+    DROP TABLE tb_book_category;
 END$$
 DELIMITER ;

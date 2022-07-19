@@ -9,7 +9,22 @@ if (!isset($_SESSION['username']) || $_SESSION['username'] == '') {
 } else {
     if (!isset($currentUser)) {
         $guestService = new GuestServices();
+        if (isset($_POST['name'])) {
+            $guestService->update($_SESSION['username'], $_POST['name'], $_POST['address'], $_POST['phone']);
+            header("refresh: 0");
+        }
         $currentUser = $guestService->get($_SESSION['username']);
+        if (isset($_POST['newPass'])) {
+            $newPassword = sha1($_POST['newPass']);
+            if ($currentUser->getPassword() != $newPassword) {
+                $errorPasswordMessage = "Mật khẩu cũ nhập không đúng !";
+            }else{
+                $guestService->updatePassword($_SESSION['username'], $newPassword);
+                header("refresh: 0");
+            }
+            
+        }
+
         $currentUserName = $currentUser->getName();
         $currentUserAddress = $currentUser->getAddress();
         $currentUserPhone = $currentUser->getPhoneNumber();
@@ -72,26 +87,26 @@ if (!isset($_SESSION['username']) || $_SESSION['username'] == '') {
                 <div class="grid-r5m3 p-t10">
                     <div class="update-address m-b10">
                         <button class="btn btn-default btn-primary" onclick="toggleForm('update-address')">Cập nhật địa chỉ</button>
-                        <form action="" id="update-address" method="POST" style="display: none">
+                        <form action="/selling-book/account" id="update-address" method="POST" style="display: none">
                             <div class="input-group m-t10 m-b10">
                                 <span class="input-group-addon">
                                     <i class="fa-solid fa-user"></i>
                                 </span>
-                                <input required name="name" type="text" size="60" value="<?php echo $currentUserName; ?>" placeholder="Tên" class="p-b15 textbox form-control">
+                                <input required id="new-name-input" name="name" type="text" size="60" value="<?php echo $currentUserName; ?>" placeholder="Tên" class="p-b15 textbox form-control">
                             </div>
 
                             <div class="input-group m-t10 m-b10">
                                 <span class="input-group-addon">
                                     <i class="fa-solid fa-location-dot"></i>
                                 </span>
-                                <input required name="address" type="text" value="<?php echo $currentUserAddress; ?>" size="60" placeholder="Địa chỉ" class="p-b15 textbox form-control">
+                                <input required id="new-address-input" name="address" type="text" value="<?php echo $currentUserAddress; ?>" size="60" placeholder="Địa chỉ" class="p-b15 textbox form-control">
                             </div>
 
                             <div class="input-group m-t10 m-b10">
                                 <span class="input-group-addon">
                                     <i class="fa-solid fa-phone"></i>
                                 </span>
-                                <input required name="phone" type="tel" size="60" value="<?php echo $currentUserPhone ;?>" placeholder="Số điện thoại" class="p-b15 textbox form-control">
+                                <input required id="new-phone-input" name="phone" type="tel" size="60" value="<?php echo $currentUserPhone; ?>" placeholder="Số điện thoại" class="p-b15 textbox form-control">
                             </div>
 
                             <div id="form-action">
@@ -102,24 +117,27 @@ if (!isset($_SESSION['username']) || $_SESSION['username'] == '') {
 
                     <div class="update-password m-b10">
                         <button class="btn btn-default btn-primary" onclick="toggleForm('update-password')">Đổi mật khẩu</button>
-                        <form action="" method="POST" id="update-password" style="display: none">
+                        <?php if (isset($errorPasswordMessage)) { ?>
+                            <div style="color: #dd4b39; font-size: 16px;font-weight: 500;padding: 6px 0;"><?php echo $errorPasswordMessage; ?></div>
+                        <?php } ?>
+                        <form action="/selling-book/account" method="POST" id="update-password" style="display: none">
                             <div class="input-group m-t10 m-b10">
                                 <span class="input-group-addon">
                                     <i class="fa-solid fa-user"></i>
                                 </span>
-                                <input required name="name" type="password" size="60" placeholder="Mật khẩu cũ" class="p-b15 textbox form-control">
+                                <input required id="oldPassword" name="oldPass" type="password" size="60" placeholder="Mật khẩu cũ" class="p-b15 textbox form-control">
                             </div>
                             <div class="input-group m-t10 m-b10">
                                 <span class="input-group-addon">
                                     <i class="fa-solid fa-user"></i>
                                 </span>
-                                <input required name="name" type="text" size="60" placeholder="Mật khẩu mới" class="p-b15 textbox form-control">
+                                <input required id="newPassword" onchange="validateChangePassword()" name="newPass" type="password" size="60" placeholder="Mật khẩu mới" class="p-b15 textbox form-control">
                             </div>
                             <div class="input-group m-t10 m-b10">
                                 <span class="input-group-addon">
                                     <i class="fa-solid fa-user"></i>
                                 </span>
-                                <input required name="name" type="text" size="60" placeholder="Xác nhận mật khẩu mới" class="p-b15 textbox form-control">
+                                <input required id="confirmNewPassword" onkeyup="validateChangePassword()" name="confirmPass" type="password" size="60" placeholder="Xác nhận mật khẩu mới" class="p-b15 textbox form-control">
                             </div>
 
                             <div id="form-action">
@@ -146,24 +164,24 @@ if (!isset($_SESSION['username']) || $_SESSION['username'] == '') {
                         </tr>
                     </thead>
                     <tbody>
-                    <?php foreach ($listBill as $key => $bill) { 
-                        $billId = $bill->getBillID();
-                        $billDate = $bill->getDateBill();
-                        $billStatus = billStatus_format($bill->getStatus()) ;
-                        $transportStatus = transportStatus_format($bill->getStatus()) ;
-                        $billPrice =currency_format($bill->getTotalPrice());
-                        
+                        <?php foreach ($listBill as $key => $bill) {
+                            $billId = $bill->getBillID();
+                            $billDate = $bill->getDateBill();
+                            $billStatus = billStatus_format($bill->getStatus());
+                            $transportStatus = transportStatus_format($bill->getStatus());
+                            $billPrice = currency_format($bill->getTotalPrice());
+
                         ?>
-                        <tr>
-                            <td class="order-number">
-                                <a href=<?php echo "/" . $path_project . "/account" . "/orders" . "/" . sha1($billId) ?>>#<?php echo $billId; ?></a>
-                            </td>
-                            <td class="date-order"><?php echo $billDate; ?></td>
-                            <td class="payment-status"><?php echo $billStatus; ?></td>
-                            <td class="fulfill-status"><?php echo $transportStatus; ?></td>
-                            <td class="total"><?php echo $billPrice; ?></td>
-                        </tr>
-                    <?php } ?>
+                            <tr>
+                                <td class="order-number">
+                                    <a href=<?php echo "/" . $path_project . "/account" . "/orders" . "/" . sha1($billId) ?>>#<?php echo $billId; ?></a>
+                                </td>
+                                <td class="date-order"><?php echo $billDate; ?></td>
+                                <td class="payment-status"><?php echo $billStatus; ?></td>
+                                <td class="fulfill-status"><?php echo $transportStatus; ?></td>
+                                <td class="total"><?php echo $billPrice; ?></td>
+                            </tr>
+                        <?php } ?>
                     </tbody>
                 </table>
             </div>

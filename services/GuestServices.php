@@ -143,21 +143,8 @@ class GuestServices extends MySqlConnect
      * The method update data to database
      * @param Guest $guest
      */
-    public function update($guest)
+    public function update($username, $name, $address, $phoneNumber)
     {
-        // update to products table
-        // $query = "update guest
-        //             set " .
-        //             "your_password = " . "'" . $guest->getPassword() . "' ," .
-        //             "your_name = " . "'" . $guest->getPassword() . "'" .
-        //             "where user_name = '" . $guest->getUsername() . "'"
-        //             . "";
-
-        $username = $guest->getUsername();
-        // $password = $guest->getPassword();
-        $name = $guest->getName();
-        $address = $guest->getAddress();
-        $phoneNumber = $guest->getPhoneNumber();
 
         $query = "update guest
                   set name = '$name',
@@ -354,7 +341,7 @@ class GuestServices extends MySqlConnect
         while ($row = mysqli_fetch_array($result)) {
             $bookId = $row["bookId"];
             $quantity = $row["quantity"];
-            array_push($listBillProducts, ['bookId'=> $bookId , 'quantity'=>$quantity ]);
+            array_push($listBillProducts, ['bookId' => $bookId, 'quantity' => $quantity]);
         }
 
         return $listBillProducts;
@@ -372,7 +359,7 @@ class GuestServices extends MySqlConnect
 
         // create bill by username
         $query = "insert into bill(username, totalPrice, dateBill, status)
-                    value('$username', 0, ". "'". date("Y-m-d h:i:sa") . "', 'PENDING')";
+                    value('$username', 0, " . "'" . date("Y-m-d h:i:sa") . "', 'PENDING')";
         parent::addQuerry($query);
         parent::updateQuery();
         $billId = parent::getLastInsertedId();

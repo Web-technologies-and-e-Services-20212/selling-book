@@ -8,7 +8,6 @@ define('DS', DIRECTORY_SEPARATOR);
 define('ROOT', $_SERVER['DOCUMENT_ROOT'] . DS . $path_project);
 
 require_once ROOT . DS . 'mvc' . DS . 'controllers' . DS . 'RouteController.php';
-require_once ROOT . DS . 'services' . DS . 'BookServices.php';
 // Lấy url trên đường dẫn
 $url = isset($_GET["url"]) ? $_GET["url"] : "/";
 

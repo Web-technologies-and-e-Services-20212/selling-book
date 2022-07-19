@@ -56,12 +56,11 @@ $billId = $service->submitBill($_SESSION['username'], $billBookArray);
 
                 <p></p>
                 <div class="w100p" style="text-align: center;">
-                    <h3>Mã đơn hàng của bạn là : <a href="">#<?php echo $billId ?></a></h3>
+                    <h3>Mã đơn hàng của bạn là : <a href=<?php echo "/" . $path_project . "/account" . "/orders" . "/" . sha1($billId) ?>>
+                        #<?php echo $billId ?></a>
+                    </h3>
                 </div>
 
-                <div class="w100p" style="text-align: center;">
-                    <h3>Mã đơn hàng của bạn là : <a href="">#<?php echo $billId ?></a></h3>
-                </div>
 
                 <div class="w100p p-lr15">
                     <a href=<?php echo "/" . $path_project  ?> class="back">

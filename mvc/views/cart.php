@@ -42,11 +42,11 @@ $listCartProducts = $guestService->getListCartBooks($_SESSION['username']);
                     <table>
                         <thead>
                             <tr>
-                                <th class="image p-b20">&nbsp;</th>
-                                <th class="item p-b20">Tên sản phẩm</th>
-                                <th class="qty p-b20">Số lượng</th>
-                                <th class="price p-b20">Giá tiền</th>
-                                <th class="delete p-b20">&nbsp;</th>
+                                <th class="image text-center p-b20">&nbsp;</th>
+                                <th class="item text-left p-b20">Tên sản phẩm</th>
+                                <th class="qty text-center p-b20">Số lượng</th>
+                                <th class="price text-right p-b20">Giá tiền</th>
+                                <th class="delete text-right p-b20">&nbsp;</th>
                             </tr>
                         </thead>
 
@@ -66,19 +66,19 @@ $listCartProducts = $guestService->getListCartBooks($_SESSION['username']);
 
                             ?>
                                 <tr>
-                                    <td class="image">
+                                    <td class="image text-center">
                                         <div class="product-image">
                                             <img src="<?php echo $bookImage; ?>" alt="<?php echo $bookTitle; ?>">
                                         </div>
                                     </td>
-                                    <td class="item"><a href="#">
+                                    <td class="item text-left"><a href="#">
                                             <strong title="<?php echo $bookTitle; ?>"><?php echo $bookTitle; ?></strong>
                                         </a></td>
-                                    <td class="qty">
+                                    <td class="qty text-center">
                                         <input type="number" size="4" min="1" id="update-quatity" value=<?php echo $quantity; ?> class="input-quantity">
                                     </td>
-                                    <td class="price"><?php echo currency_format($bookPrice); ?></td>
-                                    <td class="delete">
+                                    <td class="price text-right"><?php echo currency_format($bookPrice); ?></td>
+                                    <td class="delete text-right">
                                         <form action="library/guest/delete_product.php" method="post" id=<?php echo "form-delete" . $bookId; ?>>
                                             <input type="text" name="product_id" value="<?php echo $bookId; ?>" style="display: none">
                                             <a href="javascript:void(0);" onclick=<?php echo "remove_form(" . $bookId  . ")"; ?> class="click-delete">Xóa</a>
@@ -93,7 +93,7 @@ $listCartProducts = $guestService->getListCartBooks($_SESSION['username']);
                                 <td class="sum">
                                     <b>Tổng cộng:</b>
                                 </td>
-                                <td class="price"><b><?php echo currency_format($totalPrice); ?></b></td>
+                                <td class="price text-right"><b><?php echo currency_format($totalPrice); ?></b></td>
                                 <td>&nbsp;</td>
                             </tr>
                         </tbody>

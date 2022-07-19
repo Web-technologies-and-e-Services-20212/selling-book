@@ -5,6 +5,12 @@ let emailInput = document.getElementById("email");
 let registerPassword = document.getElementById("register-password");
 let confirmPassword = document.getElementById("confirm-password");
 
+let nameInput = document.getElementById("new-name-input");
+let addressInput = document.getElementById("new-address-input");
+let oldPassword = document.getElementById("oldPassword");
+var newPassword = document.getElementById("newPassword");
+var confirmNewPassword = document.getElementById("confirmNewPassword");
+
 function togglePassword() {
   var inputPass = document.querySelector("#password");
   var iconTogglePass = document.querySelector(".toggle-password i");
@@ -45,13 +51,45 @@ registerPassword.oninvalid = function(event) {
   event.target.setCustomValidity('Bạn cần nhập mật khẩu !');
 }
 
-// confirmPassword.oninvalid = function(event) {
-//   event.target.setCustomValidity('Bạn cần nhập xác nhận mật khẩu !');
-// }
+confirmPassword.oninvalid = function(event) {
+  event.target.setCustomValidity('Bạn cần nhập xác nhận mật khẩu !');
+}
+
+nameInput.oninvalid = function(event) {
+  event.target.setCustomValidity('Bạn cần nhập đầy đủ họ và tên !');
+}
+
+addressInput.oninvalid = function(event) {
+  event.target.setCustomValidity('Bạn cần nhập địa chỉ !');
+}
+
+phoneInput.oninvalid = function(event) {
+  event.target.setCustomValidity('Bạn cần nhập số điện thoại !');
+}
+
+oldPassword.oninvalid = function(event) {
+  event.target.setCustomValidity('Bạn cần nhập mật khẩu !');
+}
+
+newPassword.oninvalid = function(event) {
+  event.target.setCustomValidity('Bạn cần nhập mật khẩu !');
+}
+
+confirmNewPassword.oninvalid = function(event) {
+  event.target.setCustomValidity('Bạn cần nhập mật khẩu !');
+}
 
 function validateRegister(){
   if(registerPassword.value != confirmPassword.value) {
     confirmPassword.setCustomValidity("Mật khẩu không trùng khớp");
   } 
+}
+
+function validateChangePassword() { 
+  if(newPassword.value != confirmNewPassword.value) {
+    confirmNewPassword.setCustomValidity("Mật khẩu không trùng khớp");
+  }else {
+    confirmNewPassword.setCustomValidity('');
+  }
 }
 

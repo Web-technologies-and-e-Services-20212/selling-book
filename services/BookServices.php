@@ -326,7 +326,7 @@ class BookServices extends MySqlConnect
      * @param int $pageSize
      * @param String $filter
      */
-    public function search($pageIndex = 1, $pageSize = 10, $filter){
+    public function search($pageIndex = 1, $pageSize = 10, $filter=""){
         $listBook = array();
         $query = "CALL Proc_Search($pageIndex, $pageSize, '". $filter."');";
         parent::addQuerry($query);
@@ -358,6 +358,19 @@ class BookServices extends MySqlConnect
         return $listBook;
     }
 
+    /**
+     * @param int $pageIndex
+     * @param int $pageSize
+     * @param String $filter
+     */
+    public function getTotalRecordSearch($filter = ""){
+        $query = "CALL Proc_getAllRecordBySeach('". $filter."');";
+        parent::addQuerry($query);
+        $result = parent:: executeQuery();
+        $row = mysqli_fetch_assoc($result);
+        parent::closeQuery($result);
+        return $row['totalRecord'];
+    }
     /**
      * @param Int $bookId
      */
