@@ -7,6 +7,7 @@ require_once ROOT . DS . 'mvc' . DS . 'models' . DS . 'Guest.php';
 require_once ROOT . DS . 'mvc' . DS . 'models' . DS . 'Book.php';
 require_once ROOT . DS . 'mvc' . DS . 'models' . DS . 'Bill' . DS . 'Bill.php';
 require_once ROOT . DS . 'mvc' . DS . 'models' . DS . 'Bill' . DS . 'BillType.php';
+date_default_timezone_set('Asia/Ho_Chi_Minh');
 
 class GuestServices extends MySqlConnect {
     /**
@@ -337,6 +338,7 @@ class GuestServices extends MySqlConnect {
         return $listBillProducts;
     }
 
+    
     /**
     * Insert product to bill
     * @param String $username
@@ -345,7 +347,7 @@ class GuestServices extends MySqlConnect {
     public function submitBill($username, $array){
         // create bill by username
         $query = "insert into bill(username, totalPrice, dateBill, status)
-                    value('$username', 0, ". "'". date("Y-m-d") . "', 'PENDING')";
+                    value('$username', 0, ". "'". date('d-m-Y H:i:s') . "', 'PENDING')";
         parent::addQuerry($query);
         parent::updateQuery();
         $billId = parent::getLastInsertedId();
@@ -353,15 +355,17 @@ class GuestServices extends MySqlConnect {
         $bookServices = new BookServices();
         foreach($array as $bill_item){
             // insert book to bill_book
+            $bookId = $bill_item['bookId'];
+            $quantity = $bill_item['quantity'];
             $query = "insert into bill_book(billId, bookId, quantity)
-                    value($billId, $bill_item[0], $bill_item[1])
+                    value($billId, $bookId , $quantity)
                   ";
             parent::addQuerry($query);
             parent::updateQuery();
 
             // get and add book price to total price
-            $book = $bookServices->getById($bill_item[0]);
-            $totalPrice += $book->getPrice() * $bill_item[1];
+            $book = $bookServices->getById($bookId);
+            $totalPrice += $book->getPrice() * $quantity;
         }
         // update total price of bill
         $query = "update bill

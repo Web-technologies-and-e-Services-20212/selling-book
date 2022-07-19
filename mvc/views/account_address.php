@@ -44,32 +44,34 @@ if (!isset($_SESSION['username']) || $_SESSION['username'] == '') {
                 </h1>
             </span>
 
-            <div class="customer-info">
-                <h2><?php echo $currentUser->getName(); ?></h2>
-                <p><?php echo $currentUser->getUsername(); ?></p>
-                <p></p>
-                <div class="address">
-                    <p><?php if (!empty($currentUser->getAddress())) {
-                            echo $currentUser->getAddress();
-                        } else echo "Bạn chưa cập nhật địa chỉ";
-                        ?></p>
-                    <p></p>
-                    <p>VietNam</p>
-                    <p></p>
-                    <p><?php if (!empty($currentUser->getPhoneNumber())) {
-                            echo $currentUser->getPhoneNumber();
-                        } else echo "Bạn chưa cập nhật số điện thoại";
-                        ?></p>
-                    <p></p>
-                    <p><a href=<?php echo "/" . $path_project . "/" . "account" . "/" . "address" ?>>Xem địa chỉ</a></p>
-                </div>
+            
+
+            <div class="input-group m-t10 m-b10">
+                <span class="input-group-addon">
+                    <i class="fa-solid fa-user"></i>
+                </span>
+                <input required name="lname" type="text" id="contactFormName" size="40" placeholder="Họ" class="p-b15 textbox form-control">
             </div>
 
             <div class="input-group m-t10 m-b10">
                 <span class="input-group-addon">
                     <i class="fa-solid fa-user"></i>
                 </span>
-                <input required type="name" id="contactFormName" size="40" placeholder="Tên của bạn" class="p-b15 textbox form-control">
+                <input required name="fname" type="text" id="contactFormName" size="40" placeholder="Tên" class="p-b15 textbox form-control">
+            </div>
+
+            <div class="input-group m-t10 m-b10">
+                <span class="input-group-addon">
+                    <i class="fa-solid fa-user"></i>
+                </span>
+                <input required name="address" type="text" id="contactFormName" size="40" placeholder="Địa chỉ" class="p-b15 textbox form-control">
+            </div>
+
+            <div class="input-group m-t10 m-b10">
+                <span class="input-group-addon">
+                    <i class="fa-solid fa-user"></i>
+                </span>
+                <input required name="phone" type="tel" id="contactFormName" size="40" placeholder="Địa chỉ" class="p-b15 textbox form-control">
             </div>
 
 

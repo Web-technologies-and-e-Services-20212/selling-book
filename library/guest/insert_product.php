@@ -16,13 +16,9 @@ foreach ($listCartProducts as $key => $cartBook) {
     $bookId = $book->getBookId();
     array_push($billBookArray, ['bookId'=> $bookId, 'quantity' => $_POST['quantity-product' .$bookId ]]);
 }
-// $text = $_POST['list_quantity'];
-// $list_text = explode(" ", $text);
-// $list_quantity = array();
-// foreach ($list_text as $text) {
-//     array_push($list_quantity, intval($text));
-// }
-print_r($billBookArray) ;
+
+$service->submitBill($_SESSION['username'], $billBookArray);
+$x = 1;
 // $lens = count($listProducts);
 // for($i=0; $i<$lens; $i++){
 //     $product = $listProducts[$i];
@@ -34,3 +30,4 @@ print_r($billBookArray) ;
 //     $service->removeProduct($product->getProductID(), $_SESSION['username']);
 // }
 // header("Location: ../cart");
+

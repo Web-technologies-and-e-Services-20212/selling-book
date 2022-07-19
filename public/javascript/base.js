@@ -19,6 +19,15 @@ function togglePassword() {
   }
 }
 
+function toggleForm(formId) {
+  let form = document.getElementById(formId);
+  if(form.style.display === "block"){
+    form.style.display = 'none';
+  }else{
+    form.style.display = 'block';
+  }
+}
+
 
 lastNameInput.oninvalid = function(event) {
   event.target.setCustomValidity('Bạn cần nhập họ !');

@@ -9,6 +9,9 @@ if (!isset($_SESSION['username']) || $_SESSION['username'] == '') {
     if (!isset($currentUser)) {
         $guestService = new GuestServices();
         $currentUser = $guestService->get($_SESSION['username']);
+        $currentUserName = $currentUser->getName();
+        $currentUserAddress = $currentUser->getAddress();
+        $currentUserPhone = $currentUser->getPhoneNumber();
     }
 }
 ?>
@@ -42,25 +45,87 @@ if (!isset($_SESSION['username']) || $_SESSION['username'] == '') {
                 </h1>
             </span>
 
-            <div class="customer-info">
-                <h2><?php echo $currentUser->getName(); ?></h2>
-                <p><?php echo $currentUser->getUsername(); ?></p>
-                <p></p>
-                <div class="address">
-                    <p><?php if(!empty($currentUser->getAddress())){
-                        echo $currentUser->getAddress();
-                    }else echo "Bạn chưa cập nhật địa chỉ";
-                     ?></p>
+            <div class="customer-info flex">
+                <div class="grid-r5m2">
+                    <h2><?php echo $currentUserName ?></h2>
+                    <p><?php echo $currentUser->getUsername(); ?></p>
                     <p></p>
-                    <p>VietNam</p>
-                    <p></p>
-                    <p><?php if(!empty($currentUser->getPhoneNumber())){
-                        echo $currentUser->getPhoneNumber();
-                    }else echo "Bạn chưa cập nhật số điện thoại";
-                     ?></p>
-                    <p></p>
-                    <p><a href=<?php echo "/" . $path_project . "/" . "account" . "/" . "address" ?>>Xem địa chỉ</a></p>
-                </div> 
+                    <div class="address">
+                        <p><?php if (!empty($currentUserAddress)) {
+                                echo $currentUserAddress;
+                            } else echo "Bạn chưa cập nhật địa chỉ";
+                            ?></p>
+                        <p></p>
+                        <p>VietNam</p>
+                        <p></p>
+                        <p><?php if (!empty($currentUserPhone)) {
+                                echo $currentUserPhone;
+                            } else echo "Bạn chưa cập nhật số điện thoại";
+                            ?></p>
+                        <p></p>
+                    </div>
+                </div>
+
+                <div class="grid-r5m3 p-t10">
+                    <div class="update-address m-b10">
+                        <button class="btn btn-default btn-primary" onclick="toggleForm('update-address')">Cập nhật địa chỉ</button>
+                        <form action="" id="update-address" method="POST" style="display: none">
+                            <div class="input-group m-t10 m-b10">
+                                <span class="input-group-addon">
+                                    <i class="fa-solid fa-user"></i>
+                                </span>
+                                <input required name="name" type="text" size="60" value="<?php echo $currentUserName; ?>" placeholder="Tên" class="p-b15 textbox form-control">
+                            </div>
+
+                            <div class="input-group m-t10 m-b10">
+                                <span class="input-group-addon">
+                                    <i class="fa-solid fa-location-dot"></i>
+                                </span>
+                                <input required name="address" type="text" value="<?php echo $currentUserAddress; ?>" size="60" placeholder="Địa chỉ" class="p-b15 textbox form-control">
+                            </div>
+
+                            <div class="input-group m-t10 m-b10">
+                                <span class="input-group-addon">
+                                    <i class="fa-solid fa-phone"></i>
+                                </span>
+                                <input required name="phone" type="tel" size="60" value="<?php echo $currentUserPhone ;?>" placeholder="Số điện thoại" class="p-b15 textbox form-control">
+                            </div>
+
+                            <div id="form-action">
+                                <input type="submit" style="width: 20%" value="Cập nhật" class="btn w100p m-t20 btn-default">
+                            </div>
+                        </form>
+                    </div>
+
+                    <div class="update-password m-b10">
+                        <button class="btn btn-default btn-primary" onclick="toggleForm('update-password')">Đổi mật khẩu</button>
+                        <form action="" method="POST" id="update-password" style="display: none">
+                            <div class="input-group m-t10 m-b10">
+                                <span class="input-group-addon">
+                                    <i class="fa-solid fa-user"></i>
+                                </span>
+                                <input required name="name" type="password" size="60" placeholder="Mật khẩu cũ" class="p-b15 textbox form-control">
+                            </div>
+                            <div class="input-group m-t10 m-b10">
+                                <span class="input-group-addon">
+                                    <i class="fa-solid fa-user"></i>
+                                </span>
+                                <input required name="name" type="text" size="60" placeholder="Mật khẩu mới" class="p-b15 textbox form-control">
+                            </div>
+                            <div class="input-group m-t10 m-b10">
+                                <span class="input-group-addon">
+                                    <i class="fa-solid fa-user"></i>
+                                </span>
+                                <input required name="name" type="text" size="60" placeholder="Xác nhận mật khẩu mới" class="p-b15 textbox form-control">
+                            </div>
+
+                            <div id="form-action">
+                                <input type="submit" style="width: 20%" value="Thay đổi" class="btn w100p m-t20 btn-default">
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
             </div>
 
             <div class="customer-order">
@@ -146,6 +211,8 @@ if (!isset($_SESSION['username']) || $_SESSION['username'] == '') {
 
     <!-- Nội dung phần Footer -->
     <?php require_once ROOT . DS . 'mvc' . DS . 'views' . DS . 'footer.php'; ?>
+    <script src="public/javascript/base.js"></script>
+
 </body>
 
 </html>
