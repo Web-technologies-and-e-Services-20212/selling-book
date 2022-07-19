@@ -372,7 +372,7 @@ class GuestServices extends MySqlConnect
 
         // create bill by username
         $query = "insert into bill(username, totalPrice, dateBill, status)
-                    value('$username', 0, " . "'" . date("Y-m-d h:i:sa") . "', 'PENDING')";
+                    value('$username', 0, ". "'". date("Y-m-d h:i:sa") . "', 'PENDING')";
         parent::addQuerry($query);
         parent::updateQuery();
         $billId = parent::getLastInsertedId();
