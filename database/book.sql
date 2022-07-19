@@ -645,11 +645,11 @@ END$$
 DELIMITER ;
 
 DELIMITER $$
-CREATE DEFINER=`root`@`localhost` PROCEDURE `Proc_GetBookWithCategory`(IN `m_billId` INT)
+CREATE DEFINER=`root`@`localhost` PROCEDURE `Proc_GetBookWithCategory`(IN `m_bookId` INT)
 BEGIN
 
 CREATE TEMPORARY TABLE tb_book0
-SELECT bc.categoryId as category FROM book b, book_category bc where b.ID = bc.bookId;
+SELECT bc.categoryId as category FROM book b, book_category bc where b.ID = bc.bookId and b.ID = m_bookId;
 
 CREATE TEMPORARY TABLE tb_book
 SELECT ROW_NUMBER() OVER (ORDER BY b.createAt DESC) AS stt, b.ID,b.soldNumber,b.price,b.image,b.discount,b.title, b.available, b.createAt
