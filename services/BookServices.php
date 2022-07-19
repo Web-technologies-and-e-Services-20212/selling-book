@@ -320,4 +320,112 @@ class BookServices extends MySqlConnect
 
         return null;
     }
+
+    /**
+     * @param int $pageIndex
+     * @param int $pageSize
+     * @param String $filter
+     */
+    public function search($pageIndex = 1, $pageSize = 10, $filter){
+        $listBook = array();
+        $query = "CALL Proc_Search($pageIndex, $pageSize, '". $filter."');";
+        parent::addQuerry($query);
+        $result = parent:: executeQuery();
+        while ($row = mysqli_fetch_array($result)) {
+            
+            $soldNumber = $row["soldNumber"];
+            $bookId = $row["ID"];
+            $available = $row["available"];
+            $price = $row["price"];
+            $image = $row["image"];
+            $discount = $row["discount"];
+            $title = $row["title"];
+
+
+            $book = new Book(
+                $bookId,
+                $soldNumber,
+                $available,
+                $price,
+                $image,
+                $discount,
+                $title
+            );
+
+            array_push($listBook, $book);
+        }
+        parent::closeQuery($result);
+        return $listBook;
+    }
+
+    /**
+     * @param Int $bookId
+     */
+    public function getBookByCategory($bookId){
+        $listBook = array();
+        $query = "CALL Proc_GetBookWithCategory($bookId);";
+        parent::addQuerry($query);
+        $result = parent::executeQuery();
+        while ($row = mysqli_fetch_array($result)) {
+            
+            $soldNumber = $row["soldNumber"];
+            $bookId = $row["ID"];
+            $available = $row["available"];
+            $price = $row["price"];
+            $image = $row["image"];
+            $discount = $row["discount"];
+            $title = $row["title"];
+
+
+            $book = new Book(
+                $bookId,
+                $soldNumber,
+                $available,
+                $price,
+                $image,
+                $discount,
+                $title
+            );
+
+            array_push($listBook, $book);
+        }
+        parent::closeQuery($result);
+        return $listBook;
+    }
+
+    /**
+     * @param String $author
+     */
+    public function getBookByAuthor($author){
+        $listBook = array();
+        $query = "CALL Proc_GetBookWithSameAuthor('".$author."');";
+        parent::addQuerry($query);
+        $result = parent::executeQuery();
+        while ($row = mysqli_fetch_array($result)) {
+            
+            $soldNumber = $row["soldNumber"];
+            $bookId = $row["ID"];
+            $available = $row["available"];
+            $price = $row["price"];
+            $image = $row["image"];
+            $discount = $row["discount"];
+            $title = $row["title"];
+
+
+            $book = new Book(
+                $bookId,
+                $soldNumber,
+                $available,
+                $price,
+                $image,
+                $discount,
+                $title
+            );
+
+            array_push($listBook, $book);
+        }
+        parent::closeQuery($result);
+        return $listBook;
+    }
 }
+
