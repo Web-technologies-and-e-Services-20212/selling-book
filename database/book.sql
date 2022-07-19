@@ -594,3 +594,47 @@ INSERT INTO `bill`(`ID`, `username`, `totalPrice`, `dateBill`, `status`) VALUES 
 INSERT INTO `bill_book`(`billId`, `quantity`, `totalPrice`, `bookId`) VALUES (1,1,0,80), (1,2,0,81), (1,3,0,82),
 (2,2,0,81), (2,2,0,82), (3,5,0,83), (4,2,0,81),(4,3,0,84),(4,1,0,85)
 
+DELIMITER $$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `Proc_Search`(IN `m_pageIndex` INT, IN `m_pageSize` INT, IN `m_filter` VARCHAR(255) CHARSET utf8)
+    COMMENT 'Tìm kiếm'
+BEGIN
+	SET @recordStart = ((m_pageIndex - 1) * m_pageSize) + 1,@recordEnd = m_pageIndex * m_pageSize;
+	CREATE TEMPORARY TABLE tb_book_category
+    SELECT ROW_NUMBER() OVER (ORDER BY b.createAt DESC) AS stt, b.ID,b.soldNumber,b.price,b.image,b.discount,b.title, b.available, b.createAt
+    FROM book b
+    WHERE (m_filter IS NULL ) OR ( b.title LIKE CONCAT("%", m_filter, "%"));
+    
+	SELECT DISTINCT * FROM tb_book_category tb WHERE stt BETWEEN @recordStart AND @recordEnd;
+    DROP TABLE tb_book_category;
+END$$
+DELIMITER ;
+
+DELIMITER $$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `Proc_GetBookWithCategory`(IN `m_billId` INT)
+BEGIN
+
+CREATE TEMPORARY TABLE tb_book0
+SELECT bc.categoryId as category FROM book b, book_category bc where b.ID = bc.bookId;
+
+CREATE TEMPORARY TABLE tb_book
+SELECT ROW_NUMBER() OVER (ORDER BY b.createAt DESC) AS stt, b.ID,b.soldNumber,b.price,b.image,b.discount,b.title, b.available, b.createAt
+FROM book b, book_category bc
+WHERE (b.ID = bc.bookId) AND ( bc.categoryId IN (SELECT * FROM tb_book0));
+SELECT DISTINCT * FROM tb_book tb WHERE stt BETWEEN 1 AND 6;
+DROP TABLE tb_book;
+DROP TABLE tb_book0;
+END$$
+DELIMITER ;
+
+DELIMITER $$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `Proc_GetBookWithSameAuthor`(IN `m_author` VARCHAR(255) CHARSET utf8)
+BEGIN
+	CREATE TEMPORARY TABLE tb_book
+    SELECT ROW_NUMBER() OVER (ORDER BY b.createAt DESC) AS stt, b.ID,b.soldNumber,b.price,b.image,b.discount,b.title, b.available, b.createAt
+    FROM book b
+    WHERE (m_author IS NULL ) OR ( b.author LIKE CONCAT("%", m_author, "%"));
+    
+	SELECT DISTINCT * FROM tb_book tb WHERE stt BETWEEN 0 AND 6;
+    DROP TABLE tb_book;
+END$$
+DELIMITER ;
