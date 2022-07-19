@@ -5,3 +5,7 @@ function remove_form(formId) {
 function checkout() {
     document.getElementById("form-checkout").submit();
 }
+
+function submitBill(){
+    document.getElementById("form-bill").submit();
+}

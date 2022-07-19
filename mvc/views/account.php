@@ -1,5 +1,6 @@
 <?php
 include_once ROOT . DS . 'services' . DS . "GuestServices.php";
+include_once ROOT . DS . 'library' . DS . "format.php";
 
 ob_start();
 session_start();
@@ -12,6 +13,8 @@ if (!isset($_SESSION['username']) || $_SESSION['username'] == '') {
         $currentUserName = $currentUser->getName();
         $currentUserAddress = $currentUser->getAddress();
         $currentUserPhone = $currentUser->getPhoneNumber();
+
+        $listBill = $guestService->getListBill($_SESSION['username']);
     }
 }
 ?>
@@ -143,65 +146,24 @@ if (!isset($_SESSION['username']) || $_SESSION['username'] == '') {
                         </tr>
                     </thead>
                     <tbody>
+                    <?php foreach ($listBill as $key => $bill) { 
+                        $billId = $bill->getBillID();
+                        $billDate = $bill->getDateBill();
+                        $billStatus = billStatus_format($bill->getStatus()) ;
+                        $transportStatus = transportStatus_format($bill->getStatus()) ;
+                        $billPrice =currency_format($bill->getTotalPrice());
+                        
+                        ?>
                         <tr>
                             <td class="order-number">
-                                <a href="#">#IPM133456</a>
+                                <a href=<?php echo "/" . $path_project . "/account" . "/orders" . "/" . sha1($billId) ?>>#<?php echo $billId; ?></a>
                             </td>
-                            <td class="date-order">01/07/2022</td>
-                            <td class="payment-status">Đã hoàn tất</td>
-                            <td class="fulfill-status">Đã vận chuyển</td>
-                            <td class="total">390,000đ</td>
+                            <td class="date-order"><?php echo $billDate; ?></td>
+                            <td class="payment-status"><?php echo $billStatus; ?></td>
+                            <td class="fulfill-status"><?php echo $transportStatus; ?></td>
+                            <td class="total"><?php echo $billPrice; ?></td>
                         </tr>
-
-                        <tr>
-                            <td class="order-number">
-                                <a href="#">#IPM133456</a>
-                            </td>
-                            <td class="date-order">01/07/2022</td>
-                            <td class="payment-status">Đã hoàn tất</td>
-                            <td class="fulfill-status">Đã vận chuyển</td>
-                            <td class="total">390,000đ</td>
-                        </tr>
-
-                        <tr>
-                            <td class="order-number">
-                                <a href="#">#IPM133456</a>
-                            </td>
-                            <td class="date-order">01/07/2022</td>
-                            <td class="payment-status">Đã hoàn tất</td>
-                            <td class="fulfill-status">Đã vận chuyển</td>
-                            <td class="total">390,000đ</td>
-                        </tr>
-
-                        <tr>
-                            <td class="order-number">
-                                <a href="#">#IPM133456</a>
-                            </td>
-                            <td class="date-order">01/07/2022</td>
-                            <td class="payment-status">Đã hoàn tất</td>
-                            <td class="fulfill-status">Đã vận chuyển</td>
-                            <td class="total">390,000đ</td>
-                        </tr>
-
-                        <tr>
-                            <td class="order-number">
-                                <a href="#">#IPM133456</a>
-                            </td>
-                            <td class="date-order">01/07/2022</td>
-                            <td class="payment-status">Đã hoàn tất</td>
-                            <td class="fulfill-status">Đã vận chuyển</td>
-                            <td class="total">390,000đ</td>
-                        </tr>
-
-                        <tr>
-                            <td class="order-number">
-                                <a href="#">#IPM133456</a>
-                            </td>
-                            <td class="date-order">01/07/2022</td>
-                            <td class="payment-status">Đã hoàn tất</td>
-                            <td class="fulfill-status">Đã vận chuyển</td>
-                            <td class="total">390,000đ</td>
-                        </tr>
+                    <?php } ?>
                     </tbody>
                 </table>
             </div>

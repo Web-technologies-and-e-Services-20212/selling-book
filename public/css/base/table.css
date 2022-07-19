@@ -24,10 +24,20 @@ td {
     bottom: 0;
 }
 
-/*Cart table */
-.cart-content .image {
-  text-align: center;
+
+.text-center{
+  text-align: center !important;
 }
+
+.text-left{
+  text-align: left !important;
+}
+
+.text-right{
+  text-align: right !important;
+}
+
+/*Cart table */
 
 .cart-content .item {
   max-width: 200px !important;
@@ -39,14 +49,6 @@ td {
 
 .cart-content .item strong {
   color: #000000;
-}
-
-.cart-content .qty {
-  text-align: center;
-}
-
-.cart-content .price {
-  text-align: right;
 }
 
 .cart-content .delete {
@@ -79,6 +81,11 @@ td {
   border: 1px solid #ccc;
   outline: none;
   padding-left: 15px;
+}
+
+input[type="text"].input-quantity {
+  border: 0;
+  padding: 0;
 }
 
 .summary .sum {

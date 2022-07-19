@@ -7,14 +7,15 @@ require_once ROOT . DS . 'mvc' . DS . 'models' . DS . 'Guest.php';
 require_once ROOT . DS . 'mvc' . DS . 'models' . DS . 'Book.php';
 require_once ROOT . DS . 'mvc' . DS . 'models' . DS . 'Bill' . DS . 'Bill.php';
 require_once ROOT . DS . 'mvc' . DS . 'models' . DS . 'Bill' . DS . 'BillType.php';
-date_default_timezone_set('Asia/Ho_Chi_Minh');
 
-class GuestServices extends MySqlConnect {
+class GuestServices extends MySqlConnect
+{
     /**
      * The method support insert data to database
      * @param Guest $guest
      */
-    public function insert($guest) {
+    public function insert($guest)
+    {
         $username = $guest->getUsername();
         $password = $guest->getPassword();
         $address = $guest->getAddress();
@@ -28,7 +29,7 @@ class GuestServices extends MySqlConnect {
         parent::updateQuery();
 
         // when create guest, one cart will created
-        $query = "insert into cart(username, totalPrice) value("."'".$guest->getUsername()."', 0)";
+        $query = "insert into cart(username, totalPrice) value(" . "'" . $guest->getUsername() . "', 0)";
         parent::addQuerry($query);
         parent::updateQuery();
     }
@@ -37,7 +38,8 @@ class GuestServices extends MySqlConnect {
      * The method support delete row in database
      * @param String $username
      */
-    public function delete($username){
+    public function delete($username)
+    {
 
         // delete row with user_name in cart_book table
         $cart_id = self::getCartID($username);
@@ -63,13 +65,14 @@ class GuestServices extends MySqlConnect {
      * Return all guest in guest table
      * @return array
      */
-    public function getAll(){
+    public function getAll()
+    {
         $listGuest = array();
         $query = "select * from guest";
         parent::addQuerry($query);
         $result = parent::executeQuery();
 
-        while($row = mysqli_fetch_array($result)){
+        while ($row = mysqli_fetch_array($result)) {
             $username = $row["username"];
             $password = $row["password"];
             $name = $row["name"];
@@ -89,8 +92,9 @@ class GuestServices extends MySqlConnect {
      * @param String $username
      * @return int
      */
-    public function getCartID($username){
-        if(self::get($username) == null){
+    public function getCartID($username)
+    {
+        if (self::get($username) == null) {
             return -1;
         }
 
@@ -100,11 +104,9 @@ class GuestServices extends MySqlConnect {
         $result = parent::executeQuery();
 
         $row = mysqli_fetch_array($result);
-        if(isset($row["ID"])){
-        $cart_id = $row["ID"];
-
-        }else{
-            
+        if (isset($row["ID"])) {
+            $cart_id = $row["ID"];
+        } else {
         }
 
         return $cart_id;
@@ -116,13 +118,14 @@ class GuestServices extends MySqlConnect {
      * @param String $username
      * @return Guest
      */
-    public function get($username){
+    public function get($username)
+    {
         $query = "select * from guest
                     where username='" . $username . "'";
         parent::addQuerry($query);
         $result = parent::executeQuery();
 
-        if($row = mysqli_fetch_array($result)){
+        if ($row = mysqli_fetch_array($result)) {
             $username = $row["username"];
             $password = $row["password"];
             $name = $row["name"];
@@ -140,7 +143,8 @@ class GuestServices extends MySqlConnect {
      * The method update data to database
      * @param Guest $guest
      */
-    public function update($guest) {
+    public function update($guest)
+    {
         // update to products table
         // $query = "update guest
         //             set " .
@@ -171,7 +175,8 @@ class GuestServices extends MySqlConnect {
      * @param String $username
      * @param String $newPassword
      */
-    public function updatePassword($username, $newPassword) {
+    public function updatePassword($username, $newPassword)
+    {
         // update to products table
         // $query = "update guest
         //             set " .
@@ -200,7 +205,8 @@ class GuestServices extends MySqlConnect {
      * @param String $username
      * @return array
      */
-    public function getListCartBooks($username){
+    public function getListCartBooks($username)
+    {
         $listCartProducts = array();
 
         $cart_id = self::getCartID($username);
@@ -210,13 +216,12 @@ class GuestServices extends MySqlConnect {
         parent::addQuerry($query);
         $result = parent::executeQuery();
 
-        while($row = mysqli_fetch_array($result)){
+        while ($row = mysqli_fetch_array($result)) {
             $book_id = $row["bookId"];
             $quantity = $row["quantity"];
             $bookServices = new BookServices();
             $book = $bookServices->getById($book_id);
             array_push($listCartProducts, ['book' => $book, 'quantity' => $quantity]);
-
         }
 
         return $listCartProducts;
@@ -228,7 +233,8 @@ class GuestServices extends MySqlConnect {
      * @param Book $book
      * @return array
      */
-    public function insertBookToCart($username, $book, $quantity){
+    public function insertBookToCart($username, $book, $quantity)
+    {
         $cart_id = self::getCartID($username);
         $book_id = $book->getBookId();
         $query = "insert into cart_book(cartId, quantity, bookId)
@@ -239,11 +245,32 @@ class GuestServices extends MySqlConnect {
         parent::updateQuery();
     }
 
+
+    /**
+     * Method update book to cart for guest
+     * @param String $username
+     * @param Book $book
+     * @param String $quantity
+     * @return 
+     */
+    public function updateBookToCart($username, $book, $quantity)
+    {
+        $cart_id = self::getCartID($username);
+        $book_id = $book->getBookId();
+        $query = "update cart_book set cart_book.quantity = $quantity
+                    where cart_book.cardId = $cart_id and cart_book.bookId = $book_id";
+
+        parent::addQuerry($query);
+        parent::updateQuery();
+    }
+
+
     /**
      * Method help remove product from cart
      * @param int $product_id
      */
-    public function removeBookFromCart($product_id, $username){
+    public function removeBookFromCart($product_id, $username)
+    {
         $cart_id = self::getCartID($username);
         $query = "CALL Proc_DeleteCartBooks($cart_id, $product_id)";
 
@@ -257,24 +284,26 @@ class GuestServices extends MySqlConnect {
      * @param String $password
      * @return bool
      */
-    public function checkAccount($username, $password){
+    public function checkAccount($username, $password)
+    {
         $query = "select * from guest where username = '$username' and password = '$password'";
         parent::addQuerry($query);
 
         $result = parent::executeQuery();
-        if(mysqli_fetch_array($result)){
+        if (mysqli_fetch_array($result)) {
             return True;
         } else {
             return False;
         }
     }
 
-    public function checkUsernameExist($username){
+    public function checkUsernameExist($username)
+    {
         $query = "select * from guest where username = '$username'";
         parent::addQuerry($query);
 
         $result = parent::executeQuery();
-        if(mysqli_fetch_array($result)){
+        if (mysqli_fetch_array($result)) {
             return True;
         } else {
             return False;
@@ -286,7 +315,9 @@ class GuestServices extends MySqlConnect {
      * @param String $username
      * @return array[Bill]
      */
-    public function getListBill($username){
+    public function getListBill($username)
+    {
+
         $listBill = array();
         $query = "select * from bill
                     where username ='" . $username . "'";
@@ -294,14 +325,13 @@ class GuestServices extends MySqlConnect {
         parent::addQuerry($query);
         $result = parent::executeQuery();
 
-        while($row = mysqli_fetch_array($result)){
+        while ($row = mysqli_fetch_array($result)) {
             $dateBill = $row["dateBill"];
             $totalPrice = $row["totalPrice"];
             $bill = new Bill($username, $dateBill, $totalPrice, []);
             $bill->setBillID($row["ID"]);
             $bill->setStatus($row["status"]);
             array_push($listBill, $bill);
-
         }
 
         return $listBill;
@@ -313,47 +343,42 @@ class GuestServices extends MySqlConnect {
      * @param String $bill_id
      * @return array
      */
-    public function getListBillBooks($bill_id){
+    public function getListBillBooks($bill_id)
+    {
         $listBillProducts = array();
-        
-        $query = "select * from bill where ID = '$bill_id'";
+
+        $query = "select * from bill_book where billId = '$bill_id'";
         parent::addQuerry($query);
         $result = parent::executeQuery();
 
-        while($row = mysqli_fetch_array($result)){
-            $billId = $row["ID"];
-
-            $query = "select * from bill_book where billId = '$billId'";
-            parent::addQuerry($query);
-            $result2 = parent::executeQuery();
-            $listBooks = array();
-            while($row2 = mysqli_fetch_array($result2)){
-                $bookId = $row2["bookId"];
-                $bookServices = new BookServices();
-                $book = $bookServices->getById($bookId);
-                array_push($listBillProducts, [$book, $row2["quantity"]]);
-            }
+        while ($row = mysqli_fetch_array($result)) {
+            $bookId = $row["bookId"];
+            $quantity = $row["quantity"];
+            array_push($listBillProducts, ['bookId'=> $bookId , 'quantity'=>$quantity ]);
         }
 
         return $listBillProducts;
     }
 
-    
+
     /**
-    * Insert product to bill
-    * @param String $username
-    * @param Array $array
-    */
-    public function submitBill($username, $array){
+     * Insert product to bill
+     * @param String $username
+     * @param Array $array
+     */
+    public function submitBill($username, $array)
+    {
+        date_default_timezone_set('Asia/Ho_Chi_Minh');
+
         // create bill by username
         $query = "insert into bill(username, totalPrice, dateBill, status)
-                    value('$username', 0, ". "'". date('d-m-Y H:i:s') . "', 'PENDING')";
+                    value('$username', 0, " . "'" . date("Y-m-d h:i:sa") . "', 'PENDING')";
         parent::addQuerry($query);
         parent::updateQuery();
         $billId = parent::getLastInsertedId();
         $totalPrice = 0;
         $bookServices = new BookServices();
-        foreach($array as $bill_item){
+        foreach ($array as $bill_item) {
             // insert book to bill_book
             $bookId = $bill_item['bookId'];
             $quantity = $bill_item['quantity'];
@@ -367,6 +392,7 @@ class GuestServices extends MySqlConnect {
             $book = $bookServices->getById($bookId);
             $totalPrice += $book->getPrice() * $quantity;
         }
+        $totalPrice += 30000;
         // update total price of bill
         $query = "update bill
                     set totalPrice = $totalPrice
@@ -389,20 +415,20 @@ class GuestServices extends MySqlConnect {
         parent::addQuerry($query);
         parent::updateQuery();
 
-
-        
+        return $billId;
     }
 
     /**
-    * Get bill from bill id
-    * @param int $bill_id
-    * @return Bill
-    */
-    public function getBill($bill_id){
+     * Get bill from bill id
+     * @param int $bill_id
+     * @return Bill
+     */
+    public function getBill($bill_id)
+    {
         $query = "select * from bill where ID = $bill_id";
         parent::addQuerry($query);
         $result = parent::executeQuery();
-        if($row = mysqli_fetch_array($result)){
+        if ($row = mysqli_fetch_array($result)) {
             $billId = $row["ID"];
             $totalPrice = $row["totalPrice"];
             $dateBill = $row["dateBill"];
@@ -412,7 +438,7 @@ class GuestServices extends MySqlConnect {
             parent::addQuerry($query);
             $result2 = parent::executeQuery();
             $listBooks = array();
-            while($row2 = mysqli_fetch_array($result2)){
+            while ($row2 = mysqli_fetch_array($result2)) {
                 $bookId = $row2["bookId"];
                 $bookServices = new BookServices();
                 $book = $bookServices->getById($bookId);
@@ -431,8 +457,9 @@ class GuestServices extends MySqlConnect {
      * Update status bill from bill id and status
      * @param int $bill_id
      * @param String $status
-    */
-    public function updateStatusBill($bill_id, $status){
+     */
+    public function updateStatusBill($bill_id, $status)
+    {
         $query = "update bill set status = $status where ID = $bill_id";
 
         parent::addQuerry($query);
