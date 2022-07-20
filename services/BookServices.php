@@ -92,40 +92,146 @@ class BookServices extends MySqlConnect
         parent::updateQuery();
     }
 
-    public function getAll($param = NO_CATEGORY['id'], $pageIndex = 1, $pageSize = 10)
+    public function getAllSortByTimeAsc($param = NO_CATEGORY['id'], $pageIndex = 1, $pageSize = 10)
     {
         $listBook = array();
-        // switch($param){
-        //     case 0:{ 
-        //         $query = "select * from book";
-        //         break;
-        //     }
-        //     case 1:{
-        //         $query = "select * from book order by createAt desc";
-        //         break;
-        //     }
-        //     case 2:{
-        //         $query = "select * from book order by price desc";
-        //         break;
-        //     }
-        //     case 3:{
-        //         $query = "select * from book order by price asc";
-        //         break;
-        //     }
-        //     case 4:{
-        //         $query = "select * from book order by soldNumber desc";
-        //         break;
-        //     }
-        //     case 5:{
-        //         $query = "select * from book order by title desc";
-        //         break;
-        //     }
-        //     case 6:{
-        //         $query = "select * from book order by title asc";
-        //         break;
-        //     }
-        // }
-        $query = "CALL Proc_getBookByCategoryPaging($param, $pageIndex, $pageSize)";
+        $query = "CALL Proc_getBookByCategoryPagingSortByTimeAsc($param, $pageIndex, $pageSize)";
+        parent::addQuerry($query);
+        $result = parent::executeQuery();
+        while ($row = mysqli_fetch_array($result)) {
+            
+            $soldNumber = $row["soldNumber"];
+            $bookId = $row["ID"];
+            $available = $row["available"];
+            $price = $row["price"];
+            $image = $row["image"];
+            $discount = $row["discount"];
+            $title = $row["title"];
+
+
+            $book = new Book(
+                $bookId,
+                $soldNumber,
+                $available,
+                $price,
+                $image,
+                $discount,
+                $title
+            );
+
+            array_push($listBook, $book);
+        }
+        parent::closeQuery($result);
+
+        return $listBook;
+    }
+
+    public function getAllSortByTimeDesc($param = NO_CATEGORY['id'], $pageIndex = 1, $pageSize = 10)
+    {
+        $listBook = array();
+        $query = "CALL Proc_getBookByCategoryPagingSortByTimeDesc($param, $pageIndex, $pageSize)";
+        parent::addQuerry($query);
+        $result = parent::executeQuery();
+        while ($row = mysqli_fetch_array($result)) {
+            
+            $soldNumber = $row["soldNumber"];
+            $bookId = $row["ID"];
+            $available = $row["available"];
+            $price = $row["price"];
+            $image = $row["image"];
+            $discount = $row["discount"];
+            $title = $row["title"];
+
+
+            $book = new Book(
+                $bookId,
+                $soldNumber,
+                $available,
+                $price,
+                $image,
+                $discount,
+                $title
+            );
+
+            array_push($listBook, $book);
+        }
+        parent::closeQuery($result);
+
+        return $listBook;
+    }
+
+    public function getAllSortBySoldNumberDesc($param = NO_CATEGORY['id'], $pageIndex = 1, $pageSize = 10)
+    {
+        $listBook = array();
+        $query = "CALL Proc_getBookByCategoryPagingSortBySoldNumberDesc($param, $pageIndex, $pageSize)";
+        parent::addQuerry($query);
+        $result = parent::executeQuery();
+        while ($row = mysqli_fetch_array($result)) {
+            
+            $soldNumber = $row["soldNumber"];
+            $bookId = $row["ID"];
+            $available = $row["available"];
+            $price = $row["price"];
+            $image = $row["image"];
+            $discount = $row["discount"];
+            $title = $row["title"];
+
+
+            $book = new Book(
+                $bookId,
+                $soldNumber,
+                $available,
+                $price,
+                $image,
+                $discount,
+                $title
+            );
+
+            array_push($listBook, $book);
+        }
+        parent::closeQuery($result);
+
+        return $listBook;
+    }
+
+    public function getAllSortByPriceAsc($param = NO_CATEGORY['id'], $pageIndex = 1, $pageSize = 10)
+    {
+        $listBook = array();
+        $query = "CALL Proc_getBookByCategoryPagingSortByPriceAsc($param, $pageIndex, $pageSize)";
+        parent::addQuerry($query);
+        $result = parent::executeQuery();
+        while ($row = mysqli_fetch_array($result)) {
+            
+            $soldNumber = $row["soldNumber"];
+            $bookId = $row["ID"];
+            $available = $row["available"];
+            $price = $row["price"];
+            $image = $row["image"];
+            $discount = $row["discount"];
+            $title = $row["title"];
+
+
+            $book = new Book(
+                $bookId,
+                $soldNumber,
+                $available,
+                $price,
+                $image,
+                $discount,
+                $title
+            );
+
+            array_push($listBook, $book);
+        }
+        parent::closeQuery($result);
+
+        return $listBook;
+    }
+
+    public function getAllSortByPriceDesc($param = NO_CATEGORY['id'], $pageIndex = 1, $pageSize = 10)
+    {
+        $listBook = array();
+        $query = "CALL Proc_getBookByCategoryPagingSortByPriceDesc($param, $pageIndex, $pageSize)";
         parent::addQuerry($query);
         $result = parent::executeQuery();
         while ($row = mysqli_fetch_array($result)) {
@@ -212,4 +318,112 @@ class BookServices extends MySqlConnect
 
         return null;
     }
+
+    /**
+     * @param int $pageIndex
+     * @param int $pageSize
+     * @param String $filter
+     */
+    public function search($pageIndex = 1, $pageSize = 10, $filter){
+        $listBook = array();
+        $query = "CALL Proc_Search($pageIndex, $pageSize, '". $filter."');";
+        parent::addQuerry($query);
+        $result = parent:: executeQuery();
+        while ($row = mysqli_fetch_array($result)) {
+            
+            $soldNumber = $row["soldNumber"];
+            $bookId = $row["ID"];
+            $available = $row["available"];
+            $price = $row["price"];
+            $image = $row["image"];
+            $discount = $row["discount"];
+            $title = $row["title"];
+
+
+            $book = new Book(
+                $bookId,
+                $soldNumber,
+                $available,
+                $price,
+                $image,
+                $discount,
+                $title
+            );
+
+            array_push($listBook, $book);
+        }
+        parent::closeQuery($result);
+        return $listBook;
+    }
+
+    /**
+     * @param Int $bookId
+     */
+    public function getBookByCategory($bookId){
+        $listBook = array();
+        $query = "CALL Proc_GetBookWithCategory($bookId);";
+        parent::addQuerry($query);
+        $result = parent::executeQuery();
+        while ($row = mysqli_fetch_array($result)) {
+            
+            $soldNumber = $row["soldNumber"];
+            $bookId = $row["ID"];
+            $available = $row["available"];
+            $price = $row["price"];
+            $image = $row["image"];
+            $discount = $row["discount"];
+            $title = $row["title"];
+
+
+            $book = new Book(
+                $bookId,
+                $soldNumber,
+                $available,
+                $price,
+                $image,
+                $discount,
+                $title
+            );
+
+            array_push($listBook, $book);
+        }
+        parent::closeQuery($result);
+        return $listBook;
+    }
+
+    /**
+     * @param String $author
+     */
+    public function getBookByAuthor($author){
+        $listBook = array();
+        $query = "CALL Proc_GetBookWithSameAuthor('".$author."');";
+        parent::addQuerry($query);
+        $result = parent::executeQuery();
+        while ($row = mysqli_fetch_array($result)) {
+            
+            $soldNumber = $row["soldNumber"];
+            $bookId = $row["ID"];
+            $available = $row["available"];
+            $price = $row["price"];
+            $image = $row["image"];
+            $discount = $row["discount"];
+            $title = $row["title"];
+
+
+            $book = new Book(
+                $bookId,
+                $soldNumber,
+                $available,
+                $price,
+                $image,
+                $discount,
+                $title
+            );
+
+            array_push($listBook, $book);
+        }
+        parent::closeQuery($result);
+        return $listBook;
+    }
 }
+

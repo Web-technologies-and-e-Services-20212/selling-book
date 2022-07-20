@@ -31,8 +31,9 @@ class AdminServices extends MySqlConnect {
         while ($row = mysqli_fetch_array($result)){
             $bannerId = $row["ID"];
             $image = $row["image"];
+            $categoryId = $row["categoryId"];
 
-            $banner = new Banner($bannerId, $image);
+            $banner = new Banner($bannerId, $image, $categoryId);
             array_push($listBanner, $banner);
         }
         return $listBanner;
@@ -45,8 +46,9 @@ class AdminServices extends MySqlConnect {
         if ($row = mysqli_fetch_array($result)){
             $bannerId = $row["ID"];
             $image = $row["image"];
+            $categoryId = $row["categoryId"];
 
-            $banner = new Banner($bannerId, $image);
+            $banner = new Banner($bannerId, $image, $categoryId);
             return $banner;
         }
         return null;
@@ -54,9 +56,10 @@ class AdminServices extends MySqlConnect {
 
     /**
      * @param String $image
+     * @param Int $categoryId
      */
-    public function insertBanner($image){
-        $query = "insert into banner(image) values('".$image."')";
+    public function insertBanner($image, $categoryId){
+        $query = "insert into banner(image, categoryId) values('".$image."', '".$categoryId."')";
         parent::addQuerry($query);
         parent::updateQuery();
     }
@@ -72,7 +75,8 @@ class AdminServices extends MySqlConnect {
      */
     public function updateBanner($banner){
         $query = "update banner set ".
-        "image = '".$banner->getImage()."'".
+        "image = '".$banner->getImage()."',".
+        "categoryId = '".$banner->getCategoryId()."' ".
         "where ID = ".$banner->getBannerId()."";
 
         parent::addQuerry($query);
