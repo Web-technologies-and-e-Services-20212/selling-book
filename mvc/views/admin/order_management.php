@@ -1,5 +1,15 @@
 <?php
 
+require_once ROOT . DS . 'services' . DS . 'GuestServices.php';
+
+require_once ROOT . DS . 'services' . DS . 'BookServices.php';
+$service = new GuestServices();
+$username = $_GET['username'];
+
+$bills = $service->getListBill($username);
+
+
+
 ?>
 
 <!DOCTYPE html>
@@ -59,6 +69,35 @@
         <div class='content'>
             <div style='margin-top:65px'>
                 <h1>Quản lý đơn hàng </h1>
+                <br>
+                <br>
+
+                <div style="width:28%; float:left; height: 70px;">
+                    <p>Username: <?php $username ?> </p>
+                    <input class="input1" type="text" name="user" >
+                </div>
+
+                <table style="width:100%; border:1px solid black">
+                    <tr>
+                        <th>ID</th>
+                        <th>UserName</th>
+                        <th>Total price</th>
+                        <th>Date of Bill</th>
+                        <th>Status</th>
+                    </tr>
+                    <?php
+                    foreach ($bills as $b) {
+                    ?>
+                        <tr style="text-align: center">
+                            <td><?php echo $b->getBillID() ?></td>
+                            <td><?php echo $b->getUsername() ?></td>
+                            <td><?php echo $b->getTotalPrice() ?></td>
+                            <td><?php echo $b->getDateBill() ?></td>
+                            <td><?php echo $b->getStatus() ?></td>
+                            <!-- <td><button class="btn" onclick=""><i style='vertical-align: middle' class="fa fa-solid fa-trash fa-2x"></i></button></td> -->
+                        </tr>
+                    <?php } ?>
+                </table>
             </div>
 
         </div>

@@ -137,7 +137,7 @@ foreach ($guests as $g) {
                     foreach ($users as $u) {
                     ?>
                         <tr style="text-align: center">
-                            <td><?php echo $u->getUsername() ?></td>
+                            <td><?php echo "<a ". "href='/selling-book/admin/order-management/?username=" . $u->getUsername() . "'>" . $u->getUsername() ."</a>" ?></td>
                             <td><?php echo $u->getName() ?></td>
                             <td><?php echo $u->getPhoneNumber() ?></td>
                             <td><?php echo $u->getAddress() ?></td>
