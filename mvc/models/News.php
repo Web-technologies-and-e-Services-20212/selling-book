@@ -3,13 +3,16 @@
 class News {
     private $newsId;
     private $title;
+    private $description;
     private $content;
     private $image;
     private $adminId;
     private $createdAt;
 
-    public function __construct( $title, $content, $image, $adminId) {
+    public function __construct($newsId, $title,$description, $content, $image, $adminId) {
+        self::setNewsId($newsId);
         self::setTitle($title);
+        self::setDescription($description);
         self::setContent($content);
         self::setImage($image);
         self::setAdminId($adminId);
@@ -30,6 +33,14 @@ class News {
     public function getTitle()
     {
         return $this->title;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getDescription()
+    {
+        return $this->description;
     }
 
     /**
@@ -78,6 +89,14 @@ class News {
     public function setTitle($title)
     {
         $this->title = $title;
+    }
+
+    /**
+     * @param mixed $description
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
     }
 
     /**

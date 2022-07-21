@@ -236,7 +236,7 @@ $bannerList = $bannerStore->getAllBanners();
         </div>
     </section>
 
-    <section id="posts" class="borderblack">
+    <!-- <section id="posts" class="borderblack">
         <div class="container">
             <div class="posts-header">
                 <h2>Bài viết mới</h2>
@@ -301,5 +301,5 @@ $bannerList = $bannerStore->getAllBanners();
             </div>
         </div>
 
-    </section>
+    </section> -->
 </div>

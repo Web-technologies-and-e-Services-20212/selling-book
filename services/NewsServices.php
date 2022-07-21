@@ -14,7 +14,7 @@ class NewsServices extends MySqlConnect {
         $createdAt = $news->getCreatedAt();
 
         $query = "insert into news(title, content, image, adminId, createdAt)
-        values('$title','$content','$image','adminId','createdAt')";
+        values('$title','$content','$image','$adminId','$createdAt')";
         parent::addQuerry($query);
         parent::updateQuery();
     }
@@ -44,8 +44,9 @@ class NewsServices extends MySqlConnect {
             $image = $row["image"];
             $adminId = $row["adminId"];
             $createdAt = $row["createdAt"];
+            $description = $row["description"];
 
-            $news = new News($title, $content, $image, $adminId, $createdAt);
+            $news = new News($newsId,$title,$description, $content, $image, $adminId, $createdAt);
             array_push($listNews, $news);
         }
 
@@ -64,8 +65,9 @@ class NewsServices extends MySqlConnect {
             $image = $row["image"];
             $adminId = $row["adminId"];
             $createdAt = $row["createdAt"];
+            $description = $row["description"];
 
-            $news = new News($title, $content, $image, $adminId, $createdAt);
+            $news = new News($newsId,$title,$description, $content, $image, $adminId, $createdAt);
             return $news;
         }
 
@@ -85,6 +87,7 @@ class NewsServices extends MySqlConnect {
     public function update($news){
         $newsId = $news->getNewsId();
         $title = $news->getTitle();
+        $description = $news->getDescription();
         $content = $news->getContent();
         $image = $news->getImage();
         $adminId = $news->getAdminId();
@@ -92,6 +95,7 @@ class NewsServices extends MySqlConnect {
 
         $query = "update news 
                 set title = '$title',
+                set description = '$description',
                 content = '$content',
                 image = '$image',
                 adminId = '$adminId',

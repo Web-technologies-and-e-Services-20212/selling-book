@@ -27,11 +27,24 @@ class ListProductsController extends DefaultController implements Controller
             case CATEGORY_LIGHT_NOVEL['route']:
                 $_category = CATEGORY_LIGHT_NOVEL;
                 break;
+            case CATEGORY_BOY_LOVE['route']:
+                $_category = CATEGORY_BOY_LOVE;
+                break;
+
+            case CATEGORY_BOXSET['route']:
+                $_category = CATEGORY_BOXSET;
+                break;
             case CATEGORY_MANGA_COMIC['route']:
                 $_category = CATEGORY_MANGA_COMIC;
                 break;
             case CATEGORY_LEARNING_BOOK['route']:
                 $_category = CATEGORY_LEARNING_BOOK;
+                break;
+            case CATEGORY_CHILD_BOOK['route']:
+                $_category = CATEGORY_CHILD_BOOK;
+                break;
+            case CATEGORY_ACCESSORIES['route']:
+                $_category = CATEGORY_ACCESSORIES;
                 break;
             case CATEGORY_NEW_BOOKS['route']:
                 $_category = CATEGORY_NEW_BOOKS;
@@ -48,6 +61,6 @@ class ListProductsController extends DefaultController implements Controller
                 break;
         }
 
-        require_once ROOT . DS . 'mvc' . DS . 'views'. DS . 'list_products.php';
+        require_once ROOT . DS . 'mvc' . DS . 'views' . DS . 'list_products.php';
     }
 }

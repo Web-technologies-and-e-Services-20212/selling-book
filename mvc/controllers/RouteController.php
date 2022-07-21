@@ -39,6 +39,10 @@ class RouteController
                 $param = intval($urlArray[0]);
                 array_shift($urlArray);
                 break;
+            case 'blog':
+                $param = intval($urlArray[0]);
+                array_shift($urlArray);
+                break;
             case 'list-products':
                 $param = isset($urlArray[0]) ? $urlArray[0] : "/";
                 break;

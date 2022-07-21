@@ -1,4 +1,9 @@
 <?php
+require_once ROOT . DS . "services" . DS . "NewsServices.php";
+$services = new NewsServices();
+$listBlogs = $services->getAll();
+$x = 10;
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -22,76 +27,33 @@
     <!-- Nội dung phần Blogs -->
     <div class="w100p" id="blogs">
         <div class="container">
-            <div class="grid-r4m3">
+            <div class="grid-r4m3 w100p-md">
                 <!-- Nội dung danh sách Blogs -->
                 <div class="list-blogs flex">
+                    <?php foreach ($listBlogs as $key => $blog) { ?>
                     <div class="blog-card p-tb15 w100p flex">
-                        <div class="blog-img p-lr15 grid-r5m2">
-                            <img src="https://file.hstatic.net/200000287623/article/22291480_1360463820742776_6215763102557804907_o_164b9a8f372b466a87cfa24a8e1c2bb7.jpg" alt="a">
+                        <div class="blog-img p-lr15 grid-r5m2 w100p-md">
+                            <img src=<?php echo $blog->getImage(); ?> alt=<?php echo $blog->getTitle(); ?>>
                         </div>
 
-                        <div class="blog-detail p-lr15 grid-r5m3">
-                            <h2 class="m-b14"><a href="#">[REVIEW ĐỘC GIẢ] 5 CENTIMET TRÊN GIÂY - BI KỊCH TUỔI TRẺ VÀ CUỘC HÀNH TRÌNH TÌM LẠI LẼ SỐNG</a></h2>
-                            <span>25/02/2022</span>
+                        <div class="blog-detail p-lr15 grid-r5m3 w100p-md">
+                            <h2 class="m-b14"><a href=<?php echo "/" . $path_project . "/blog" . "/" . $blog->getNewsId(); ?>><?php echo $blog->getTitle(); ?></a></h2>
+                            <span><?php echo $blog->getCreatedAt(); ?></span>
                             <span>TIN TỨC</span>
                             <span><i>0 Bình luận</i></span>
-                            <p class="m-t14 m-b20">5 Centimet Trên Giây của Shinkai Makoto không chỉ là chút vị đắng 
-                                của tách cà phê mà ai cũng phải một lần nhâm nhi trong đời, mà còn 
-                                là tác phẩm có dấu ấn đậm nét của văn học Nhật Bản. 5 Centimet Trên 
-                                Giây lột tả một bi kịch tuổi trẻ đầy day dứt, ám ảnh, nhưng cũng...
-                                <a href="#">Xem thêm
+                            <p class="m-t14 m-b20"><?php echo $blog->getDescription(); ?>
+                                <a href=<?php echo "/" . $path_project . "/blog" . "/" . $blog->getNewsId(); ?>>Xem thêm
                                 <i class="fa-solid fa-arrow-right"></i>
                                 </a>
                             </p>
                         </div>
                     </div>
-
-                    <div class="blog-card p-tb15 w100p flex">
-                        <div class="blog-img p-lr15 grid-r5m2">
-                            <img src="https://file.hstatic.net/200000287623/article/22291480_1360463820742776_6215763102557804907_o_164b9a8f372b466a87cfa24a8e1c2bb7.jpg" alt="a">
-                        </div>
-
-                        <div class="blog-detail p-lr15 grid-r5m3">
-                            <h2 class="m-b14"><a href="#">[REVIEW ĐỘC GIẢ] 5 CENTIMET TRÊN GIÂY - BI KỊCH TUỔI TRẺ VÀ CUỘC HÀNH TRÌNH TÌM LẠI LẼ SỐNG</a></h2>
-                            <span>25/02/2022</span>
-                            <span>TIN TỨC</span>
-                            <span><i>0 Bình luận</i></span>
-                            <p class="m-t14 m-b20">5 Centimet Trên Giây của Shinkai Makoto không chỉ là chút vị đắng 
-                                của tách cà phê mà ai cũng phải một lần nhâm nhi trong đời, mà còn 
-                                là tác phẩm có dấu ấn đậm nét của văn học Nhật Bản. 5 Centimet Trên 
-                                Giây lột tả một bi kịch tuổi trẻ đầy day dứt, ám ảnh, nhưng cũng...
-                                <a href="#">Xem thêm
-                                <i class="fa-solid fa-arrow-right"></i>
-                                </a>
-                            </p>
-                        </div>
-                    </div>
-
-                    <div class="blog-card p-tb15 w100p flex">
-                        <div class="blog-img p-lr15 grid-r5m2">
-                            <img src="https://file.hstatic.net/200000287623/article/22291480_1360463820742776_6215763102557804907_o_164b9a8f372b466a87cfa24a8e1c2bb7.jpg" alt="a">
-                        </div>
-
-                        <div class="blog-detail p-lr15 grid-r5m3">
-                            <h2 class="m-b14"><a href="#">[REVIEW ĐỘC GIẢ] 5 CENTIMET TRÊN GIÂY - BI KỊCH TUỔI TRẺ VÀ CUỘC HÀNH TRÌNH TÌM LẠI LẼ SỐNG</a></h2>
-                            <span>25/02/2022</span>
-                            <span>TIN TỨC</span>
-                            <span><i>0 Bình luận</i></span>
-                            <p class="m-t14 m-b20">5 Centimet Trên Giây của Shinkai Makoto không chỉ là chút vị đắng 
-                                của tách cà phê mà ai cũng phải một lần nhâm nhi trong đời, mà còn 
-                                là tác phẩm có dấu ấn đậm nét của văn học Nhật Bản. 5 Centimet Trên 
-                                Giây lột tả một bi kịch tuổi trẻ đầy day dứt, ám ảnh, nhưng cũng...
-                                <a href="#">Xem thêm
-                                <i class="fa-solid fa-arrow-right"></i>
-                                </a>
-                            </p>
-                        </div>
-                    </div>
+                    <?php } ?>
 
                 </div>
                 <!-- Kết thúc nội dung danh sách Blogs -->
                 <!-- Nội dung phần Pagination -->
-                <div class="pagination flex f-space_between f-align_center p-lr16 p-tb16">
+                <!-- <div class="pagination flex f-space_between f-align_center p-lr16 p-tb16">
                     <div class="prev-page p-lr10">
                         <span><i class="fa-solid fa-chevron-left"></i></span>
                         <span>Trang trước</span>
@@ -110,7 +72,7 @@
                         <span>Trang sau</span>
                         <span><i class="fa-solid fa-chevron-right"></i></span>
                     </div>
-                </div>
+                </div> -->
                 <!-- Nội dung phần Pagination -->
             </div>
             
