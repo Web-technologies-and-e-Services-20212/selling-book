@@ -1,6 +1,8 @@
 <?php
 
 require_once ROOT . DS . 'mvc' . DS . 'models' . DS . 'Bill' . DS . 'BillType.php';
+require_once ROOT . DS . 'services' . DS . 'GuestServices.php';
+
 
 /**
  * Bill
@@ -88,9 +90,9 @@ class Bill {
     /**
      * @param mixed $listBooks
      */
-    public function setListBooks($listBooks)
+    public function setListBooks($listBook)
     {
-        $this->listBooks = $listBooks;
+        $this->listBooks = $listBook;
     }
     
     /**

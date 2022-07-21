@@ -1,12 +1,25 @@
 <?php
-class DefaultController {
-  /*include header*/
-  public function __header(){
+class DefaultController
+{
 
+  private $_route;
+
+  public function __construct($route = null)
+  {
+    if (isset($route)) {
+      $this->_route = $route;
+    }
   }
 
-  /*include footer*/
-	public function __footer(){
-        include ROOT . DS . 'mvc' . DS . 'views' . DS . 'footer.php';
-    }
+
+  public function getRoute()
+  {
+    return $this->_route;
+  }
+
+  public function setRoute($newRoute)
+  {
+    $this->_route = $newRoute;
+  }
+
 }

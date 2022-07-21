@@ -1,0 +1,86 @@
+.register__form {
+  max-width: 100%;
+  width: 335px;
+  margin: 0 auto;
+  box-shadow: 0 2px 4px rgb(0 0 0 / 10%);
+  height: fit-content;
+}
+
+.form__input {
+  width: 100%;
+  height: 60px;
+}
+
+.form__lable-icon {
+  height: 40px;
+  width: 40px;
+  background-color: #f8f8f8;
+  border: solid 1px #e7e7e7;
+  vertical-align: middle;
+  text-align: center;
+  line-height: 40px;
+  float: left;
+  padding: 0 4px;
+  margin-top: 10px;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="email"] ,
+input[type="tel"] {
+  max-width: calc(100% - 40px) !important;
+  width: 100%;
+  height: 40px;
+  display: inline-block !important;
+  background-color: #fff;
+  border: solid 1px #e7e7e7;
+  margin-top: 10px;
+  float: left;
+  padding: 0 10px;
+  outline: none;
+  margin-bottom: 0px;
+}
+
+#password {
+  padding-right: 30px;
+}
+
+input::-ms-reveal,
+input::-ms-clear {
+  display: none;
+}
+
+input {
+  font-size: inherit;
+  color: inherit;
+}
+
+.icon-fb {
+  background-color: #4c69ba;
+  background-image: linear-gradient(#4c69ba, #3b55a0);
+  text-shadow: 0 -1px 0 #354c8c;
+}
+
+.icon-gg {
+  background: #dd4b39;
+}
+
+.toggle-password {
+  background: none;
+  border: none;
+  color: var(--primary-color);;
+  font-weight: 600;
+  position: absolute;
+  right: 10px;
+  top: 20px;
+  z-index: 2;
+  cursor: pointer;
+}
+
+.error-exits{
+  color: #dd4b39;
+  font-size: 16px;
+  font-weight: 500;
+  padding: 6px 0;
+  margin: auto;
+}

@@ -39,25 +39,23 @@ class RouteController
                 $param = intval($urlArray[0]);
                 array_shift($urlArray);
                 break;
+            case 'blog':
+                $param = intval($urlArray[0]);
+                array_shift($urlArray);
+                break;
             case 'list-products':
                 $param = isset($urlArray[0]) ? $urlArray[0] : "/";
                 break;
             case 'admin':
                 $param = $urlArray[0];
                 break;
+            case 'account':
+                $param = isset($urlArray[1]) ? ($urlArray[0] . "/" . $urlArray[1])  : "/";
+                break;
             default:
                 # code...
                 break;
         }
-
-        // check if admin -> no footer ??????/
-        // Cần kiểm tra lại
-        // if(strcmp($controller, "admin") == 0
-        //     || strcmp($controller, "product-management") == 0
-        //     || strcmp($controller, "account-management") == 0
-        //     || strcmp($controller, "login-admin") === 0){
-        //     $this->_is_footer = 0;
-        // }
 
         // if link is account-management => controller of link is AccountManagementController
         $controller = str_replace('-', ' ', $controller);

@@ -5,32 +5,30 @@
     class="p-b15 input-control form-control">
 </div> */
 
-.form-group{
-
+.form-group {
 }
 
-.form-control{
-    color: #000;
-    border: 1px solid #D9D9D9;
-    display: block;
-    width: 100%;
-    padding: 8px 16px;
-    font-size: 14px;
-    border-radius: 4px;
-    line-height: 18px;
-    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.08);
-    outline: none;
+.form-control {
+  color: var(--black-color);
+  border: 1px solid var(--d9-gray-color);
+  display: block;
+  width: 100%;
+  padding: 8px 16px;
+  font-size: 14px;
+  border-radius: 4px;
+  line-height: 18px;
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.08);
+  outline: none;
 }
 
-.form-control:focus{
-    border-color: #66afe9;
-    outline: 0;
-    box-shadow:0 0 8px rgba(102,175,233,.6);
+.form-control:focus {
+  border-color: var(--l-blue-color);
+  outline: 0;
+  box-shadow: 0 0 8px rgba(102, 175, 233, 0.6);
 }
-.input-control{
-    height: 44px;
+.input-control {
+  height: 44px;
 }
-
 
 /*  Textarea Component 
 <div class="form-group p-b15">
@@ -39,8 +37,127 @@
     class="form-control"></textarea>
 </div> */
 
-textarea.form-control{
-    height: auto;
-    resize: none;
-    overflow: auto;
+textarea.form-control {
+  height: auto;
+  resize: none;
+  overflow: auto;
 }
+
+/* Input Component 2
+<div class="input-group m-t10 m-b10">
+    <span class="input-group-addon">
+        <i ></i>
+    </span>
+    <input required type="name" id="contactFormName" size="40" placeholder="Tên của bạn" 
+    class="p-b15 textbox form-control">
+</div> */
+
+.input-group {
+  position: relative;
+  display: table;
+  border-collapse: separate;
+}
+
+.input-group-addon {
+  border-right: 0;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1;
+  width: 38px;
+  text-align: center;
+  background-color: var(--e-gray-color);
+  border: 1px solid var(--c-gray-color);
+  border-radius: 4px;
+  display: table-cell;
+  white-space: nowrap;
+  vertical-align: middle;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.input-group .form-control {
+  position: relative;
+  z-index: 2;
+  float: left;
+  width: 100%;
+  margin-bottom: 0;
+  display: table-cell;
+}
+
+.form-control.textbox {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+/***
+<div class="pagination flex f-space_between f-align_center p-lr16 p-tb16">
+    <div class="prev-page p-lr10">
+        <span><i class="fa-solid fa-chevron-left"></i></span>
+        <span>Trang trước</span>
+    </div>
+    <div class="number-pages">
+        <div class="flex">
+            <ul>
+                <li><a href="#">1</a></li>
+                <li><a href="#">2</a></li>
+                <li><a href="#">...</a></li>
+                <li><a href="#">10</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="next-page p-lr10">
+        <span>Trang sau</span>
+        <span><i class="fa-solid fa-chevron-right"></i></span>
+    </div>
+</div>
+*/
+/* Pagination CSS */
+.pagination {
+  font-size: 16px;
+  color: var(--gray-color-90);
+  font-weight: 400;
+}
+
+.prev-page,
+.next-page {
+  border: 1px solid var(--e0-gray-color);
+  line-height: 28px;
+  cursor: pointer;
+}
+
+.prev-page:hover,
+.next-page:hover {
+  background-color: var(--primary-color);
+  color: var(--white-color);
+}
+
+.prev-page:hover a,
+.next-page:hover a {
+  color: var(--white-color);
+}
+
+.number-pages li {
+  display: inline-block;
+  border: 1px solid var(--e0-gray-color);
+  padding: 0 10px;
+  margin: 10px 0;
+  cursor: pointer;
+  line-height: 28px;
+}
+
+.number-pages li.active {
+  background-color: var(--primary-color);
+}
+
+.number-pages li:hover {
+  background-color: var(--primary-color);
+}
+
+.number-pages li:hover a , .number-pages li.active a{
+  color: var(--white-color);
+}
+
+.number-pages li a {
+  color: var(--gray-color-90);
+}
+

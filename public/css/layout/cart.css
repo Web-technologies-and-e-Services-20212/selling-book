@@ -1,17 +1,13 @@
 .cart-title h1{
-    background: #fff;
+    background: var(--white-color);
     padding: 10px 15px 10px 15px;
-    border-bottom: 1px solid #e0e0e0;
+    border-bottom: 1px solid var(--e0-gray-color);
     text-transform: uppercase;
-    color: #000000;
+    color: var(--black-color);
     font-size: 18px;
     margin-bottom: 20px;
 }
-#cartForm {
-    overflow-y: auto;
-    height: 500px;
-}
 
 .back:hover{
-    color:#01a14b;
+    color:var(--primary-color);
 }

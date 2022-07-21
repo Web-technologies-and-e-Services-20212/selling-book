@@ -4,15 +4,9 @@ require_once ROOT . DS . 'mvc' . DS . 'controllers' . DS . 'DefaultController.ph
 
 class ProductController extends DefaultController implements Controller{
 
-    private $id;
-
-    public function __construct($id)
-    {
-        $this->id = $id;
-    }
 
     public function __render(){
-        $productId = $this->id;
+        $productId = $this->getRoute();
         require_once ROOT . DS . 'mvc' . DS . 'views' . DS . 'product.php';
     }
 }

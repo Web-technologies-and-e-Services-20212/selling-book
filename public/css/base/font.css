@@ -1,20 +1,17 @@
 h1{
     font-weight: 400;
-    color: #000000;
     font-size: 36px;
     line-height: 36px;
 }
 
 h2{
     font-weight: 400;
-    color: #000000;
     font-size: 28px;
     line-height: 28px;
 }
 
 h3{
     font-weight: 400;
-    color: #000000;
     font-size: 24px;
     line-height: 24px;
 }
@@ -24,19 +21,32 @@ p{
     line-height: 21px;
 }
 
-h1, h2, h3{
+h1, h2, h3 ,h4, h5, h6, strong{
     margin-bottom: 14px;
+    color: var(--black-color);
 }
+
 
 strong{
     font-weight: 700;
-    color: transparent;
+}
+
+.text-center{
+    text-align: center !important;
+}
+
+.text-left{
+    text-align: left !important;
+}
+
+.text-right{
+    text-align: right !important;
 }
 
 .line{
     margin-top: 20px;
     margin-bottom: 20px;
     border: 0;
-    border-top: 1px solid #eee;
+    border-top: 1px solid var(--e-gray-color);
 }
 

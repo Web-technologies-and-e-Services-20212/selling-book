@@ -7,7 +7,7 @@ class Guest {
     private $address;
     private $phoneNumber;
 
-    public function __construct($username, $password, $name, $address, $phoneNumber) {
+    public function __construct($username, $password, $name, $address = "", $phoneNumber = "") {
         self::setUsername($username);
         self::setPassword($password);
         self::setName($name);

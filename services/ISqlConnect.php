@@ -17,4 +17,9 @@ interface ISqlConnect {
      * The method help set new querry before run
      */
     public function  addQuerry($param);
+
+    /**
+     * The method help get latest inserted id
+     */
+    public function getLastInsertedId();
 }

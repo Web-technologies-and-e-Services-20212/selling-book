@@ -1,4 +1,11 @@
 <?php
+
+require_once ROOT . DS . "services" . DS . "BookServices.php";
+require_once ROOT . DS . "services" . DS . "AdminServices.php";
+
+$bookStore = new BookServices();
+$bannerStore = new AdminServices();
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -7,8 +14,9 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <script src="https://kit.fontawesome.com/d433183ff3.js" crossorigin="anonymous"></script>
-        <link rel="stylesheet" href="public/css/style.css" type="text/css">
-        <link rel="shortcut icon" href="public/images/logo/logo_icon.png" type="image/x-icon">
+        <link rel="stylesheet" href="/selling-book/public/css/base.css" type="text/css">
+        <link rel="stylesheet" href="/selling-book/public/css/layout/main_content.css" type="text/css">
+        <link rel="shortcut icon" href="/selling-book/public/images/logo/logo_icon.png" type="image/x-icon">
         <title>IPM | Trang chủ</title>
     </head>
     <body>

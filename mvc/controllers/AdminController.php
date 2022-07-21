@@ -10,14 +10,14 @@ class AdminController extends DefaultController implements Controller{
     }
     public function __render(){
         switch ($this->route) {
-            case '/':
+            case 'dashboard':
                 require_once ROOT . DS . 'mvc' . DS . 'views' . DS . 'admin' . DS . 'dashboard.php';
                 break;
             case 'manage-product':
-                require_once ROOT . DS . 'mvc' . DS . 'views' . DS . 'admin' . DS . 'list_detective.php';
+                require_once ROOT . DS . 'mvc' . DS . 'views' . DS . 'admin' . DS . 'manage_product.php';
                 break;
             default:
-                require_once ROOT . DS . 'mvc' . DS . 'views' . DS . 'admin' . DS . 'list_products.php';
+                require_once ROOT . DS . 'mvc' . DS . 'views' . DS . 'admin' . DS . 'dashboard.php';
                 break;
         }
         

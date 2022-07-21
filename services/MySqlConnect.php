@@ -28,7 +28,7 @@ class MySqlConnect implements ISqlConnect {
         $result = mysqli_query($this->db, $this->query);
 
         if(!$result){
-            echo "FAIL when execute!";
+            echo "FAIL when execute! : " . mysqli_error($this->db);
             exit();
         }
 
@@ -41,11 +41,20 @@ class MySqlConnect implements ISqlConnect {
         $result = mysqli_query($this->db, $this->query);
 
         if(!$result){
-            echo "FAIL when update!";
+            echo "FAIL when update!" . mysqli_error($this->db);
             exit();
         }
 
         // no return result
+    }
+
+    public function closeQuery($result){
+        $result->close();
+        $this->db->next_result();
+    }
+
+    public function getLastInsertedId(){
+        return mysqli_insert_id($this->db);
     }
 
 }
