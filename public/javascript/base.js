@@ -30,12 +30,14 @@ registerPassword.oninvalid = function (event) {
   event.target.setCustomValidity("Bạn cần nhập mật khẩu !");
 };
 
-confirmPassword.oninvalid = function (event) {
-  event.target.setCustomValidity("Bạn cần nhập xác nhận mật khẩu !");
-};
+// confirmPassword.oninvalid = function (event) {
+//   event.target.setCustomValidity("Bạn cần nhập xác nhận mật khẩu !");
+// };
 
 function validateRegister() {
   if (registerPassword.value != confirmPassword.value) {
     confirmPassword.setCustomValidity("Mật khẩu không trùng khớp");
+  }else{
+    confirmPassword.setCustomValidity('');
   }
 }

@@ -3,6 +3,8 @@ let addressInput = document.getElementById("new-address-input");
 let oldPassword = document.getElementById("oldPassword");
 var newPassword = document.getElementById("newPassword");
 var confirmNewPassword = document.getElementById("confirmNewPassword");
+var username = document.getElementById("username");
+var password = document.getElementById("password");
 
 function togglePassword() {
   var inputPass = document.querySelector("#password");
@@ -26,6 +28,14 @@ function toggleForm(formId) {
     form.style.display = "block";
   }
 }
+
+username.oninvalid = function (event) {
+  event.target.setCustomValidity("Bạn cần nhập email !");
+};
+
+password.oninvalid = function (event) {
+  event.target.setCustomValidity("Bạn cần nhập mật khẩu !");
+};
 
 nameInput.oninvalid = function (event) {
   event.target.setCustomValidity("Bạn cần nhập đầy đủ họ và tên !");

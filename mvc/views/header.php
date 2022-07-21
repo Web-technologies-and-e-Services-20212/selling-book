@@ -146,5 +146,66 @@ $url = isset($_GET["url"]) ? $_GET["url"] : "/";
             </nav>
         </div>
     </div>
+    <nav id="mobile-menu" class="mp-menu mp-cover">
+        <div class="mp-level mp-level-open">
+            <ul class="lv1">
+                <li><a href=<?php echo "/" . $path_project . "/"; ?>>Trang chủ</a></li>
+                <li class="has-children icon icon-arrow-left">
+                    <a>Sản phẩm 
+                        <button style="float: right; background-color: var(--primary-color);"><i 
+                        style="font-size: 14px; display:inline-block; color: #fff;background-color: var(--primary-color); " 
+                        class="fa-solid fa-chevron-right"></i>
+                        </button>
+                    </a>
+
+                    <div class="mp-level">
+                        <a href=<?php echo "/" . $path_project . "/" . "list-products"; ?>>Sản phẩm</a>
+                        <a class="mp-back"  href="#">
+                        <button style="background-color: var(--primary-color);"><i 
+                        style="font-size: 14px; display:inline-block; color: #fff;background-color: var(--primary-color); " 
+                        class="fa-solid fa-chevron-left"></i>
+                        </button>
+                        Quay lại
+                        </a>
+                        <ul class="cd-secondary-nav count-nav-11">
+                            <li><a href=<?php echo "/" . $path_project . DS . "list-products" . DS . CATEGORY_DETECTIVE['route'] ?>>Trinh Thám - Kinh Dị</a></li>
+                            <li><a href=<?php echo "/" . $path_project . DS . "list-products" . DS . CATEGORY_MODERN_LITERARURE['route'] ?>>Văn Học Hiện Đại</a></li>
+                            <li><a href=<?php echo "/" . $path_project . DS . "list-products" . DS . CATEGORY_CLASSIC_LITERATURE['route'] ?>>Văn Học Kinh Điển</a></li>
+                            <li><a href=<?php echo "/" . $path_project . DS . "list-products" . DS . CATEGORY_FANTASY['route'] ?>>Fantasy</a></li>
+                            <li><a href=<?php echo "/" . $path_project . DS . "list-products" . DS . CATEGORY_LIGHT_NOVEL['route'] ?>>Light Novel</a></li>
+                            <li><a href=<?php echo "/" . $path_project . DS . "list-products" . DS . CATEGORY_BOY_LOVE['route'] ?>>Boys Love</a></li>
+                            <li><a href=<?php echo "/" . $path_project . DS . "list-products" . DS . CATEGORY_BOXSET['route'] ?>>Boxset</a></li>
+                            <li><a href=<?php echo "/" . $path_project . DS . "list-products" . DS . CATEGORY_LEARNING_BOOK['route'] ?>>Sách Học Ngữ</a></li>
+                            <li><a href=<?php echo "/" . $path_project . DS . "list-products" . DS . CATEGORY_LEARNING_BOOK['route'] ?>>Manga - Comic</a></li>
+                            <li><a href=<?php echo "/" . $path_project . DS . "list-products" . DS . CATEGORY_CHILD_BOOK['route'] ?>>Sách Thiếu Nhi</a></li>
+                            <li><a href=<?php echo "/" . $path_project . DS . "list-products" . DS . CATEGORY_ACCESSORIES['route'] ?>>Phụ Kiện</a></li>
+                        </ul>
+                    </div>
+                </li>
+                <li><a href=<?php echo "/" . $path_project . "/" . "blogs"; ?>>Tin tức</a></li>
+                <li><a href=<?php echo "/" . $path_project . "/" . "about"; ?>>Về IPM</a></li>
+                <li><a href=<?php echo "/" . $path_project . "/" . "contact"; ?>>Liên hệ</a></li>
+            </ul>
+        </div>
+    </nav>
     <!-- Navbar end -->
+    <script>
+        var mobileBar = document.querySelector(".header-mobile-bar button");
+        var mobileMenu = document.querySelector("#mobile-menu");
+
+        var categoryMenu = document.querySelector(".has-children .mp-level");
+        var categoryBtn = document.querySelector(".has-children a");
+
+        var menuBack = document.querySelector(".mp-back");
+
+        mobileBar.addEventListener('click', function(e) {
+            mobileMenu.style.transform = "translate3d(0%, 0, 0)"
+        })
+        categoryBtn.addEventListener('click', function(e) {
+            categoryMenu.style.transform = "translate3d(0%, 0, 0)"
+        })
+        menuBack.addEventListener('click', function(e) {
+            categoryMenu.style.transform = "translate3d(-100%, 0, 0)"
+        })
+    </script>
 </header>

@@ -62,14 +62,14 @@ if (isset($_SESSION['username']) && isset($_SESSION['password'])) {
                         <label for="" class="form__lable-icon">
                             <i class="fa-solid fa-envelope"></i>
                         </label>
-                        <input type="email" name="username" id="username" placeholder="Email">
+                        <input type="email" required oninput="setCustomValidity('')" name="username" id="username" placeholder="Email">
                     </div>
 
                     <div id="form-password" class="form__input relative">
                         <label for="" class="form__lable-icon">
                             <i class="fa-solid fa-lock"></i>
                         </label>
-                        <input type="password" name="password" id="password" placeholder="Mật khẩu">
+                        <input type="password" required oninput="setCustomValidity('')" name="password" id="password" placeholder="Mật khẩu">
                         <div onclick="togglePassword()" class="toggle-password"><i class="fa-solid fa-eye"></i></div>
                     </div>
 

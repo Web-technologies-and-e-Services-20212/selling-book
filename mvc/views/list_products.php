@@ -131,7 +131,7 @@ if (isset($_category)) {
                         <?php foreach ($listAllProducts as $key => $book) { ?>
                             <!-- Product Card Start -->
 
-                            <div class="product-card grid-r4 grid-r3-md">
+                            <div class="product-card grid-r4 grid-r3-md grid-r2-sm">
                                 <div class="product-container">
                                     <div class="product-img relative">
                                         <div class="product-sale absolute">

@@ -117,7 +117,7 @@ $bannerList = $bannerStore->getAllBanners();
                     <?php foreach ($newBookList as $key => $book) { ?>
 
                         <!-- Card product start -->
-                        <div class="product-card grid-r5 grid-r3-md">
+                        <div class="product-card grid-r5 grid-r3-md grid-r2-sm">
                             <div class="product-container m-b20">
                                 <div class="product-img relative">
                                     <div class="product-sale absolute">
@@ -157,7 +157,7 @@ $bannerList = $bannerStore->getAllBanners();
                 <div class="pro-list-top list-content flex w100p">
                     <?php foreach ($topBookList as $key => $book) { ?>
                         <!-- Card product start -->
-                        <div class="product-card grid-r5 grid-r3-md">
+                        <div class="product-card grid-r5 grid-r3-md grid-r2-sm">
                             <div class="product-container m-b20">
                                 <div class="product-img relative">
                                     <div class="product-sale absolute">
@@ -194,7 +194,7 @@ $bannerList = $bannerStore->getAllBanners();
                 <div class="pro-list-hot list-content flex w100p">
                     <?php foreach ($hotBookList as $key => $book) { ?>
                         <!-- Card product start -->
-                        <div class="product-card grid-r5 grid-r3-md">
+                        <div class="product-card grid-r5 grid-r3-md grid-r2-sm">
                             <div class="product-container m-b20">
                                 <div class="product-img relative">
                                     <div class="product-sale absolute">

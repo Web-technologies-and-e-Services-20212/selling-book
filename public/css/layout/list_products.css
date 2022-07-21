@@ -188,4 +188,14 @@
   font-weight: 300;
 }
 
+@media (min-width: 200px) and (max-width: 576px) {
+  .product-card {
+    padding: 0 5px;
+    height: 335px;
+  }
+  .img {
+    height: 275px;
+  }
+}
+
 

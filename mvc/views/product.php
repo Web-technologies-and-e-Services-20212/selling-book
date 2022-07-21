@@ -173,7 +173,7 @@ $listComment = $evaluateServices->getAll($bookId);
 
                     <div class="flex w100p p-tb16">
                         <?php foreach ($bookSameAuthor as $key => $book) { ?>
-                            <div class="product-card grid-r5 grid-r3-md">
+                            <div class="product-card grid-r5 grid-r3-md grid-r2-sm">
                                 <div class="product-container">
                                     <div class="product-img relative">
                                         <div class="product-sale absolute">
@@ -215,7 +215,7 @@ $listComment = $evaluateServices->getAll($bookId);
 
                     <div class="flex w100p p-tb16">
                         <?php foreach ($bookRelated as $key => $book) { ?>
-                            <div class="product-card grid-r5 grid-r3-md">
+                            <div class="product-card grid-r5 grid-r3-md grid-r2-sm">
                                 <div class="product-container">
                                     <div class="product-img relative">
                                         <div class="product-sale absolute">

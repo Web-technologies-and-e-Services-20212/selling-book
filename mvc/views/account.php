@@ -66,7 +66,7 @@ if (!isset($_SESSION['username']) || $_SESSION['username'] == '') {
             </span>
 
             <div class="customer-info flex">
-                <div class="grid-r2 p-lr15">
+                <div class="grid-r2 p-lr15 w100p-sm">
                     <h2><?php echo $currentUserName ?></h2>
                     <p><?php echo $currentUser->getUsername(); ?></p>
                     <p></p>
@@ -86,7 +86,7 @@ if (!isset($_SESSION['username']) || $_SESSION['username'] == '') {
                     </div>
                 </div>
 
-                <div class="grid-r2 p-t10 p-lr15">
+                <div class="grid-r2 p-t10 p-lr15 w100p-sm">
                     <div class="update-address m-b10">
                         <button class="btn btn-default btn-primary" onclick="toggleForm('update-address')">Cập nhật địa chỉ</button>
                         <form action="/selling-book/account" id="update-address" method="POST" style="display: none">

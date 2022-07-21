@@ -60,7 +60,7 @@
   width: 75%;
 }
 
-@media (min-width: 200px){
+@media (min-width: 200px) and (max-width: 576px){
   .container{
     width: 100%;
     padding-right: 15px;
@@ -83,6 +83,12 @@
   }
   .w100p-md {
     width: 100% !important;
+  }
+  .w100p-sm{
+    width: 100% !important;
+  }
+  .grid-r2-sm{
+    width: 50% !important;
   }
 }
 
@@ -109,7 +115,7 @@
     width: 750px;
     padding-right: 5px;
     padding-left: 5px;
-    margin: 0 10px;
+    margin: 0 auto;
   }
 }
 

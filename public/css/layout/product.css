@@ -234,3 +234,10 @@
     color: var(--b0-gray-color);
     font-weight: 300;
   }
+
+  @media (min-width: 200px) and (max-width: 576px) {
+    .select-quantity {
+      padding-left: 15px;
+      margin-bottom: 10px;
+    }
+  }

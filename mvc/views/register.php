@@ -62,49 +62,49 @@ if (array_key_exists("username", $_POST)) {
                         <label for="" class="form__lable-icon">
                             <i class="fa-solid fa-user"></i>
                         </label>
-                        <input type="text" name="lname" required id="last_name" placeholder="Họ">
+                        <input type="text" name="lname" oninput="setCustomValidity('')" required id="last_name" placeholder="Họ">
                     </div>
 
                     <div id="form-first_name" class="form__input">
                         <label for="" class="form__lable-icon">
                             <i class="fa-solid fa-user"></i>
                         </label>
-                        <input type="text" name="fname" required id="first_name" placeholder="Tên">
+                        <input type="text" name="fname" oninput="setCustomValidity('')" required id="first_name" placeholder="Tên">
                     </div>
 
                     <div id="form-email" class="form__input">
                         <label for="" class="form__lable-icon">
                             <i class="fa-solid fa-envelope"></i>
                         </label>
-                        <input type="email" name="username" required id="email" placeholder="Email">
+                        <input type="email" name="username" oninput="setCustomValidity('')" required id="email" placeholder="Email">
                     </div>
 
                     <div id="form-email" class="form__input">
                         <label for="" class="form__lable-icon">
                         <i class="fa-solid fa-map-location"></i>
                         </label>
-                        <input type="text" name="address" required id="address" placeholder="Địa chỉ">
+                        <input type="text" name="address" required oninput="setCustomValidity('')" id="address" placeholder="Địa chỉ">
                     </div>
 
                     <div id="form-email" class="form__input">
                         <label for="" class="form__lable-icon">
                         <i class="fa-solid fa-phone"></i>
                         </label>
-                        <input type="tel" name="phone" required id="phone" placeholder="Số điện thoại">
+                        <input type="tel" name="phone" required oninput="setCustomValidity('')" id="phone" placeholder="Số điện thoại">
                     </div>
 
                     <div id="form-password" class="form__input relative">
                         <label for="" class="form__lable-icon">
                             <i class="fa-solid fa-lock"></i>
                         </label>
-                        <input type="password" name="password" required id="register-password" placeholder="Mật khẩu">
+                        <input type="password" name="password" onchange="validateRegister()" oninput="setCustomValidity('')" required id="register-password" placeholder="Mật khẩu">
                     </div>
 
                     <div id="form-password" class="form__input relative">
                         <label for="" class="form__lable-icon">
                             <i class="fa-solid fa-lock"></i>
                         </label>
-                        <input type="password" name=confirm-password" required id="confirm-password" placeholder="Xác nhận mật khẩu">
+                        <input type="password" name=confirm-password" onkeyup="validateRegister()" oninput="setCustomValidity('')" required id="confirm-password" placeholder="Xác nhận mật khẩu">
                         
                     </div>
 
