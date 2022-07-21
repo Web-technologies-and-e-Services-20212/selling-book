@@ -244,8 +244,7 @@ class GuestServices extends MySqlConnect
     {
         $cart_id = self::getCartID($username);
         $book_id = $book->getBookId();
-        $query = "update cart_book set cart_book.quantity = $quantity
-                    where cart_book.cardId = $cart_id and cart_book.bookId = $book_id";
+        $query = "CALL Proc_UpdateCartBook($cart_id, $quantity,$book_id )";
 
         parent::addQuerry($query);
         parent::updateQuery();
@@ -359,7 +358,7 @@ class GuestServices extends MySqlConnect
 
         // create bill by username
         $query = "insert into bill(username, totalPrice, dateBill, status)
-                    value('$username', 0, " . "'" . date("Y-m-d h:i:sa") . "', 'PENDING')";
+                    value('$username', 0, " . "'" . date("Y-m-d h:i:s") . "', 'PENDING')";
         parent::addQuerry($query);
         parent::updateQuery();
         $billId = parent::getLastInsertedId();
@@ -377,7 +376,7 @@ class GuestServices extends MySqlConnect
 
             // get and add book price to total price
             $book = $bookServices->getById($bookId);
-            $totalPrice += $book->getPrice() * $quantity;
+            $totalPrice += ($book->getPrice() - $book->getPrice() * $book->getDiscount() / 100 )* $quantity ;
         }
         $totalPrice += 30000;
         // update total price of bill

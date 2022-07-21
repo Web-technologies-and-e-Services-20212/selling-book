@@ -3,7 +3,7 @@
     <div class="container">
         <div class="flex">
             <!-- Footer contact start -->
-            <div class="footer-contact flex f-column">
+            <div class="footer-contact grid-r3 w100p-md flex f-column">
                 <div class="fo-logo">
                     <img src="/selling-book/public/images/logo/footer_logo.webp" alt="IPM">
                 </div>
@@ -29,9 +29,9 @@
             <!-- Footer contact end -->
 
             <!-- Footer support start -->
-            <div class="footer-support flex f-column">
-                <div class="flex f-space_between">
-                    <div class="flex f-column p-lr15">
+            <div class="footer-support flex w100p-md f-column">
+                <div class="flex w100p-md">
+                    <div class="flex f-column w50p-md p-lr15">
                         <div class="support-header m-b20">
                             <h3>Hỗ trợ khách hàng</h3>
                         </div>
@@ -40,7 +40,7 @@
                             <a href="#">Điều khoản dịch vụ</a>
                         </div>
                     </div>
-                    <div class="flex f-column p-lr15">
+                    <div class="flex f-column w50p-md p-lr15">
                         <div class="policy-header m-b20">
                             <h3>Chính sách</h3>
                         </div>
@@ -52,7 +52,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="register-email flex p-lr15">
+                <div class="register-email flex w50p-md p-lr15">
                     <h3 class="m-b20">Đăng ký nhận tin</h3>
                     <p class="">Hãy nhập email của bạn vào ô dưới 
                         đây để có thể nhận được tất cả tin tức mới nhất của IPM</p>
@@ -63,7 +63,7 @@
             </div>
             <!-- Footer support end -->
             <!-- Footer social start -->
-            <div class="footer-social flex f-column">
+            <div class="footer-social w50p-md flex f-column">
                 <div class="social-header">
                     Kết nối với chúng tôi
                 </div>

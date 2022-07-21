@@ -32,9 +32,9 @@ $billId = $service->submitBill($_SESSION['username'], $billBookArray);
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://kit.fontawesome.com/d433183ff3.js" crossorigin="anonymous"></script>
-    <link rel="shortcut icon" href="public/images/logo/logo_icon.png" type="image/x-icon">
-    <link rel="stylesheet" href="public/css/style.css" type="text/css">
-    <title>IPM | Thanh toán đơn hàng</title>
+    <link rel="shortcut icon" href="/selling-book/public/images/logo/logo_icon.png" type="image/x-icon">
+    <link rel="stylesheet" href="/selling-book/public/css/base.css" type="text/css">
+    <title>IPM | Hoàn tất đơn hàng</title>
 </head>
 
 <body>
@@ -50,12 +50,12 @@ $billId = $service->submitBill($_SESSION['username'], $billBookArray);
             </span>
 
             <div class="flex m-t30 m-b30">
-                <div class="w100p" style="text-align: center;">
+                <div class="w100p text-center">
                     <h2>Hoàn tất đơn hàng</h2>
                 </div>
 
                 <p></p>
-                <div class="w100p" style="text-align: center;">
+                <div class="w100p text-center">
                     <h3>Mã đơn hàng của bạn là : <a href=<?php echo "/" . $path_project . "/account" . "/orders" . "/" . sha1($billId) ?>>
                         #<?php echo $billId ?></a>
                     </h3>

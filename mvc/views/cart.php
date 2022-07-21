@@ -20,8 +20,9 @@ $listCartProducts = $guestService->getListCartBooks($_SESSION['username']);
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://kit.fontawesome.com/d433183ff3.js" crossorigin="anonymous"></script>
-    <link rel="shortcut icon" href="public/images/logo/logo_icon.png" type="image/x-icon">
-    <link rel="stylesheet" href="public/css/style.css" type="text/css">
+    <link rel="shortcut icon" href="/selling-book/public/images/logo/logo_icon.png" type="image/x-icon">
+    <link rel="stylesheet" href="/selling-book/public/css/base.css" type="text/css">
+    <link rel="stylesheet" href="/selling-book/public/css/layout/cart.css" type="text/css">
     <title>IPM | Giỏ hàng</title>
 </head>
 
@@ -34,7 +35,7 @@ $listCartProducts = $guestService->getListCartBooks($_SESSION['username']);
     <div id="cart" class="w100">
         <div class="container">
             <span class="cart-title">
-                <h1>giỏ hàng</h1>
+                <h1>Giỏ hàng</h1>
             </span>
 
             <div class="cart-content">
@@ -71,11 +72,11 @@ $listCartProducts = $guestService->getListCartBooks($_SESSION['username']);
                                             <img src="<?php echo $bookImage; ?>" alt="<?php echo $bookTitle; ?>">
                                         </div>
                                     </td>
-                                    <td class="item text-left"><a href="#">
+                                    <td class="item text-left"><a href=<?php echo "/" . $path_project . DS . "product" . DS . $bookId ?>>
                                             <strong title="<?php echo $bookTitle; ?>"><?php echo $bookTitle; ?></strong>
                                         </a></td>
                                     <td class="qty text-center">
-                                        <input type="number" size="4" min="1" id="update-quatity" value=<?php echo $quantity; ?> class="input-quantity">
+                                        <input type="number" size="4" min="1" id="<?php echo "update-quatity" . $bookId ?>" onchange="changeQuantity(<?php echo $bookId; ?>)" value=<?php echo $quantity; ?> class="input-quantity">
                                     </td>
                                     <td class="price text-right"><?php echo currency_format($bookPrice); ?></td>
                                     <td class="delete text-right">
@@ -110,7 +111,7 @@ $listCartProducts = $guestService->getListCartBooks($_SESSION['username']);
                     </div>
 
                     <div class="flex p-t30 f-end p-lr15">
-                        <button class="btn btn-default btn-md">Cập nhật
+                        <button class="btn btn-default btn-md" onclick="checkout()">Cập nhật
                             <i class="fa-solid fa-chevron-right"></i>
                         </button>
                         <button class="btn btn-default btn-md" onclick="checkout()">Thanh toán

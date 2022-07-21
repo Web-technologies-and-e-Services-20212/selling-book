@@ -17,13 +17,13 @@
 }
 
 .blog-detail h2{
-    color: #212121;
+    color: var(--black-21-color);
     font-size: 16px;
     font-weight: 700;
 }
 
 .blog-detail h2:hover{
-    color: #01a14b;
+    color:var(--primary-color);;
 }
 
 .blog-detail span{
@@ -42,7 +42,7 @@
 
 .blog-detail p a{
     display: block;
-    color: #01a14b;
+    color:var(--primary-color);;
     font-size: 14px;
     font-weight: 500;
 }

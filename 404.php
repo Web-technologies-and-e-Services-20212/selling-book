@@ -15,7 +15,8 @@ define('ROOT', $_SERVER['DOCUMENT_ROOT'] . DS . $path_project);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://kit.fontawesome.com/d433183ff3.js" crossorigin="anonymous"></script>
     <link rel="shortcut icon" href="public/images/logo/logo_icon.png" type="image/x-icon">
-    <link rel="stylesheet" href="public/css/style.css" type="text/css">
+    <link rel="stylesheet" href="/selling-book/public/css/base.css" type="text/css">
+    <link rel="stylesheet" href="/selling-book/public/css/layout/404.css" type="text/css">
     <title>IPM | 404</title>
 </head>
 
@@ -29,16 +30,16 @@ define('ROOT', $_SERVER['DOCUMENT_ROOT'] . DS . $path_project);
         <div class="img-404">
             <img src="public/images/logo/404.png" alt="Not Found">
         </div>
-        <span class="title-404">
+        <span class="title-404 text-center">
             <h1>Không tìm thấy trang</h1>
             <p>Xin lỗi, chúng tôi không tìm thấy trang này</p>
         </span>
-        <div class="flex f-align_center f-space_between">
-            <button class="btn btn-default btn-md">
-                <a href=<?php echo "/" . $path_project . "/" ?>>
-                    Quay lại trang chủ
-                </a>
-            </button>
+        <div class="text-center p-b15">
+        <button class="btn btn-default">
+            <a href=<?php echo "/" . $path_project . "/" ?>>
+                Quay lại trang chủ
+            </a>
+        </button>
         </div>
     </div>
     <!-- Kết thúc nội dung phần 404 -->

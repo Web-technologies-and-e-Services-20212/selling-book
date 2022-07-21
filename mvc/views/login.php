@@ -33,6 +33,7 @@ if (isset($_SESSION['username']) && isset($_SESSION['password'])) {
     <link rel="stylesheet" href="/selling-book/public/icon/fontawesome-free-v6/css/all.css">
     <link rel="shortcut icon" href="/selling-book/public/images/logo/logo_icon.png" type="image/x-icon">
     <link rel="stylesheet" href="/selling-book/public/css/style.css" type="text/css">
+    <link rel="stylesheet" href="/selling-book/public/css/base.css" type="text/css">
     <link rel="stylesheet" href="/selling-book/public/css/layout/register.css" type="text/css">
     <title>IPM | Đăng nhập </title>
 
@@ -83,7 +84,7 @@ if (isset($_SESSION['username']) && isset($_SESSION['password'])) {
 
                     </div>
 
-                    <div id="form-login_social" class="m-t20 m-b10 flex f-space_between ">
+                    <!-- <div id="form-login_social" class="m-t20 m-b10 flex f-space_between ">
                         <button class="btn btn-icon-center w45p icon-fb">
                             <i class="fa-brands fa-facebook-f"></i>
                         </button>
@@ -91,7 +92,7 @@ if (isset($_SESSION['username']) && isset($_SESSION['password'])) {
                         <button class="btn btn-icon-center w45p icon-gg">
                             <i class="fa-brands fa-google"></i>
                         </button>
-                    </div>
+                    </div> -->
                 </form>
             </div>
         </div>
@@ -102,7 +103,7 @@ if (isset($_SESSION['username']) && isset($_SESSION['password'])) {
     <?php require_once ROOT . DS . 'mvc' . DS . 'views' . DS . 'footer.php'; ?>
 
     <!-- JS dùng chung -->
-    <script src="public/javascript/base.js"></script>
+    <script src="public/javascript/account.js"></script>
 </body>
 
 </html>

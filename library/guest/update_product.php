@@ -7,7 +7,7 @@ session_start();
 
 require_once ROOT . DS . 'services' . DS . 'GuestServices.php';
 // require_once ROOT . DS . 'mvc' . DS . 'models' . DS . 'Bill.php';
-
+$updated = false;
 $service = new GuestServices();
 $listCartProducts = $service->getListCartBooks($_SESSION['username']);
 $billBookArray = array();
@@ -17,7 +17,12 @@ foreach ($listCartProducts as $key => $cartBook) {
     $bookQuantity = $cartBook['quantity'];
     if($bookQuantity != $_POST['quantity-product' .$bookId ]){
         $service->updateBookToCart($_SESSION['username'],$book, $_POST['quantity-product' .$bookId ] );
+        $updated = true;
     }
 }
-header("Location: ../../checkout");
+if(!$updated){
+    header("Location: ../../checkout");
+}else{
+    header("Location: ../../cart");
+}
 

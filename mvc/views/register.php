@@ -3,12 +3,14 @@ if (array_key_exists("username", $_POST)) {
     $lastName = $_POST['lname'];
     $firstName = $_POST['fname'];
     $username = $_POST['username'];
+    $address = $_POST['address'];
+    $phone = $_POST['phone'];
     $password = sha1($_POST['password']);
     
     $name = $lastName . " " . $firstName;
     require_once ROOT . DS . 'services' . DS . 'GuestServices.php';
     require_once ROOT . DS . 'mvc' . DS . 'models' . DS . 'Guest.php';
-    $guest = new Guest($username, $password, $name);
+    $guest = new Guest($username, $password, $name, $address,$phone );
     $service = new GuestServices();
 
     $isExitUser = $service->checkUsernameExist($username);
@@ -32,7 +34,7 @@ if (array_key_exists("username", $_POST)) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/selling-book/public/icon/fontawesome-free-v6/css/all.css">
     <link rel="shortcut icon" href="/selling-book/public/images/logo/logo_icon.png" type="image/x-icon">
-    <link rel="stylesheet" href="/selling-book/public/css/style.css" type="text/css">
+    <link rel="stylesheet" href="/selling-book/public/css/base.css" type="text/css">
     <link rel="stylesheet" href="/selling-book/public/css/layout/register.css" type="text/css">
     <title>IPM | Đăng ký </title>
 
@@ -77,18 +79,32 @@ if (array_key_exists("username", $_POST)) {
                         <input type="email" name="username" required id="email" placeholder="Email">
                     </div>
 
-                    <div id="form-password" class="form__input relative">
+                    <div id="form-email" class="form__input">
                         <label for="" class="form__lable-icon">
-                            <i class="fa-solid fa-lock"></i>
+                        <i class="fa-solid fa-map-location"></i>
                         </label>
-                        <input type="password" name="password" required id="register-password" onchange="validateRegister()" placeholder="Mật khẩu">
+                        <input type="text" name="address" required id="address" placeholder="Địa chỉ">
+                    </div>
+
+                    <div id="form-email" class="form__input">
+                        <label for="" class="form__lable-icon">
+                        <i class="fa-solid fa-phone"></i>
+                        </label>
+                        <input type="tel" name="phone" required id="phone" placeholder="Số điện thoại">
                     </div>
 
                     <div id="form-password" class="form__input relative">
                         <label for="" class="form__lable-icon">
                             <i class="fa-solid fa-lock"></i>
                         </label>
-                        <input type="password" name=confirm-password" required id="confirm-password" onkeyup="validateRegister()" placeholder="Xác nhận mật khẩu">
+                        <input type="password" name="password" required id="register-password" placeholder="Mật khẩu">
+                    </div>
+
+                    <div id="form-password" class="form__input relative">
+                        <label for="" class="form__lable-icon">
+                            <i class="fa-solid fa-lock"></i>
+                        </label>
+                        <input type="password" name=confirm-password" required id="confirm-password" placeholder="Xác nhận mật khẩu">
                         
                     </div>
 
@@ -97,10 +113,10 @@ if (array_key_exists("username", $_POST)) {
                     </div>
 
                     <div id="form-back" class="m-t14">
-                        <a href="#">Quay về</a>
+                        <a href=<?php echo "/" . $path_project . "/" ?>>Quay về</a>
                     </div>
 
-                    <div id="form-login_social" class="m-t20 m-b10 flex f-space_between ">
+                    <!-- <div id="form-login_social" class="m-t20 m-b10 flex f-space_between ">
                         <button class="btn btn-icon-center w45p icon-fb">
                             <i class="fa-brands fa-facebook-f"></i>
                         </button>
@@ -108,7 +124,7 @@ if (array_key_exists("username", $_POST)) {
                         <button class="btn btn-icon-center w45p icon-gg">
                             <i class="fa-brands fa-google"></i>
                         </button>
-                    </div>
+                    </div> -->
                 </form>
             </div>
         </div>

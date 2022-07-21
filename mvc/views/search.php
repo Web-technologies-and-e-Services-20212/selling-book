@@ -31,7 +31,8 @@ $totalPage = ceil($searchTotalRecord / $pageSize);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://kit.fontawesome.com/d433183ff3.js" crossorigin="anonymous"></script>
     <link rel="shortcut icon" href="/selling-book/public/images/logo/logo_icon.png" type="image/x-icon">
-    <link rel="stylesheet" href="/selling-book/public/css/style.css" type="text/css">
+    <link rel="stylesheet" href="/selling-book/public/css/base.css" type="text/css">
+    <link rel="stylesheet" href="/selling-book/public/css/layout/list_products.css" type="text/css">
     <title>IPM | Tất cả sản phẩm</title>
 </head>
 
@@ -48,14 +49,17 @@ $totalPage = ceil($searchTotalRecord / $pageSize);
                 <div class="categories grid-r4 p-lr15">
                     <div class="category-title">Danh mục</div>
                     <ul class="category-list">
-                        <li><span>Trinh Thám - Kinh dị</span></li>
-                        <li><span>Văn học hiện đại</span></li>
-                        <li><span>Văn học kinh điển</span></li>
-                        <li><span>Fantasy</span></li>
-                        <li><span>Light Novel</span></li>
-                        <li><span>Boys Love</span></li>
-                        <li><span>Manga - Comic</span></li>
-                        <li><span>Sách thiếu nhi</span></li>
+                    <li><a href=<?php echo "/" . $path_project . DS . "list-products" . DS . CATEGORY_DETECTIVE['route'] ?>>Trinh Thám , Kinh dị</a></li>
+                        <li><a href=<?php echo "/" . $path_project . DS .  "list-products" . DS . CATEGORY_MODERN_LITERARURE['route'] ?>>Văn học hiện đại</a></li>
+                        <li><a href=<?php echo "/" . $path_project . DS .  "list-products" . DS . CATEGORY_CLASSIC_LITERATURE['route'] ?>>Văn học kinh điển</a></li>
+                        <li><a href=<?php echo "/" . $path_project . DS .  "list-products" . DS . CATEGORY_FANTASY['route'] ?>>Fantasy</a></li>
+                        <li><a href=<?php echo "/" . $path_project . DS .  "list-products" . DS . CATEGORY_LIGHT_NOVEL['route'] ?>>Light Novel</a></li>
+                        <li><a href=<?php echo "/" . $path_project . DS .  "list-products" . DS . CATEGORY_BOY_LOVE['route'] ?>>Boys Love</a></li>
+                        <li><a href=<?php echo "/" . $path_project . DS .  "list-products" . DS . CATEGORY_BOXSET['route'] ?>>Boxset</a></li>
+                        <li><a href=<?php echo "/" . $path_project . DS .  "list-products" . DS . CATEGORY_MANGA_COMIC['route'] ?>>Manga - Comic</a></li>
+                        <li><a href=<?php echo "/" . $path_project . DS .  "list-products" . DS . CATEGORY_LEARNING_BOOK['route'] ?>>Sách học ngữ</a></li>
+                        <li><a href=<?php echo "/" . $path_project . DS .  "list-products" . DS . CATEGORY_CHILD_BOOK['route'] ?>>Sách thiếu nhi</a></li>
+                        <li><a href=<?php echo "/" . $path_project . DS .  "list-products" . DS . CATEGORY_ACCESSORIES['route'] ?>>Phụ kiện</a></li>
                     </ul>
                 </div>
                 <!-- Kết thúc Nội dung phần Danh mục -->

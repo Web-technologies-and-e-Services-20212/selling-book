@@ -105,6 +105,10 @@
     padding-bottom: 15px;
 }
 
+.p-l15{
+    padding-left: 15px;
+}
+
 .p-lr15{
     padding-left:15px;
     padding-right:15px;
@@ -153,7 +157,7 @@ a {
 }
 
 a:hover {
-    color: #01a14b;
+    color: var(--primary-color);
 }
 
 ul {
@@ -172,5 +176,5 @@ img {
 
 
 .borderblack{
-    border: 1px solid #000;
+    border: 1px solid var(--black-color);
 }

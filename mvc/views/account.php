@@ -15,8 +15,9 @@ if (!isset($_SESSION['username']) || $_SESSION['username'] == '') {
         }
         $currentUser = $guestService->get($_SESSION['username']);
         if (isset($_POST['newPass'])) {
+            $oldPass = sha1($_POST['oldPass']);
             $newPassword = sha1($_POST['newPass']);
-            if ($currentUser->getPassword() != $newPassword) {
+            if ($currentUser->getPassword() != $oldPass) {
                 $errorPasswordMessage = "Mật khẩu cũ nhập không đúng !";
             }else{
                 $guestService->updatePassword($_SESSION['username'], $newPassword);
@@ -41,8 +42,9 @@ if (!isset($_SESSION['username']) || $_SESSION['username'] == '') {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://kit.fontawesome.com/d433183ff3.js" crossorigin="anonymous"></script>
-    <link rel="shortcut icon" href="public/images/logo/logo_icon.png" type="image/x-icon">
-    <link rel="stylesheet" href="public/css/style.css" type="text/css">
+    <link rel="shortcut icon" href="/selling-book/public/images/logo/logo_icon.png" type="image/x-icon">
+    <link rel="stylesheet" href="/selling-book/public/css/base.css" type="text/css">
+    <link rel="stylesheet" href="/selling-book/public/css/layout/account.css" type="text/css">
     <title>IPM | Tài khoản của bạn</title>
 </head>
 
@@ -64,7 +66,7 @@ if (!isset($_SESSION['username']) || $_SESSION['username'] == '') {
             </span>
 
             <div class="customer-info flex">
-                <div class="grid-r5m2">
+                <div class="grid-r2 p-lr15">
                     <h2><?php echo $currentUserName ?></h2>
                     <p><?php echo $currentUser->getUsername(); ?></p>
                     <p></p>
@@ -84,7 +86,7 @@ if (!isset($_SESSION['username']) || $_SESSION['username'] == '') {
                     </div>
                 </div>
 
-                <div class="grid-r5m3 p-t10">
+                <div class="grid-r2 p-t10 p-lr15">
                     <div class="update-address m-b10">
                         <button class="btn btn-default btn-primary" onclick="toggleForm('update-address')">Cập nhật địa chỉ</button>
                         <form action="/selling-book/account" id="update-address" method="POST" style="display: none">
@@ -149,7 +151,7 @@ if (!isset($_SESSION['username']) || $_SESSION['username'] == '') {
 
             </div>
 
-            <div class="customer-order">
+            <div class="customer-order m-b20">
                 <span>
                     <h1>Đơn hàng của bạn</h1>
                 </span>
@@ -191,7 +193,7 @@ if (!isset($_SESSION['username']) || $_SESSION['username'] == '') {
 
     <!-- Nội dung phần Footer -->
     <?php require_once ROOT . DS . 'mvc' . DS . 'views' . DS . 'footer.php'; ?>
-    <script src="public/javascript/base.js"></script>
+    <script src="public/javascript/account.js"></script>
 
 </body>
 

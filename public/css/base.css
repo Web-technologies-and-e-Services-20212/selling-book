@@ -1,0 +1,29 @@
+@import url("https://fonts.googleapis.com/css2?family=League+Spartan:wght@100;200;300;400;500;600;700;800;900&family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&display=swap");
+@import url("./base/button.css");
+@import url("./base/color.css");
+@import url("./base/dimension.css");
+@import url("./base/display.css");
+@import url("./base/font.css");
+@import url("./base/combobox.css");
+@import url("./base/table.css");
+@import url("./base/responsive.css");
+
+@import url("./layout/header.css");
+@import url("./layout/footer.css");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Open Sans", sans-serif;
+}
+
+body {
+  line-height: 21px;
+  font-size: 14px;
+  color: var(--text-black-5);
+  overflow-x: hidden;
+  background: var(--white-color);
+  position: initial !important;
+  font-weight: 300;
+}

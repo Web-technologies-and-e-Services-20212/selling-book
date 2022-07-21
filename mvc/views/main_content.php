@@ -9,78 +9,30 @@ $currentCategory = CATEGORY_NEW_BOOKS;
 $newBookList = $bookStore->getAllSortByTimeDesc(CATEGORY_NEW_BOOKS['id'], 1, $numBook);
 $topBookList = $bookStore->getAllSortByTimeDesc(CATEGORY_TOP_BOOKS['id'], 1, $numBook);
 $hotBookList = $bookStore->getAllSortByTimeDesc(CATEGORY_HOT_DEALS['id'], 1, $numBook);
-// 
-// foreach ($newBooks as $key => $book) {
-//     print_r("Book ID :" . $book->getBookId() . "<br>");
-//     print_r("Book Author :" . $book->getAuthor()  . "<br>");
-//     print_r("Book Available :" . $book->getAvailable() . "<br>");
-//     print_r("Book getPublisher :" . $book->getPublisher() . "<br>");
-//     print_r("Book getSize :" . $book->getSize() . "<br>");
-//     print_r("Book getContent :" . $book->getContent() . "<br>");
-//     print_r("Book getImage :" . "<br>");
-//     print_r($book->getImage());
-//     print_r("<br>");
-//     print_r("Book getDiscount :" . $book->getDiscount() . "<br>");
-//     print_r("Book getUsername :" . $book->getUsername() . "<br>");
-//     print_r("Book getTitle :" . $book->getTitle() . "<br>");
-//     print_r("Book getSoldNumber :" . $book->getSoldNumber() . "<br>");
-//     print_r("Book getCreateAt :" . $book->getCreateAt() . "<br>");
-//     print_r("Book getPrice :" . $book->getPrice(). "<br>");
-//     echo "-----------" . "<br>";
-// }
+$bannerList = $bannerStore->getAllBanners();
 
-// if (!function_exists('currency_format')) {
-//     function currency_format($number, $suffix = 'đ')
-//     {
-//         if (!empty($number)) {
-//             return number_format($number, 0, ' ', ',') . "{$suffix}";
-//         }
-//     }
-// }
+
 
 ?>
 <div class="w100p" id="main-content">
     <!-- Section slide start -->
     <section id="home-hero">
-        <div class="main-img relative">
-            <img src="public/images/slide/slideshow_1.jpg"></img>
-            <span class="next absolute">
-                <i class="fa-solid fa-chevron-right"></i>
-            </span>
-            <span class="prev absolute">
-                <i class="fa-solid fa-chevron-left"></i>
-            </span>
-        </div>
+        <?php foreach ($bannerList as $key => $banner) {
+            $bannerImage = $banner->getImage();
+            $bannerCategory = $banner->getCategoryId();  ?>
 
-        <div class="main-img relative">
-            <img src="public/images/slide/slideshow_2.jpg"></img>
-            <span class="next absolute">
-                <i class="fa-solid fa-chevron-right"></i>
-            </span>
-            <span class="prev absolute">
-                <i class="fa-solid fa-chevron-left"></i>
-            </span>
-        </div>
-
-        <div class="main-img relative">
-            <img src="public/images/slide/slideshow_3.jpg"></img>
-            <span class="next absolute">
-                <i class="fa-solid fa-chevron-right"></i>
-            </span>
-            <span class="prev absolute">
-                <i class="fa-solid fa-chevron-left"></i>
-            </span>
-        </div>
-
-        <div class="main-img relative">
-            <img src="public/images/slide/slideshow_4.jpg"></img>
-            <span class="next absolute">
-                <i class="fa-solid fa-chevron-right"></i>
-            </span>
-            <span class="prev absolute">
-                <i class="fa-solid fa-chevron-left"></i>
-            </span>
-        </div>
+            <div class="main-img relative">
+                <a href=<?php echo "/" . $path_project . "/" . "list-products" . "/" . getCategoryRoute($bannerCategory); ?>>
+                    <img src=<?php echo $bannerImage; ?>></img>
+                </a>
+                <span class="next absolute">
+                    <i class="fa-solid fa-chevron-right"></i>
+                </span>
+                <span class="prev absolute">
+                    <i class="fa-solid fa-chevron-left"></i>
+                </span>
+            </div>
+        <?php }    ?>
 
     </section>
     <!-- Section slide end -->
@@ -89,41 +41,49 @@ $hotBookList = $bookStore->getAllSortByTimeDesc(CATEGORY_HOT_DEALS['id'], 1, $nu
     <section id="policy">
         <div class="container">
             <div class="flex f-align_center f-space_between">
-                <div class="policy-img">
-                    <div class="img">
-                        <img src="public/images/policy/hpl_icon_1.webp"></img>
+                <div class="p-lr15 m-b20 grid-r4 w50p-md">
+                    <div class="policy-img w100p">
+                        <div class="img">
+                            <img src="public/images/policy/hpl_icon_1.webp"></img>
+                        </div>
+                        <div class="info">
+                            <p>ưu đãi vận chuyển</p>
+                        </div>
                     </div>
-                    <div class="info">
-                        <p>ưu đãi vận chuyển</p>
+                </div>
+                <div class="p-lr15 m-b20 grid-r4 w50p-md">
+                    <div class="policy-img w100p">
+                        <div class="img">
+                            <img src="public/images/policy/hpl_icon_2.webp"></img>
+                        </div>
+                        <div class="info">
+                            <p>thể loại sách phong phú</p>
+                        </div>
                     </div>
                 </div>
 
-                <div class="policy-img">
-                    <div class="img">
-                        <img src="public/images/policy/hpl_icon_2.webp"></img>
-                    </div>
-                    <div class="info">
-                        <p>thể loại sách phong phú</p>
-                    </div>
-                </div>
-
-                <div class="policy-img">
-                    <div class="img">
-                        <img src="public/images/policy/hpl_icon_3.webp"></img>
-                    </div>
-                    <div class="info">
-                        <p>khuyến mãi hấp dẫn</p>
+                <div class="p-lr15 m-b20 grid-r4 w50p-md">
+                    <div class="policy-img w100p">
+                        <div class="img">
+                            <img src="public/images/policy/hpl_icon_3.webp"></img>
+                        </div>
+                        <div class="info">
+                            <p>khuyến mãi hấp dẫn</p>
+                        </div>
                     </div>
                 </div>
 
-                <div class="policy-img">
-                    <div class="img">
-                        <img src="public/images/policy/hpl_icon_4.webp"></img>
-                    </div>
-                    <div class="info">
-                        <p>hotline: 03 2838 3979</p>
+                <div class="p-lr15 m-b20 grid-r4 w50p-md">
+                    <div class="policy-img w100p">
+                        <div class="img">
+                            <img src="public/images/policy/hpl_icon_4.webp"></img>
+                        </div>
+                        <div class="info">
+                            <p>hotline: 03 2838 3979</p>
+                        </div>
                     </div>
                 </div>
+
             </div>
 
         </div>
@@ -134,8 +94,8 @@ $hotBookList = $bookStore->getAllSortByTimeDesc(CATEGORY_HOT_DEALS['id'], 1, $nu
     <section id="products">
         <div class="container">
             <!-- Products nav start -->
-            <div class="pro-nav grid-r5m2 margin-auto_h">
-                <ul class="flex f-align_center f-space_between">
+            <div class="pro-nav">
+                <ul class="text-center">
                     <li class="active" id="new">
                         <a>Sách mới</a>
                     </li>
@@ -157,13 +117,13 @@ $hotBookList = $bookStore->getAllSortByTimeDesc(CATEGORY_HOT_DEALS['id'], 1, $nu
                     <?php foreach ($newBookList as $key => $book) { ?>
 
                         <!-- Card product start -->
-                        <div class="product-card grid-r5">
+                        <div class="product-card grid-r5 grid-r3-md">
                             <div class="product-container m-b20">
                                 <div class="product-img relative">
                                     <div class="product-sale absolute">
                                         <span class="sale-icon"> -<?php echo $book->getDiscount(); ?>%</span>
                                     </div>
-                                    <?php if (true) { ?>
+                                    <?php if ($book->getAvailable() == 0) { ?>
                                         <div class="sold-out">Hết hàng</div>
                                     <?php } ?>
                                     <div class="img relative">
@@ -197,14 +157,14 @@ $hotBookList = $bookStore->getAllSortByTimeDesc(CATEGORY_HOT_DEALS['id'], 1, $nu
                 <div class="pro-list-top list-content flex w100p">
                     <?php foreach ($topBookList as $key => $book) { ?>
                         <!-- Card product start -->
-                        <div class="product-card grid-r5">
+                        <div class="product-card grid-r5 grid-r3-md">
                             <div class="product-container m-b20">
                                 <div class="product-img relative">
                                     <div class="product-sale absolute">
                                         <span class="sale-icon">- <?php echo $book->getDiscount(); ?> %</span>
                                     </div>
                                     <div class="img relative">
-                                        <a href="#">
+                                        <a href=<?php echo "/" . $path_project . "/product" . "/" . $book->getBookId(); ?>>
                                             <img src="<?php echo $book->getImage()[0]; ?>" alt="<?php echo $book->getTitle(); ?>">
                                         </a>
                                     </div>
@@ -212,7 +172,7 @@ $hotBookList = $bookStore->getAllSortByTimeDesc(CATEGORY_HOT_DEALS['id'], 1, $nu
 
                                 <div class="product-detail">
                                     <h3 class="product-name">
-                                        <a href="#"><?php echo $book->getTitle(); ?></a>
+                                        <a href=<?php echo "/" . $path_project . "/product" . "/" . $book->getBookId(); ?>><?php echo $book->getTitle(); ?></a>
                                     </h3>
                                     <div class="product-prices">
                                         <div class="price price-new">
@@ -234,14 +194,14 @@ $hotBookList = $bookStore->getAllSortByTimeDesc(CATEGORY_HOT_DEALS['id'], 1, $nu
                 <div class="pro-list-hot list-content flex w100p">
                     <?php foreach ($hotBookList as $key => $book) { ?>
                         <!-- Card product start -->
-                        <div class="product-card grid-r5">
+                        <div class="product-card grid-r5 grid-r3-md">
                             <div class="product-container m-b20">
                                 <div class="product-img relative">
                                     <div class="product-sale absolute">
                                         <span class="sale-icon">-<?php echo $book->getDiscount(); ?>%</span>
                                     </div>
                                     <div class="img relative">
-                                        <a href="#">
+                                        <a href=<?php echo "/" . $path_project . "/product" . "/" . $book->getBookId(); ?>>
                                             <img src="<?php echo $book->getImage()[0]; ?>" alt="<?php echo $book->getTitle(); ?>">
                                         </a>
                                     </div>
@@ -249,7 +209,7 @@ $hotBookList = $bookStore->getAllSortByTimeDesc(CATEGORY_HOT_DEALS['id'], 1, $nu
 
                                 <div class="product-detail">
                                     <h3 class="product-name">
-                                        <a href="#"><?php echo $book->getTitle(); ?></a>
+                                        <a href=<?php echo "/" . $path_project . "/product" . "/" . $book->getBookId(); ?>><?php echo $book->getTitle(); ?></a>
                                     </h3>
                                     <div class="product-prices">
                                         <div class="price price-new">

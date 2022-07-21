@@ -1,5 +1,6 @@
 <?php
 include_once ROOT . DS . 'services' . DS . "GuestServices.php";
+include_once ROOT . DS . 'config' . DS . "category_config.php";
 
 global $path_project;
 
@@ -15,27 +16,27 @@ $url = isset($_GET["url"]) ? $_GET["url"] : "/";
     <!-- Topbar start -->
     <div class="site-topbar w100p">
         <div class="container flex f-space_between f-align_center h100p">
-            <div>CÔNG TY CỔ PHẦN XUẤT BẢN VÀ TRUYỀN THÔNG IPM</div>
+            <div class="hidden-md">CÔNG TY CỔ PHẦN XUẤT BẢN VÀ TRUYỀN THÔNG IPM</div>
             <div class="account">
                 <?php
-                    if (!isset($_SESSION['username'])) { ?>
+                if (!isset($_SESSION['username'])) { ?>
                     <a href=<?php echo "/" . $path_project . "/" . "register"; ?>>Đăng ký</a>
                     <p class="divider">|</p>
                     <a href=<?php echo "/" . $path_project . "/login"; ?>>Đăng nhập</a>
 
-                 <?php   } ?>
+                <?php   } ?>
                 <?php
-                    if (isset($_SESSION['username'])) {
-                        $guestService = new GuestServices();
-                        $currentUser = $guestService->get($_SESSION['username']);
-                        $productsNumber =count($guestService->getListCartBooks($_SESSION['username']));
-                        ?>
+                if (isset($_SESSION['username'])) {
+                    $guestService = new GuestServices();
+                    $currentUser = $guestService->get($_SESSION['username']);
+                    $productsNumber = count($guestService->getListCartBooks($_SESSION['username']));
+                ?>
                     <a href=<?php echo "/" . $path_project . "/account"; ?>>
-                    <?php echo "Xin chào: " . $currentUser->getName(); ?>
+                        <?php echo "Xin chào: " . $currentUser->getName(); ?>
                     </a>
                     <p class="divider">|</p>
                     <a href=<?php echo "/" . $path_project . "/library/refresh_session.php"; ?>>Đăng xuất</a>
-                 <?php   } ?>
+                <?php   } ?>
             </div>
         </div>
     </div>
@@ -43,13 +44,21 @@ $url = isset($_GET["url"]) ? $_GET["url"] : "/";
     <!-- Site Header start -->
     <div class="site-header w100p">
         <div class="container flex f-space_between f-align_center">
-            <div class="header-logo">
-                <a href=<?php echo "/" . $path_project . "/" ?>>
-                    <img src="/selling-book/public/images/logo/logo.webp" alt="logo" />
-                </a>
+            <div class="header-mobile-bar w25p-md p-l15 hidden-lg">
+                <button>
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+            </div>
+            <div class="header-logo w50p-md">
+                <h1>
+                    <a href=<?php echo "/" . $path_project . "/" ?>>
+                        <img src="/selling-book/public/images/logo/logo.webp" alt="logo" />
+                    </a>
+                </h1>
+
             </div>
 
-            <div class="header-search w50p">
+            <div class="header-search w50p w100p-md">
                 <form action="/selling-book/search" method="POST" class="relative w100p" id="form-seach">
                     <label htmlFor="search" class="hidden"></label>
                     <input class="search-text" name="search" id="search" type="search" placeholder="Tìm kiếm ..."></input>
@@ -59,22 +68,22 @@ $url = isset($_GET["url"]) ? $_GET["url"] : "/";
                 </form>
             </div>
 
-            <div class="header-cart">
+            <div class="header-cart w25p-md">
                 <div class="topbar-cart">
                     <div class="shopping-cart">
                         <a class="flex f-space_between f-align_center" href=<?php echo "/" . $path_project . "/cart" ?>>
                             <div class="cart-icon relative">
                                 <i class="fa-solid fa-cart-shopping"></i>
-                                <span class="quantity absolute"><?php 
-                                if(!isset($_SESSION['username'])) echo "0";
-                                else echo $productsNumber; ?></span>
+                                <span class="quantity absolute"><?php
+                                                                if (!isset($_SESSION['username'])) echo "0";
+                                                                else echo $productsNumber; ?></span>
                             </div>
 
-                            <div class="cart-info">
+                            <div class="cart-info hidden-md">
                                 <h2>Giỏ hàng</h2>
-                                <span><?php 
-                                if(!isset($_SESSION['username'])) echo "0";
-                                else echo $productsNumber; ?> sản phẩm</span>
+                                <span><?php
+                                        if (!isset($_SESSION['username'])) echo "0";
+                                        else echo $productsNumber; ?> sản phẩm</span>
                             </div>
                         </a>
                     </div>
@@ -85,7 +94,7 @@ $url = isset($_GET["url"]) ? $_GET["url"] : "/";
     </div>
     <!-- Site Header end -->
     <!-- Navbar start -->
-    <div class="site-nav">
+    <div class="site-nav hidden-sm">
         <div class="container">
             <nav class="flex f-space_between f-align_center">
                 <ul>
@@ -100,13 +109,17 @@ $url = isset($_GET["url"]) ? $_GET["url"] : "/";
 
                     </li>
                     <ul class="menu-dropdown">
-                        <li><a href=<?php echo "/" . $path_project . DS . "list-products" . DS . "detecvive" ?>>Trinh Thám , Kinh dị</a></li>
-                        <li><a href=<?php echo "/" . $path_project . DS .  "list-products" . DS . "modern-literature" ?>>Văn học hiện đại</a></li>
-                        <li><a href=<?php echo "/" . $path_project . DS .  "list-products" . DS . "classic-literature" ?>>Văn học kinh điển</a></li>
-                        <li><a href=<?php echo "/" . $path_project . DS .  "list-products" . DS . "fantasy" ?>>Fantasy</a></li>
-                        <li><a href=<?php echo "/" . $path_project . DS .  "list-products" . DS . "light-novel" ?>>Light Novel</a></li>
-                        <li><a href=<?php echo "/" . $path_project . DS .  "list-products" . DS . "manga-comic" ?>>Manga - Comic</a></li>
-                        <li><a href=<?php echo "/" . $path_project . DS .  "list-products" . DS . "learning-book" ?>>Sách học ngữ</a></li>
+                        <li><a href=<?php echo "/" . $path_project . DS . "list-products" . DS . CATEGORY_DETECTIVE['route'] ?>>Trinh Thám , Kinh dị</a></li>
+                        <li><a href=<?php echo "/" . $path_project . DS .  "list-products" . DS . CATEGORY_MODERN_LITERARURE['route'] ?>>Văn học hiện đại</a></li>
+                        <li><a href=<?php echo "/" . $path_project . DS .  "list-products" . DS . CATEGORY_CLASSIC_LITERATURE['route'] ?>>Văn học kinh điển</a></li>
+                        <li><a href=<?php echo "/" . $path_project . DS .  "list-products" . DS . CATEGORY_FANTASY['route'] ?>>Fantasy</a></li>
+                        <li><a href=<?php echo "/" . $path_project . DS .  "list-products" . DS . CATEGORY_LIGHT_NOVEL['route'] ?>>Light Novel</a></li>
+                        <li><a href=<?php echo "/" . $path_project . DS .  "list-products" . DS . CATEGORY_BOY_LOVE['route'] ?>>Boys Love</a></li>
+                        <li><a href=<?php echo "/" . $path_project . DS .  "list-products" . DS . CATEGORY_BOXSET['route'] ?>>Boxset</a></li>
+                        <li><a href=<?php echo "/" . $path_project . DS .  "list-products" . DS . CATEGORY_MANGA_COMIC['route'] ?>>Manga - Comic</a></li>
+                        <li><a href=<?php echo "/" . $path_project . DS .  "list-products" . DS . CATEGORY_LEARNING_BOOK['route'] ?>>Sách học ngữ</a></li>
+                        <li><a href=<?php echo "/" . $path_project . DS .  "list-products" . DS . CATEGORY_CHILD_BOOK['route'] ?>>Sách thiếu nhi</a></li>
+                        <li><a href=<?php echo "/" . $path_project . DS .  "list-products" . DS . CATEGORY_ACCESSORIES['route'] ?>>Phụ kiện</a></li>
                     </ul>
                 </ul>
 

@@ -12,7 +12,8 @@ class EvaluateServices extends MySqlConnect {
      */
     public function insert($evaluate) {
         // add to evaluate table
-        $query = "insert into evaluate(user_name, bookId, comment, createdAt)
+        date_default_timezone_set('Asia/Ho_Chi_Minh');
+        $query = "insert into evaluate(username, bookId, comment, createdAt)
                     value (" .
                     "'" . $evaluate->getUsername() . "' ," .
                     $evaluate->getBookId() . "," .
@@ -31,7 +32,8 @@ class EvaluateServices extends MySqlConnect {
     public function getAll($bookId){
         $listEvaluate = array();
         $query = "select * from evaluate
-                    where bookId='" . $bookId . "'";
+                    where bookId='" . $bookId . "'
+                    order by createdAt desc";
         parent::addQuerry($query);
         $result = parent::executeQuery();
 

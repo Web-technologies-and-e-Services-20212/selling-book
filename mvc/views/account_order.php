@@ -22,7 +22,7 @@ foreach ($listBill as $bill) {
     }
 }
 if (!isset($currentBill)) {
-    header("Location: 404");
+    header("Location: /404");
 }
 
 $billId = $currentBill->getBillID();
@@ -43,8 +43,10 @@ $currentUserPhone = $currentUser->getPhoneNumber();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://kit.fontawesome.com/d433183ff3.js" crossorigin="anonymous"></script>
     <link rel="shortcut icon" href="../../public/images/logo/logo_icon.png" type="image/x-icon">
-    <link rel="stylesheet" href="../../public/css/style.css" type="text/css">
-    <title>IPM | Thanh toán đơn hàng</title>
+    <link rel="stylesheet" href="../../public/css/base.css" type="text/css">
+    <link rel="stylesheet" href="../../public/css/layout/account.css" type="text/css">
+    <link rel="stylesheet" href="../../public/css/layout/cart.css" type="text/css">
+    <title>IPM | Đơn hàng <?php echo $billId; ?></title>
 </head>
 
 <body>
@@ -114,13 +116,14 @@ $currentUserPhone = $currentUser->getPhoneNumber();
                                 $quantity = $billBook['quantity'];
                                 $book = $bookStore->getById($bookId);
                                 $bookName = $book->getTitle();
-                                $bookPrice = $book->getPrice();
-                                $totalPrice += $quantity * $bookPrice;
+                                $bookDiscount = $book->getDiscount();
+                                $bookPrice = $book->getPrice() - $book->getPrice() * $bookDiscount / 100;
+                                $totalPrice += $quantity  *  $bookPrice ;
 
 
                             ?>
                                 <tr>
-                                    <td class="item text-left"><a href="#">
+                                    <td class="item text-left"><a href=<?php echo ROOT . DS . "product" . DS . $bookId; ?>>
                                             <strong title="<?php echo $bookName; ?>"><?php echo $bookName; ?></strong>
                                         </a></td>
                                     <td class="item text-center">

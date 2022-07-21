@@ -8,6 +8,7 @@ class Banner {
     public function __construct($bannerId, $image, $categoryId) {
         self::setImage($image);
         self::setBannerId($bannerId);
+        self::setCategoryId($categoryId);
 
     }
 
