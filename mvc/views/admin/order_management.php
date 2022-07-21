@@ -74,7 +74,7 @@ $bills = $service->getListBill($username);
 
                 <div style="width:28%; float:left; height: 70px;">
                     <p>Username: <?php $username ?> </p>
-                    <input class="input1" type="text" name="user" >
+                    <input class="input1" type="text" name="user">
                 </div>
 
                 <table style="width:100%; border:1px solid black">
